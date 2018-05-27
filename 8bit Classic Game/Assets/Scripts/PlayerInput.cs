@@ -4,68 +4,20 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour 
 {
+	public float speed = 25f;
 
-	public float initialSpeed = 0.5f;
+    private Rigidbody2D rb2d;
 
-	private Vector2 movement;
-	private Vector2 initialPosition;
-	private float speed;
-	private enum collisionType { left, right, up, down, free };
-	private collisionType collision;
-
-	void Start () 
-	{
-		initialPosition = new Vector2(-0.961f, 0.722f);
-		movement = new Vector2();
-		movement = initialPosition;
-		speed = initialSpeed;
-	}
-
-	void Update () 
-	{
-		DetectInput();
-	}
-
-	private void DetectInput()
-	{
-		if (Input.GetKey("up"))
-		{
-			movement +=  Vector2.up * speed * Time.deltaTime; 
-		}
-		if (Input.GetKey("down"))
-		{
-			movement +=  Vector2.down * speed * Time.deltaTime; 
-		}
-		if (Input.GetKey("right"))
-		{
-            if (collision != collisionType.right)
-			    movement +=  Vector2.right * speed * Time.deltaTime; 
-		}
-		if (Input.GetKey("left"))
-		{
-           //if (collision != collisionType.left)
-                movement +=  Vector2.left * speed * Time.deltaTime; 
-		}
-
-		Move();
-	}
-
-	private void Move()
-	{
-		transform.position = movement;
-	}
-
-    private void OnCollisionEnter2D(Collision2D other)
+    void Start()
     {
-        if (other.transform.position.x > transform.position.x)
-        {
-            collision = collisionType.right;
-        }
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    void FixedUpdate()
     {
-        collision = collisionType.free;
-    }
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
+        rb2d.velocity = new Vector2 (h, v) * speed * Time.deltaTime;
+    }
 }
