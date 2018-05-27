@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Bomb : MonoBehaviour
 {
     //Generic Bomb Variables
+    public GameObject explosion;
     protected int radius = 1;
     protected float detonationTime = 2.5f;  //(2.5s)
     protected float remainingTime = 0;      //(Used in Update)

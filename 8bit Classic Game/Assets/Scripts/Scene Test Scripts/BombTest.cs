@@ -12,6 +12,8 @@ public class BombTest : MonoBehaviour
 		if(Input.GetMouseButtonDown(0))
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            position.x = Mathf.Floor(position.x);
+            position.y = Mathf.Floor(position.y);
             position.z = 0;
             Instantiate(prefab, position, Quaternion.identity);
         }
