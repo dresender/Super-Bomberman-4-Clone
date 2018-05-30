@@ -3,17 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * TODO: Dynamic Collision (Something Intentionally enters explosion area)
- */
-
 public class SimpleBomb : Bomb
 {
     public override void explode()
     {
         //Explosion Center
         GetComponent<SpriteRenderer>().sprite = null;
-        Instantiate<GameObject>(explosion, this.transform.position, Quaternion.identity);
+        Instantiate<GameObject>(centerExplosion, this.transform.position, Quaternion.identity);
 
         //Add Explosion Radius
         bool upBlocked = false;
@@ -23,64 +19,92 @@ public class SimpleBomb : Bomb
 
         for (int i = 1; i <= radius; i++)
         {
-            Vector3 desiredPosition;
-
-            //Spawn Explosion Tiles
-            if (!upBlocked)
+            if(!upBlocked)
             {
-                desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y + i + 0.5f, this.transform.position.z);
-                //TODO - Check Collision
+                Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y + i + 0.5f, this.transform.position.z);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
 
-                GameObject explosionTile = Instantiate<GameObject>(explosion, desiredPosition, Quaternion.identity);
-                if (i == radius) explosionTile.GetComponent<Explosion>().setAnimation(5);
-                else explosionTile.GetComponent<Explosion>().setAnimation(3);
+                if(collision != null)
+                {
+                    upBlocked = true;
+                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    //TODO: Make animations of being destroyed
+                }
+                else
+                {
+                    if (i == radius) Instantiate<GameObject>(upEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate<GameObject>(upArmExplosion, desiredPosition, Quaternion.identity);
+                }
             }
             if (!downBlocked)
             {
-                desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y - i + 0.5f, this.transform.position.z);
-                //TODO - Check Collision
+                Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y - i + 0.5f, this.transform.position.z);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
 
-                GameObject explosionTile = Instantiate<GameObject>(explosion, desiredPosition, Quaternion.identity);
-                if (i == radius) explosionTile.GetComponent<Explosion>().setAnimation(6);
-                else explosionTile.GetComponent<Explosion>().setAnimation(4);
+                if (collision != null)
+                {
+                    downBlocked = true;
+                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    //TODO: Make animations of being destroyed
+                }
+                else
+                {
+                    if (i == radius) Instantiate<GameObject>(downEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate<GameObject>(downArmExplosion, desiredPosition, Quaternion.identity);
+                }
             }
             if (!rightBlocked)
             {
-                desiredPosition = new Vector3(this.transform.position.x + i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
-                //TODO - Check Collision
+                Vector3 desiredPosition = new Vector3(this.transform.position.x + i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
 
-                GameObject explosionTile = Instantiate<GameObject>(explosion, desiredPosition, Quaternion.identity);
-                if (i == radius) explosionTile.GetComponent<Explosion>().setAnimation(8);
-                else explosionTile.GetComponent<Explosion>().setAnimation(1);
+                if (collision != null)
+                {
+                    rightBlocked = true;
+                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    //TODO: Make animations of being destroyed
+                }
+                else
+                {
+                    if (i == radius) Instantiate<GameObject>(rightEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate<GameObject>(rightArmExplosion, desiredPosition, Quaternion.identity);
+                }
             }
             if (!leftBlocked)
             {
-                desiredPosition = new Vector3(this.transform.position.x - i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
-                //TODO - Check Collision
+                Vector3 desiredPosition = new Vector3(this.transform.position.x - i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
 
-                GameObject explosionTile = Instantiate<GameObject>(explosion, desiredPosition, Quaternion.identity);
-                if (i == radius) explosionTile.GetComponent<Explosion>().setAnimation(7);
-                else explosionTile.GetComponent<Explosion>().setAnimation(2);
+                if (collision != null)
+                {
+                    leftBlocked = true;
+                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    //TODO: Make animations of being destroyed
+                }
+                else
+                {
+                    if (i == radius) Instantiate<GameObject>(leftEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate<GameObject>(leftArmExplosion, desiredPosition, Quaternion.identity);
+                }
             }
         }
 
-        //Terminate Self
+        //Destroy Bomb
         Destroy(this.gameObject);
     }
 
     // Use this for initialization
     void Start ()
     {
-        remainingTime = detonationTime;
+        radius = 2;
+        animator = GetComponent<Animator>();
+        animDuration = animator.GetCurrentAnimatorStateInfo(0).length;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (remainingTime <= 0) explode();
-        else
-        {
-            remainingTime = remainingTime - Time.deltaTime;
-        }
-	}
+        elapsedTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        if ((elapsedTime / 2f) >= animDuration) explode();
+    }
 }

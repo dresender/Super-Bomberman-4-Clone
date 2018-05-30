@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class Explosion : MonoBehaviour
 {
-    public void setAnimation(int animType)
+    void OnTriggerEnter2D()
     {
-        GetComponent<Animator>().SetInteger("ExplosionSide", animType);
-        GetComponent<Animator>().SetTrigger("Begin");
+        Debug.Log("Test");
     }
 }

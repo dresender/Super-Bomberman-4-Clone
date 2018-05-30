@@ -2,70 +2,70 @@ fileFormatVersion: 2
 guid: 5bb6ec58d1dbdee4ea7521164affc31d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SimpleBomb0_Era1
-    21300002: SimpleBomb1_Era1
-    21300004: SimpleBomb2_Era1
-    21300006: SimpleBomb3_Era1
-    21300008: Mine0_Era1
-    21300010: Mine1_Era1
-    21300012: Mine2_Era1
-    21300014: Mine3_Era1
-    21300016: DBomb0_Era1
-    21300018: DBomb1_Era1
-    21300020: DBomb2_Era1
-    21300022: DBomb3_Era1
-    21300024: PiercingBomb0_Era1
-    21300026: PiercingBomb1_Era1
-    21300028: PiercingBomb2_Era1
-    21300030: PiercingBomb3_Era1
-    21300032: SBomb0_Era1
-    21300034: SBomb1_Era1
-    21300036: SBomb2_Era1
-    21300038: SBomb3_Era1
-    21300040: HBomb0_Era1
-    21300042: HBomb1_Era1
-    21300044: HBomb2_Era1
-    21300046: HBomb3_Era1
-    21300048: ExplosionEndV0_Era1
-    21300050: ExplosionC0_Era1
-    21300052: Portal0_Era1
-    21300054: ExplosionEndH0_Era1
-    21300056: ExplosionV0_Era1
-    21300058: ExplosionH0_Era1
-    21300060: ExplosionC5_Era1
-    21300062: ExplosionC10_Era1
-    21300064: ExplosionEndV1_Era1
-    21300066: ExplosionC1_Era1
-    21300068: Portal2_Era1
-    21300070: ExplosionEndH1_Era1
-    21300072: ExplosionV1_Era1
-    21300074: ExplosionH1_Era1
-    21300076: ExplosionC6_Era1
-    21300078: ExplosionC11_Era1
-    21300080: ExplosionEndV2_Era1
-    21300082: ExplosionC2_Era1
-    21300084: Portal3_Era1
-    21300086: ExplosionEndH2_Era1
-    21300088: ExplosionV2_Era1
-    21300090: ExplosionH2_Era1
-    21300092: ExplosionC7_Era1
-    21300094: ExplosionC12_Era1
-    21300096: ExplosionEndV3_Era1
-    21300098: ExplosionC3_Era1
-    21300100: Portal4_Era1
-    21300102: ExplosionEndH3_Era1
-    21300104: ExplosionV3_Era1
-    21300106: ExplosionH3_Era1
-    21300108: ExplosionC8_Era1
-    21300110: ExplosionC13_Era1
-    21300112: ExplosionEndV4_Era1
-    21300114: ExplosionC4_Era1
+    21300000: SimpleBomb0
+    21300002: SimpleBomb1
+    21300004: SimpleBomb2
+    21300006: SimpleBomb3
+    21300008: Mine0
+    21300010: Mine1
+    21300012: Mine2
+    21300014: Mine3
+    21300016: DBomb0
+    21300018: DBomb1
+    21300020: DBomb2
+    21300022: DBomb3
+    21300024: PiercingBomb0
+    21300026: PiercingBomb1
+    21300028: PiercingBomb2
+    21300030: PiercingBomb3
+    21300032: SBomb0
+    21300034: SBomb1
+    21300036: SBomb2
+    21300038: SBomb3
+    21300040: HBomb0
+    21300042: HBomb1
+    21300044: HBomb2
+    21300046: HBomb3
+    21300048: ExplosionEndV0
+    21300050: ExplosionC0
+    21300052: Portal0
+    21300054: ExplosionEndH0
+    21300056: ExplosionV0
+    21300058: ExplosionH0
+    21300060: ExplosionC5
+    21300062: ExplosionC10
+    21300064: ExplosionEndV1
+    21300066: ExplosionC1
+    21300068: Portal2
+    21300070: ExplosionEndH1
+    21300072: ExplosionV1
+    21300074: ExplosionH1
+    21300076: ExplosionC6
+    21300078: ExplosionC11
+    21300080: ExplosionEndV2
+    21300082: ExplosionC2
+    21300084: Portal3
+    21300086: ExplosionEndH2
+    21300088: ExplosionV2
+    21300090: ExplosionH2
+    21300092: ExplosionC7
+    21300094: ExplosionC12
+    21300096: ExplosionEndV3
+    21300098: ExplosionC3
+    21300100: Portal4
+    21300102: ExplosionEndH3
+    21300104: ExplosionV3
+    21300106: ExplosionH3
+    21300108: ExplosionC8
+    21300110: ExplosionC13
+    21300112: ExplosionEndV4
+    21300114: ExplosionC4
     21300116: Tile_Era1
-    21300118: ExplosionEndH4_Era1
-    21300120: ExplosionV4_Era1
-    21300122: ExplosionH4_Era1
-    21300124: ExplosionC9_Era1
-    21300126: ExplosionC14_Era1
+    21300118: ExplosionEndH4
+    21300120: ExplosionV4
+    21300122: ExplosionH4
+    21300124: ExplosionC9
+    21300126: ExplosionC14
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -157,7 +157,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SimpleBomb0_Era1
+      name: SimpleBomb0
       rect:
         serializedVersion: 2
         x: 0
@@ -177,7 +177,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimpleBomb1_Era1
+      name: SimpleBomb1
       rect:
         serializedVersion: 2
         x: 17
@@ -197,7 +197,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimpleBomb2_Era1
+      name: SimpleBomb2
       rect:
         serializedVersion: 2
         x: 34
@@ -217,7 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimpleBomb3_Era1
+      name: SimpleBomb3
       rect:
         serializedVersion: 2
         x: 51
@@ -237,7 +237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mine0_Era1
+      name: Mine0
       rect:
         serializedVersion: 2
         x: 68
@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mine1_Era1
+      name: Mine1
       rect:
         serializedVersion: 2
         x: 85
@@ -277,7 +277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mine2_Era1
+      name: Mine2
       rect:
         serializedVersion: 2
         x: 102
@@ -297,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mine3_Era1
+      name: Mine3
       rect:
         serializedVersion: 2
         x: 119
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DBomb0_Era1
+      name: DBomb0
       rect:
         serializedVersion: 2
         x: 0
@@ -337,7 +337,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DBomb1_Era1
+      name: DBomb1
       rect:
         serializedVersion: 2
         x: 17
@@ -357,7 +357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DBomb2_Era1
+      name: DBomb2
       rect:
         serializedVersion: 2
         x: 34
@@ -377,7 +377,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DBomb3_Era1
+      name: DBomb3
       rect:
         serializedVersion: 2
         x: 51
@@ -397,7 +397,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PiercingBomb0_Era1
+      name: PiercingBomb0
       rect:
         serializedVersion: 2
         x: 68
@@ -417,7 +417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PiercingBomb1_Era1
+      name: PiercingBomb1
       rect:
         serializedVersion: 2
         x: 85
@@ -437,7 +437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PiercingBomb2_Era1
+      name: PiercingBomb2
       rect:
         serializedVersion: 2
         x: 102
@@ -457,7 +457,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PiercingBomb3_Era1
+      name: PiercingBomb3
       rect:
         serializedVersion: 2
         x: 119
@@ -477,7 +477,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SBomb0_Era1
+      name: SBomb0
       rect:
         serializedVersion: 2
         x: 0
@@ -497,7 +497,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SBomb1_Era1
+      name: SBomb1
       rect:
         serializedVersion: 2
         x: 17
@@ -517,7 +517,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SBomb2_Era1
+      name: SBomb2
       rect:
         serializedVersion: 2
         x: 34
@@ -537,7 +537,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SBomb3_Era1
+      name: SBomb3
       rect:
         serializedVersion: 2
         x: 51
@@ -557,7 +557,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HBomb0_Era1
+      name: HBomb0
       rect:
         serializedVersion: 2
         x: 68
@@ -577,7 +577,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HBomb1_Era1
+      name: HBomb1
       rect:
         serializedVersion: 2
         x: 85
@@ -597,7 +597,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HBomb2_Era1
+      name: HBomb2
       rect:
         serializedVersion: 2
         x: 102
@@ -617,7 +617,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HBomb3_Era1
+      name: HBomb3
       rect:
         serializedVersion: 2
         x: 119
@@ -637,7 +637,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndV0_Era1
+      name: ExplosionEndV0
       rect:
         serializedVersion: 2
         x: 0
@@ -657,7 +657,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC0_Era1
+      name: ExplosionC0
       rect:
         serializedVersion: 2
         x: 17
@@ -677,7 +677,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal0_Era1
+      name: Portal0
       rect:
         serializedVersion: 2
         x: 34
@@ -697,7 +697,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndH0_Era1
+      name: ExplosionEndH0
       rect:
         serializedVersion: 2
         x: 51
@@ -717,7 +717,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionV0_Era1
+      name: ExplosionV0
       rect:
         serializedVersion: 2
         x: 68
@@ -737,7 +737,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionH0_Era1
+      name: ExplosionH0
       rect:
         serializedVersion: 2
         x: 85
@@ -757,7 +757,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC5_Era1
+      name: ExplosionC5
       rect:
         serializedVersion: 2
         x: 102
@@ -777,7 +777,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC10_Era1
+      name: ExplosionC10
       rect:
         serializedVersion: 2
         x: 119
@@ -797,7 +797,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndV1_Era1
+      name: ExplosionEndV1
       rect:
         serializedVersion: 2
         x: 0
@@ -817,7 +817,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC1_Era1
+      name: ExplosionC1
       rect:
         serializedVersion: 2
         x: 17
@@ -837,7 +837,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal2_Era1
+      name: Portal2
       rect:
         serializedVersion: 2
         x: 34
@@ -857,7 +857,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndH1_Era1
+      name: ExplosionEndH1
       rect:
         serializedVersion: 2
         x: 51
@@ -877,7 +877,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionV1_Era1
+      name: ExplosionV1
       rect:
         serializedVersion: 2
         x: 68
@@ -897,7 +897,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionH1_Era1
+      name: ExplosionH1
       rect:
         serializedVersion: 2
         x: 85
@@ -917,7 +917,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC6_Era1
+      name: ExplosionC6
       rect:
         serializedVersion: 2
         x: 102
@@ -937,7 +937,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC11_Era1
+      name: ExplosionC11
       rect:
         serializedVersion: 2
         x: 119
@@ -957,7 +957,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndV2_Era1
+      name: ExplosionEndV2
       rect:
         serializedVersion: 2
         x: 0
@@ -977,7 +977,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC2_Era1
+      name: ExplosionC2
       rect:
         serializedVersion: 2
         x: 17
@@ -997,7 +997,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal3_Era1
+      name: Portal3
       rect:
         serializedVersion: 2
         x: 34
@@ -1017,7 +1017,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndH2_Era1
+      name: ExplosionEndH2
       rect:
         serializedVersion: 2
         x: 51
@@ -1037,7 +1037,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionV2_Era1
+      name: ExplosionV2
       rect:
         serializedVersion: 2
         x: 68
@@ -1057,7 +1057,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionH2_Era1
+      name: ExplosionH2
       rect:
         serializedVersion: 2
         x: 85
@@ -1077,7 +1077,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC7_Era1
+      name: ExplosionC7
       rect:
         serializedVersion: 2
         x: 102
@@ -1097,7 +1097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC12_Era1
+      name: ExplosionC12
       rect:
         serializedVersion: 2
         x: 119
@@ -1117,7 +1117,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndV3_Era1
+      name: ExplosionEndV3
       rect:
         serializedVersion: 2
         x: 0
@@ -1137,7 +1137,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC3_Era1
+      name: ExplosionC3
       rect:
         serializedVersion: 2
         x: 17
@@ -1157,7 +1157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal4_Era1
+      name: Portal4
       rect:
         serializedVersion: 2
         x: 34
@@ -1177,7 +1177,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndH3_Era1
+      name: ExplosionEndH3
       rect:
         serializedVersion: 2
         x: 51
@@ -1197,7 +1197,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionV3_Era1
+      name: ExplosionV3
       rect:
         serializedVersion: 2
         x: 68
@@ -1217,7 +1217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionH3_Era1
+      name: ExplosionH3
       rect:
         serializedVersion: 2
         x: 85
@@ -1237,7 +1237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC8_Era1
+      name: ExplosionC8
       rect:
         serializedVersion: 2
         x: 102
@@ -1257,7 +1257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC13_Era1
+      name: ExplosionC13
       rect:
         serializedVersion: 2
         x: 119
@@ -1277,7 +1277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionEndV4_Era1
+      name: ExplosionEndV4
       rect:
         serializedVersion: 2
         x: 0
@@ -1297,7 +1297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC4_Era1
+      name: ExplosionC4
       rect:
         serializedVersion: 2
         x: 17
@@ -1317,27 +1317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tile_Era1
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e85081c3642943943afba599ad56b459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExplosionEndH4_Era1
+      name: ExplosionEndH4
       rect:
         serializedVersion: 2
         x: 51
@@ -1357,7 +1337,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionV4_Era1
+      name: ExplosionV4
       rect:
         serializedVersion: 2
         x: 68
@@ -1377,7 +1357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionH4_Era1
+      name: ExplosionH4
       rect:
         serializedVersion: 2
         x: 85
@@ -1397,7 +1377,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC9_Era1
+      name: ExplosionC9
       rect:
         serializedVersion: 2
         x: 102
@@ -1417,7 +1397,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExplosionC14_Era1
+      name: ExplosionC14
       rect:
         serializedVersion: 2
         x: 119
