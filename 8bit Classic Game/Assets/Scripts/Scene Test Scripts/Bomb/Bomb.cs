@@ -8,8 +8,6 @@ public abstract class Bomb : MonoBehaviour
     //Generic Bomb Variables
     protected Animator animator;
     protected int radius = 1;
-    protected float animDuration = 2.5f;  //(2.5s)
-    protected float elapsedTime = 0;      //(Used in Update)
 
     //Explosions Prefabs
     public GameObject centerExplosion;

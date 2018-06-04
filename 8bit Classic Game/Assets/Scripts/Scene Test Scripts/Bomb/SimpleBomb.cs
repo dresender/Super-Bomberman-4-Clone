@@ -11,6 +11,9 @@ public class SimpleBomb : Bomb
         GetComponent<SpriteRenderer>().sprite = null;
         Instantiate<GameObject>(centerExplosion, this.transform.position, Quaternion.identity);
 
+        //Collision Vector
+        Vector2 collisionVector = new Vector2(0.75f, 0.75f);
+
         //Add Explosion Radius
         bool upBlocked = false;
         bool downBlocked = false;
@@ -22,7 +25,7 @@ public class SimpleBomb : Bomb
             if(!upBlocked)
             {
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y + i + 0.5f, this.transform.position.z);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if(collision != null)
                 {
@@ -39,7 +42,7 @@ public class SimpleBomb : Bomb
             if (!downBlocked)
             {
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y - i + 0.5f, this.transform.position.z);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if (collision != null)
                 {
@@ -56,7 +59,7 @@ public class SimpleBomb : Bomb
             if (!rightBlocked)
             {
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if (collision != null)
                 {
@@ -73,7 +76,7 @@ public class SimpleBomb : Bomb
             if (!leftBlocked)
             {
                 Vector3 desiredPosition = new Vector3(this.transform.position.x - i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, Vector2.one, 0f);
+                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if (collision != null)
                 {
@@ -98,13 +101,12 @@ public class SimpleBomb : Bomb
     {
         radius = 2;
         animator = GetComponent<Animator>();
-        animDuration = animator.GetCurrentAnimatorStateInfo(0).length;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        elapsedTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        if ((elapsedTime / 2f) >= animDuration) explode();
+        //If Animation Ended -> Destroy Self
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) explode();
     }
 }
