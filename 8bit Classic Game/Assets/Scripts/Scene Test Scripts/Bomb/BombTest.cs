@@ -15,7 +15,9 @@ public class BombTest : MonoBehaviour
             position.x = Mathf.Floor(position.x);
             position.y = Mathf.Floor(position.y);
             position.z = 0;
-            Instantiate(prefab, position, Quaternion.identity);
+
+            GameObject bomb = Instantiate(prefab, position, Quaternion.identity);
+            bomb.GetComponent<Bomb>().setRadius(2);
         }
 	}
 }

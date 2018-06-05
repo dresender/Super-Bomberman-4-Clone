@@ -20,12 +20,6 @@ public abstract class Bomb : MonoBehaviour
     public GameObject downArmExplosion;
     public GameObject downEndExplosion;
 
-    //Constructor
-    protected Bomb(int radius)
-    {
-        this.radius = radius;
-    }
-
     //Set Radius
     public void setRadius(int radius)
     {

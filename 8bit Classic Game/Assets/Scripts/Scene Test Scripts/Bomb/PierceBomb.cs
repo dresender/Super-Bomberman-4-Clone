@@ -11,9 +11,6 @@ public class PierceBomb : Bomb
         animator = GetComponent<Animator>();
     }
 
-    //Constructor
-    public PierceBomb(int radius) : base(radius) { }
-
     //Explode Method
     public override void explode()
     {
@@ -32,8 +29,7 @@ public class PierceBomb : Bomb
 
             if (collision != null && collision.tag == "Destroyable")
             {
-                Destroy(collision.gameObject);
-                //TODO: Make animations of being destroyed
+                collision.GetComponent<Animator>().enabled = true;
             }
             else
             {
@@ -47,8 +43,7 @@ public class PierceBomb : Bomb
 
             if (collision != null && collision.tag == "Destroyable")
             {
-                Destroy(collision.gameObject);
-                //TODO: Make animations of being destroyed
+                collision.GetComponent<Animator>().enabled = true;
             }
             else
             {
@@ -62,8 +57,7 @@ public class PierceBomb : Bomb
 
             if (collision != null && collision.tag == "Destroyable")
             {
-                Destroy(collision.gameObject);
-                //TODO: Make animations of being destroyed
+                collision.GetComponent<Animator>().enabled = true;
             }
             else
             {
@@ -77,8 +71,7 @@ public class PierceBomb : Bomb
 
             if (collision != null && collision.tag == "Destroyable")
             {
-                Destroy(collision.gameObject);
-                //TODO: Make animations of being destroyed
+                collision.GetComponent<Animator>().enabled = true;
             }
             else
             {

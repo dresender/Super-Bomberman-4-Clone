@@ -11,9 +11,6 @@ public class SimpleBomb : Bomb
         animator = GetComponent<Animator>();
     }
 
-    //Constructor
-    public SimpleBomb(int radius) : base(radius) { }
-
     //Explode Method
     public override void explode()
     {
@@ -40,8 +37,7 @@ public class SimpleBomb : Bomb
                 if(collision != null && collision.tag == "Destroyable")
                 {
                     upBlocked = true;
-                    Destroy(collision.gameObject);
-                    //TODO: Make animations of being destroyed
+                    collision.GetComponent<Animator>().enabled = true;
                 }
                 else
                 {
@@ -57,8 +53,7 @@ public class SimpleBomb : Bomb
                 if (collision != null && collision.tag == "Destroyable")
                 {
                     downBlocked = true;
-                    Destroy(collision.gameObject);
-                    //TODO: Make animations of being destroyed
+                    collision.GetComponent<Animator>().enabled = true;
                 }
                 else
                 {
@@ -74,8 +69,7 @@ public class SimpleBomb : Bomb
                 if (collision != null && collision.tag == "Destroyable")
                 {
                     rightBlocked = true;
-                    Destroy(collision.gameObject);
-                    //TODO: Make animations of being destroyed
+                    collision.GetComponent<Animator>().enabled = true;
                 }
                 else
                 {
@@ -91,8 +85,7 @@ public class SimpleBomb : Bomb
                 if (collision != null && collision.tag == "Destroyable")
                 {
                     leftBlocked = true;
-                    Destroy(collision.gameObject);
-                    //TODO: Make animations of being destroyed
+                    collision.GetComponent<Animator>().enabled = true;
                 }
                 else
                 {
