@@ -21,7 +21,7 @@ public class Explosion : MonoBehaviour
     //Explosion Collision
     void OnTriggerEnter2D()
     {
-        Debug.Log("Test");
+        //TODO!
     }
 
     

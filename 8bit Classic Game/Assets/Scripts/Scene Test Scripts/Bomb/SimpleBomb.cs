@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class SimpleBomb : Bomb
 {
+    // Use this for initialization
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    //Constructor
+    public SimpleBomb(int radius) : base(radius) { }
+
+    //Explode Method
     public override void explode()
     {
         //Explosion Center
@@ -27,10 +37,10 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y + i + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if(collision != null)
+                if(collision != null && collision.tag == "Destroyable")
                 {
                     upBlocked = true;
-                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    Destroy(collision.gameObject);
                     //TODO: Make animations of being destroyed
                 }
                 else
@@ -44,10 +54,10 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y - i + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if (collision != null)
+                if (collision != null && collision.tag == "Destroyable")
                 {
                     downBlocked = true;
-                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    Destroy(collision.gameObject);
                     //TODO: Make animations of being destroyed
                 }
                 else
@@ -61,10 +71,10 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if (collision != null)
+                if (collision != null && collision.tag == "Destroyable")
                 {
                     rightBlocked = true;
-                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    Destroy(collision.gameObject);
                     //TODO: Make animations of being destroyed
                 }
                 else
@@ -78,10 +88,10 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x - i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if (collision != null)
+                if (collision != null && collision.tag == "Destroyable")
                 {
                     leftBlocked = true;
-                    if (collision.tag == "Destroyable") Destroy(collision.gameObject);
+                    Destroy(collision.gameObject);
                     //TODO: Make animations of being destroyed
                 }
                 else
@@ -96,15 +106,8 @@ public class SimpleBomb : Bomb
         Destroy(this.gameObject);
     }
 
-    // Use this for initialization
-    void Start ()
-    {
-        radius = 2;
-        animator = GetComponent<Animator>();
-    }
-	
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update ()
     {
         //If Animation Ended -> Destroy Self
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) explode();

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destroyable
   - Explosion
+  - PowerUp
   layers:
   - Default
   - TransparentFX
