@@ -10,11 +10,14 @@ public class EnemyAI : MonoBehaviour
 	private Rigidbody2D rb2d;
 	private Vector2 direction;
 	private List<directions> listOfPossibleDirections;
+	private int tempo = 0;
 
 	void Start()
 	{
 		rb2d = GetComponent<Rigidbody2D>();
-		listOfPossibleDirections = new List<directions>();
+		listOfPossibleDirections = new List<directions>() { directions.up, 
+			directions.down, directions.left, directions.right };
+
 		CheckSurroundings();
 	}
 
@@ -57,6 +60,10 @@ public class EnemyAI : MonoBehaviour
 		if (hit.collider == null)
 			listOfPossibleDirections.Add(directions.right);
 
+		foreach (var dir in listOfPossibleDirections)
+		{
+			Debug.Log(dir);
+		}		
 
 		DirectionOfMovement();
 	}
@@ -67,8 +74,31 @@ public class EnemyAI : MonoBehaviour
 		//the choosen for the direction of movement
 
 		//pick up a random item from the possible directions list
+		int rnd = Random.Range(0, listOfPossibleDirections.Count);
+
+		Debug.Log(rnd);
+
+		directions tempDirection = listOfPossibleDirections[rnd];
+
+		Debug.Log(tempDirection);
 
 		//assign the vector2 direction variable according to the value
+		if(tempDirection == directions.up)
+		{
+			direction = Vector2.up;
+		}
+		if(tempDirection == directions.down)
+		{
+			direction = Vector2.down;
+		}
+		if(tempDirection == directions.left)
+		{
+			direction = Vector2.left;
+		}
+		if(tempDirection == directions.right)
+		{
+			direction = Vector2.right;
+		}
 
 		//Clear the list for next iteration
 		listOfPossibleDirections.Clear();
@@ -78,8 +108,10 @@ public class EnemyAI : MonoBehaviour
 	{
 		//Set the vector2 direction to zero, so enemy doesnt move
 		//while "thinking" where to go
+		direction = Vector2.zero;
 
 		//If there is a collision, wait for 1 second and call the
 		//CheckSurroundings method
+		CheckSurroundings();
 	}
 }
