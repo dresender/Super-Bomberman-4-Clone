@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour 
 {
-	public float speed = 125f;
+	public float speed = 5f;
 
-	private enum directions { up, down, left, right };
+	private enum Directions { up, down, left, right };
 	private Rigidbody2D rb2d;
+	private Directions aiDirection;
 	private Vector2 direction;
-	private List<directions> listOfPossibleDirections;
-	private int tempo = 0;
+	private List<Directions> listOfPossibleDirections;
 
 	void Start()
 	{
 		rb2d = GetComponent<Rigidbody2D>();
-		listOfPossibleDirections = new List<directions>() { directions.up, 
-			directions.down, directions.left, directions.right };
-
+		listOfPossibleDirections = new List<Directions>();
 		CheckSurroundings();
 	}
 
@@ -37,28 +35,38 @@ public class EnemyAI : MonoBehaviour
 		//for movement (empty tiles)
 
 		//Checking for collisions up
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 1f);
+		Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));
 
-		if (hit.collider == null)
-			listOfPossibleDirections.Add(directions.up);
+		if (hit == null)
+		{
+			listOfPossibleDirections.Add(Directions.up);
+		}
 
 		//Checking for collisions down
-		hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+		hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
+		Debug.Log(hit);
 
-		if (hit.collider == null)
-			listOfPossibleDirections.Add(directions.down);
+		if (hit == null)
+		{
+			listOfPossibleDirections.Add(Directions.down);
+		}
 
 		//Checking for collisions left
-		hit = Physics2D.Raycast(transform.position, Vector2.left, 1f);
+		hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
+		Debug.Log(hit);
 
-		if (hit.collider == null)
-			listOfPossibleDirections.Add(directions.left);
+		if (hit == null)
+		{
+			listOfPossibleDirections.Add(Directions.left);
+		}
 
 		//Checking for collisions right
-		hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
+		hit = Physics2D.OverlapPoint(transform.position + new Vector3(1, 0, 0));
 
-		if (hit.collider == null)
-			listOfPossibleDirections.Add(directions.right);
+		if (hit == null)
+		{
+			listOfPossibleDirections.Add(Directions.right);
+		}
 
 		foreach (var dir in listOfPossibleDirections)
 		{
@@ -78,24 +86,24 @@ public class EnemyAI : MonoBehaviour
 
 		Debug.Log(rnd);
 
-		directions tempDirection = listOfPossibleDirections[rnd];
+		Directions tempDirection = listOfPossibleDirections[rnd];
 
-		Debug.Log(tempDirection);
+		//Debug.Log(tempDirection);
 
 		//assign the vector2 direction variable according to the value
-		if(tempDirection == directions.up)
+		if(tempDirection == Directions.up)
 		{
 			direction = Vector2.up;
 		}
-		if(tempDirection == directions.down)
+		if(tempDirection == Directions.down)
 		{
 			direction = Vector2.down;
 		}
-		if(tempDirection == directions.left)
+		if(tempDirection == Directions.left)
 		{
 			direction = Vector2.left;
 		}
-		if(tempDirection == directions.right)
+		if(tempDirection == Directions.right)
 		{
 			direction = Vector2.right;
 		}
@@ -109,7 +117,7 @@ public class EnemyAI : MonoBehaviour
 		//Set the vector2 direction to zero, so enemy doesnt move
 		//while "thinking" where to go
 		direction = Vector2.zero;
-
+		
 		//If there is a collision, wait for 1 second and call the
 		//CheckSurroundings method
 		CheckSurroundings();
