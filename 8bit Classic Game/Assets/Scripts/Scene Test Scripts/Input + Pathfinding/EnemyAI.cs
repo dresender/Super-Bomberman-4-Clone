@@ -44,7 +44,7 @@ public class EnemyAI : MonoBehaviour
 
 		//Checking for collisions down
 		hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
-		Debug.Log(hit);
+		//Debug.Log(hit);
 
 		if (hit == null)
 		{
@@ -53,7 +53,7 @@ public class EnemyAI : MonoBehaviour
 
 		//Checking for collisions left
 		hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
-		Debug.Log(hit);
+		//Debug.Log(hit);
 
 		if (hit == null)
 		{
@@ -70,7 +70,7 @@ public class EnemyAI : MonoBehaviour
 
 		foreach (var dir in listOfPossibleDirections)
 		{
-			Debug.Log(dir);
+			//Debug.Log(dir);
 		}		
 
 		DirectionOfMovement();
@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
 		//pick up a random item from the possible directions list
 		int rnd = Random.Range(0, listOfPossibleDirections.Count);
 
-		Debug.Log(rnd);
+		//Debug.Log(rnd);
 
 		Directions tempDirection = listOfPossibleDirections[rnd];
 
