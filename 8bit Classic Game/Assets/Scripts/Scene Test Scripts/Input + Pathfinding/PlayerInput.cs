@@ -13,7 +13,7 @@ public class PlayerInput : MonoBehaviour
     //Start Method
     void Start()
     {
-        colliderSize = this.GetComponent<BoxCollider2D>().size;
+        colliderSize = GetComponent<BoxCollider2D>().size;
     }
 
     //Update Method
@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour
 	private void MovePlayer()
 	{
         //Initialize Movement Vector
-        Vector2 movement = this.transform.position;
+        Vector2 movement = transform.position;
 
         //Preview Movement
         bool hasMoved = false;
@@ -69,7 +69,8 @@ public class PlayerInput : MonoBehaviour
             }
 
             //Move Player!
-            if(canMove) transform.position = movement;
+            if(canMove) 
+                transform.position = movement;
         }
 	}
 }
