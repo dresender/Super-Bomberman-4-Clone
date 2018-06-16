@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212094158798042818}
   - component: {fileID: 61033203744902366}
   m_Layer: 0
-  m_Name: HardBlock
+  m_Name: InternalCollider
   m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,8 +64,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.95, y: 0.95}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0.1
 --- !u!212 &212094158798042818
 SpriteRenderer:
   m_ObjectHideFlags: 1
