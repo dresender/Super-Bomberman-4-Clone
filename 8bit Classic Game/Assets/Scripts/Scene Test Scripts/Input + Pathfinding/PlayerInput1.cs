@@ -76,7 +76,7 @@ public class PlayerInput1 : MonoBehaviour
                 {
                     //TODO: Add more logic here. Certain powerups can modify this.
                     if (collisions[i].tag == "Destroyable" || collisions[i].tag == "Indestructible")
-                    {                        
+                    {
                         if (dirMovement == Direction.down)
                         {
                             RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - raycastMargin - 0.01f), Vector2.down, 1f);
@@ -105,46 +105,91 @@ public class PlayerInput1 : MonoBehaviour
                             }
 
                         }
+                        else if (dirMovement == Direction.up)
+                        {
+                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + raycastMargin + 0.01f), Vector2.up, 1f);
+
+                            if (hitMiddle.collider == null)
+                            {
+                                RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin, transform.position.y + raycastMargin + 0.01f), Vector2.up, 1f);
+                                RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin, transform.position.y + raycastMargin + 0.01f), Vector2.up, 1f);
+
+                                if (hitRight.collider == null && hitLeft.collider != null)
+                                {
+                                    movement.x += 0.1f;
+                                }
+                                else if (hitLeft.collider == null && hitRight.collider != null)
+                                {
+                                    movement.x -= 0.1f;
+                                }
+                                else
+                                {
+                                    canMove = false;
+                                }
+                            }
+                            else
+                            {
+                                canMove = false;
+                            }
+
+                        }
+                        else if (dirMovement == Direction.right)
+                        {
+                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin + 0.01f, transform.position.y), Vector2.right, 1f);
+
+                            if (hitMiddle.collider == null)
+                            {
+                                RaycastHit2D hitUp = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin + 0.01f, transform.position.y + raycastMargin), Vector2.right, 1f);
+                                RaycastHit2D hitDown = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin + 0.01f, transform.position.y - raycastMargin), Vector2.right, 1f);
+
+                                if (hitUp.collider == null && hitDown.collider != null)
+                                {
+                                    movement.y += 0.1f;
+                                }
+                                else if (hitDown.collider == null && hitUp.collider != null)
+                                {
+                                    movement.y -= 0.1f;
+                                }
+                                else
+                                {
+                                    canMove = false;
+                                }
+                            }
+                            else
+                            {
+                                canMove = false;
+                            }
+
+                        }
+                        else if (dirMovement == Direction.left)
+                        {
+                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin - 0.01f, transform.position.y), Vector2.left, 1f);
+
+                            if (hitMiddle.collider == null)
+                            {
+                                RaycastHit2D hitUp = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin - 0.01f, transform.position.y + raycastMargin), Vector2.left, 1f);
+                                RaycastHit2D hitDown = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin - 0.01f, transform.position.y - raycastMargin), Vector2.left, 1f);
+
+                                if (hitUp.collider == null && hitDown.collider != null)
+                                {
+                                    movement.y += 0.1f;
+                                }
+                                else if (hitDown.collider == null && hitUp.collider != null)
+                                {
+                                    movement.y -= 0.1f;
+                                }
+                                else
+                                {
+                                    canMove = false;
+                                }
+                            }
+                            else
+                            {
+                                canMove = false;
+                            }
+
+                        }
                         else canMove = false;
-
-                        // if (dirMovement == Direction.up)
-                        // {
-                        //     RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + raycastMargin + 0.01f), Vector2.up);
-                        //     RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin, transform.position.y + raycastMargin + 0.01f), Vector2.up);
-                        //     RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin, transform.position.y + raycastMargin + 0.01f), Vector2.up);
-
-                        //     if (hitRight.distance == hitMiddle.distance)
-                        //     {
-                        //         movement.x -= 0.1f;
-                        //     }
-                        //     else if (hitLeft.distance == hitMiddle.distance)
-                        //     {
-                        //         movement.x += 0.1f;
-                        //     }
-                        //     else
-                        //     {
-                        //         canMove = false;
-                        //     }
-                        // }
-                        // else if(dirMovement == Direction.down)
-                        // {
-                        //     RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - raycastMargin - 0.01f), Vector2.down);
-                        //     RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin, transform.position.y - raycastMargin - 0.01f), Vector2.down);
-                        //     RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin, transform.position.y - raycastMargin - 0.01f), Vector2.down);
-
-                        //     else if (hitRight.distance == hitMiddle.distance)
-                        //     {
-                        //         movement.x += 0.1f;
-                        //     }
-                        //     else if (hitLeft.distance == hitMiddle.distance)
-                        //     {
-                        //         movement.x -= 0.1f;
-                        //     }
-                        //     else
-                        //     {
-                        //         canMove = false;
-                        //     }
-                        //
                     }
                 }
             }

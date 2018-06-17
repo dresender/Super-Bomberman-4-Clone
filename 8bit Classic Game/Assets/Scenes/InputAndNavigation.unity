@@ -1760,6 +1760,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50454585579713642, guid: 9e9df09a87a38864eab1d56f81ef6b48, type: 2}
+    - {fileID: 114944722950450518, guid: 9e9df09a87a38864eab1d56f81ef6b48, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9e9df09a87a38864eab1d56f81ef6b48, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &352206959
@@ -7910,7 +7911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1766594696
 Transform:
   m_ObjectHideFlags: 0
@@ -8358,7 +8359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90618563208a85548b08b1c56037d6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 3.5
   raycastMargin: 0.15
   colliderSize: {x: 0, y: 0}
 --- !u!1001 &1868010690
