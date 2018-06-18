@@ -9,16 +9,16 @@ public class PlayerInput1 : MonoBehaviour
     //Player Movement Speed
     public float speed = 125f;
 
-    public float raycastMargin;
+    private float raycastMargin;
 
     //Collider Size
-    public Vector2 colliderSize;
+    private Vector2 colliderSize;
 
     //Start Method
     void Start()
     {
         colliderSize = GetComponent<BoxCollider2D>().size;
-        raycastMargin = GetComponent<BoxCollider2D>().size.x / 2f;
+        raycastMargin = 0.5f;
     }
 
     //Update Method
