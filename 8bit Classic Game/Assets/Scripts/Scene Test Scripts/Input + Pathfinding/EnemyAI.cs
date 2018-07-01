@@ -4,79 +4,98 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour 
 {
-	public float speed = 5f;
+	public float speed = 1.5f;
 
 	private enum Directions { up, down, left, right };
-	private Rigidbody2D rb2d;
+	private Vector2 colliderSize;
+
 	private Directions aiDirection;
 	private Vector2 direction;
+	private Vector2 transformMovement;
 	private List<Directions> listOfPossibleDirections;
 
 	void Start()
 	{
-		rb2d = GetComponent<Rigidbody2D>();
+		colliderSize = GetComponent<BoxCollider2D>().size;
+
 		listOfPossibleDirections = new List<Directions>();
-		CheckSurroundings();
+		transformMovement = transform.position;
+
+		direction = Vector2.left;
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
 		Movement();
 	}
 
 	private void Movement()
 	{
-		rb2d.velocity = direction * speed * Time.deltaTime;
+		transformMovement += direction * speed * Time.deltaTime;
+		transform.position = transformMovement;
+
+
+		CheckSurroundings();
 	}
 
 	private void CheckSurroundings()
 	{
-		//Check all four directions to see which ones are free
-		//for movement (empty tiles)
+		Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
 
-		//Checking for collisions up
-		Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));
+		if (collisions.Length > 1)
+        {
+			Debug.Log("Collission detected!");
 
-		if (hit == null)
-		{
-			listOfPossibleDirections.Add(Directions.up);
+			//Checking for collisions up
+			Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));
+
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.up);
+			}
+
+			//Checking for collisions down
+			hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
+			//Debug.Log(hit);
+
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.down);
+			}
+
+			//Checking for collisions left
+			hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
+			//Debug.Log(hit);
+
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.left);
+			}
+
+			//Checking for collisions right
+			hit = Physics2D.OverlapPoint(transform.position + new Vector3(1, 0, 0));
+
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.right);
+			}
+
+			foreach (var dir in listOfPossibleDirections)
+			{
+				//Debug.Log(dir);
+			}
+
+			SnapToGrid();
+			SortDirectionOfMovement();		
 		}
-
-		//Checking for collisions down
-		hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
-		//Debug.Log(hit);
-
-		if (hit == null)
-		{
-			listOfPossibleDirections.Add(Directions.down);
-		}
-
-		//Checking for collisions left
-		hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
-		//Debug.Log(hit);
-
-		if (hit == null)
-		{
-			listOfPossibleDirections.Add(Directions.left);
-		}
-
-		//Checking for collisions right
-		hit = Physics2D.OverlapPoint(transform.position + new Vector3(1, 0, 0));
-
-		if (hit == null)
-		{
-			listOfPossibleDirections.Add(Directions.right);
-		}
-
-		foreach (var dir in listOfPossibleDirections)
-		{
-			//Debug.Log(dir);
-		}		
-
-		DirectionOfMovement();
 	}
 
-	private void DirectionOfMovement()
+	private void SnapToGrid()
+	{
+		transformMovement = new Vector2 (Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
+	}
+
+	private void SortDirectionOfMovement()
 	{
 		//Decide which of the empty tiles is going to be
 		//the choosen for the direction of movement
@@ -107,19 +126,8 @@ public class EnemyAI : MonoBehaviour
 		{
 			direction = Vector2.right;
 		}
-
+		
 		//Clear the list for next iteration
 		listOfPossibleDirections.Clear();
-	}
-
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		//Set the vector2 direction to zero, so enemy doesnt move
-		//while "thinking" where to go
-		direction = Vector2.zero;
-		
-		//If there is a collision, wait for 1 second and call the
-		//CheckSurroundings method
-		CheckSurroundings();
-	}
+	}	
 }
