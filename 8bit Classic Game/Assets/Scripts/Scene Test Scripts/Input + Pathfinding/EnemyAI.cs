@@ -44,7 +44,7 @@ public class EnemyAI : MonoBehaviour
 
 		if (collisions.Length > 1)
         {
-			Debug.Log("Collission detected!");
+			Debug.Log("Collission detected!" + );
 
 			//Checking for collisions up
 			Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));

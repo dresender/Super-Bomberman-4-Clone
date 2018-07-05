@@ -6,19 +6,20 @@ public enum Direction { up, down, left, right, none };
 
 public class PlayerInput : MonoBehaviour
 {
-    //Player Movement Speed
+    //Public Variables
     public float speed = 125f;
 
+    //Internal Variables
     private float raycastMargin;
-
-    //Collider Size
     private Vector2 colliderSize;
+    private Animator animator;
 
     //Start Method
     void Start()
     {
         colliderSize = GetComponent<BoxCollider2D>().size;
         raycastMargin = 0.5f;
+        animator = this.GetComponent<Animator>();
     }
 
     //Update Method
@@ -42,25 +43,34 @@ public class PlayerInput : MonoBehaviour
             hasMoved = true;
             movement += Vector2.up * speed * Time.deltaTime;
             dirMovement = Direction.up;
-		}
+            animator.SetInteger("Direction", 1);
+            animator.SetBool("Moving", true);
+        }
 		else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
 		{
             hasMoved = true;
             movement += Vector2.down * speed * Time.deltaTime;
             dirMovement = Direction.down;
+            animator.SetInteger("Direction", 0);
+            animator.SetBool("Moving", true);
         }
 		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
 		{
             hasMoved = true;
             movement += Vector2.right * speed * Time.deltaTime;
             dirMovement = Direction.right;
+            animator.SetInteger("Direction", 2);
+            animator.SetBool("Moving", true);
         }
 		else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
 		{
             hasMoved = true;
             movement += Vector2.left * speed * Time.deltaTime;
             dirMovement = Direction.left;
+            animator.SetInteger("Direction", 3);
+            animator.SetBool("Moving", true);
         }
+        else animator.SetBool("Moving", false);
 
         //Check for Collisions
         if(hasMoved)
