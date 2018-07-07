@@ -26,6 +26,12 @@ public abstract class Bomb : MonoBehaviour
         this.radius = radius;
     }
 
+    //On Destroy
+    private void OnDestroy()
+    {
+        ControllerManager.Instance.bombController.removeBomb(this.gameObject);
+    }
+
     //Explode Method for Bomb (vary according to Bomb Type)
     public abstract void explode();
 }

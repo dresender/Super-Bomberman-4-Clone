@@ -16,7 +16,7 @@ public class SimpleBomb : Bomb
     {
         //Explosion Center
         GetComponent<SpriteRenderer>().sprite = null;
-        Instantiate<GameObject>(centerExplosion, this.transform.position, Quaternion.identity);
+        Instantiate(centerExplosion, this.transform.position, Quaternion.identity);
 
         //Collision Vector
         Vector2 collisionVector = new Vector2(0.75f, 0.75f);
@@ -34,15 +34,19 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y + i + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if(collision != null && collision.tag == "Destroyable")
+                if(collision != null)
                 {
-                    upBlocked = true;
-                    collision.GetComponent<Animator>().enabled = true;
+                    if(collision.CompareTag("Destroyable"))
+                    {
+                        upBlocked = true;
+                        collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if(collision.CompareTag("Indestructible")) upBlocked = true;
                 }
                 else
                 {
-                    if (i == radius) Instantiate<GameObject>(upEndExplosion, desiredPosition, Quaternion.identity);
-                    else Instantiate<GameObject>(upArmExplosion, desiredPosition, Quaternion.identity);
+                    if (i == radius) Instantiate(upEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate(upArmExplosion, desiredPosition, Quaternion.identity);
                 }
             }
             if (!downBlocked)
@@ -50,15 +54,19 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y - i + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if (collision != null && collision.tag == "Destroyable")
+                if (collision != null)
                 {
-                    downBlocked = true;
-                    collision.GetComponent<Animator>().enabled = true;
+                    if(collision.CompareTag("Destroyable"))
+                    {
+                        downBlocked = true;
+                        collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if(collision.CompareTag("Indestructible")) downBlocked = true;
                 }
                 else
                 {
-                    if (i == radius) Instantiate<GameObject>(downEndExplosion, desiredPosition, Quaternion.identity);
-                    else Instantiate<GameObject>(downArmExplosion, desiredPosition, Quaternion.identity);
+                    if (i == radius) Instantiate(downEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate(downArmExplosion, desiredPosition, Quaternion.identity);
                 }
             }
             if (!rightBlocked)
@@ -66,15 +74,19 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x + i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if (collision != null && collision.tag == "Destroyable")
+                if (collision != null)
                 {
-                    rightBlocked = true;
-                    collision.GetComponent<Animator>().enabled = true;
+                    if (collision.CompareTag("Destroyable"))
+                    {
+                        rightBlocked = true;
+                        collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if (collision.CompareTag("Indestructible")) rightBlocked = true;
                 }
                 else
                 {
-                    if (i == radius) Instantiate<GameObject>(rightEndExplosion, desiredPosition, Quaternion.identity);
-                    else Instantiate<GameObject>(rightArmExplosion, desiredPosition, Quaternion.identity);
+                    if (i == radius) Instantiate(rightEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate(rightArmExplosion, desiredPosition, Quaternion.identity);
                 }
             }
             if (!leftBlocked)
@@ -82,15 +94,19 @@ public class SimpleBomb : Bomb
                 Vector3 desiredPosition = new Vector3(this.transform.position.x - i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
-                if (collision != null && collision.tag == "Destroyable")
+                if (collision != null)
                 {
-                    leftBlocked = true;
-                    collision.GetComponent<Animator>().enabled = true;
+                    if (collision.CompareTag("Destroyable"))
+                    {
+                        leftBlocked = true;
+                        collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if (collision.CompareTag("Indestructible")) leftBlocked = true;
                 }
                 else
                 {
-                    if (i == radius) Instantiate<GameObject>(leftEndExplosion, desiredPosition, Quaternion.identity);
-                    else Instantiate<GameObject>(leftArmExplosion, desiredPosition, Quaternion.identity);
+                    if (i == radius) Instantiate(leftEndExplosion, desiredPosition, Quaternion.identity);
+                    else Instantiate(leftArmExplosion, desiredPosition, Quaternion.identity);
                 }
             }
         }

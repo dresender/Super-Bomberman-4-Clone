@@ -70,13 +70,13 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.Fire:
-                    if(collision.GetComponent<Player>().bombRadius < 10) collision.GetComponent<Player>().bombRadius += 1;
+                    //if(collision.GetComponent<Player>().bombRadius < 10) collision.GetComponent<Player>().bombRadius += 1;
                     break;
                 case PowerUpType.FullFire:
                     //TODO
                     break;
                 case PowerUpType.Geta:
-                    if (collision.GetComponent<Player>().speed > 1) collision.GetComponent<Player>().speed -= 1;
+                    //if (collision.GetComponent<Player>().speed > 1) collision.GetComponent<Player>().speed -= 1;
                     break;
                 case PowerUpType.Heart:
                     //TODO
@@ -91,7 +91,7 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.PierceBomb:
-                    collision.GetComponent<Player>().bombType = pierceBomb;
+                    //collision.GetComponent<Player>().bombType = pierceBomb;
                     break;
                 case PowerUpType.Potato:
                     //TODO
@@ -118,7 +118,7 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.SpeedUp:
-                    if (collision.GetComponent<Player>().speed < 10) collision.GetComponent<Player>().speed += 1;
+                    //if (collision.GetComponent<Player>().speed < 10) collision.GetComponent<Player>().speed += 1;
                     break;
                 case PowerUpType.Sushi:
                     //TODO
@@ -130,22 +130,6 @@ public class PowerUp : MonoBehaviour
 
             //Self-Destruct
             Destroy(this.gameObject);
-        }
-    }
-
-    //Scene Test
-    public bool isClone = false;
-    public Player player;
-    private void OnMouseDown()
-    {
-        if(!isClone)
-        {
-            GameObject clone = Instantiate(gameObject);
-
-            if(player.currentTarget == player.pointA.position) clone.transform.position = new Vector3(player.transform.position.x - 1.5f, 0.5f, 0f);
-            else clone.transform.position = new Vector3(player.transform.position.x + 1.5f, 0.5f, 0f);
-
-            clone.GetComponent<PowerUp>().isClone = true;
         }
     }
 }

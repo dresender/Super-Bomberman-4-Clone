@@ -6,17 +6,16 @@ public enum Direction { up, down, left, right, none };
 
 public class PlayerInput : MonoBehaviour
 {
-    //Public Variables
-    public float speed = 125f;
-
     //Internal Variables
     private float raycastMargin;
     private Vector2 colliderSize;
     private Animator animator;
+    private PlayerState playerState;
 
     //Start Method
     void Start()
     {
+        playerState = this.GetComponent<PlayerState>();
         colliderSize = this.GetComponent<BoxCollider2D>().size;
         animator = this.transform.GetChild(0).GetComponent<Animator>();
         raycastMargin = 0.5f;
@@ -25,11 +24,21 @@ public class PlayerInput : MonoBehaviour
     //Update Method
 	void Update () 
 	{
-		MovePlayer();
+        layBombs();
+		movePlayer();
 	}
 
+    //Lay Bombs Algorithm
+    private void layBombs()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
+        }
+    }
+
     //Movement Algorithm
-	private void MovePlayer()
+	private void movePlayer()
 	{
         Direction dirMovement = Direction.none;
 
@@ -41,7 +50,7 @@ public class PlayerInput : MonoBehaviour
 		if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
 		{
             hasMoved = true;
-            movement += Vector2.up * speed * Time.deltaTime;
+            movement += Vector2.up * playerState.speed * Time.deltaTime;
             dirMovement = Direction.up;
             animator.SetInteger("Direction", 1);
             animator.SetBool("Moving", true);
@@ -49,7 +58,7 @@ public class PlayerInput : MonoBehaviour
 		else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
 		{
             hasMoved = true;
-            movement += Vector2.down * speed * Time.deltaTime;
+            movement += Vector2.down * playerState.speed * Time.deltaTime;
             dirMovement = Direction.down;
             animator.SetInteger("Direction", 0);
             animator.SetBool("Moving", true);
@@ -57,7 +66,7 @@ public class PlayerInput : MonoBehaviour
 		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
 		{
             hasMoved = true;
-            movement += Vector2.right * speed * Time.deltaTime;
+            movement += Vector2.right * playerState.speed * Time.deltaTime;
             dirMovement = Direction.right;
             animator.SetInteger("Direction", 2);
             animator.SetBool("Moving", true);
@@ -65,7 +74,7 @@ public class PlayerInput : MonoBehaviour
 		else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
 		{
             hasMoved = true;
-            movement += Vector2.left * speed * Time.deltaTime;
+            movement += Vector2.left * playerState.speed * Time.deltaTime;
             dirMovement = Direction.left;
             animator.SetInteger("Direction", 3);
             animator.SetBool("Moving", true);
