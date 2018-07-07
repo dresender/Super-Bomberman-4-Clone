@@ -17,9 +17,9 @@ public class PlayerInput : MonoBehaviour
     //Start Method
     void Start()
     {
-        colliderSize = GetComponent<BoxCollider2D>().size;
+        colliderSize = this.GetComponent<BoxCollider2D>().size;
+        animator = this.transform.GetChild(0).GetComponent<Animator>();
         raycastMargin = 0.5f;
-        animator = this.GetComponent<Animator>();
     }
 
     //Update Method
