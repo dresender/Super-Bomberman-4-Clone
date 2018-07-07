@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212094158798042818}
   - component: {fileID: 61033203744902366}
   m_Layer: 0
-  m_Name: InternalCollider
+  m_Name: HardBlock
   m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

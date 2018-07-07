@@ -52,9 +52,6 @@ TagManager:
   - name: Itens
     uniqueID: 3363403051
     locked: 0
-  - name: ForeGround
-    uniqueID: 456823505
-    locked: 0
   - name: Characters
     uniqueID: 1273671797
     locked: 0

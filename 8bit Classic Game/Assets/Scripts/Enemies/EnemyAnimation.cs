@@ -10,7 +10,7 @@ public class EnemyAnimation : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        animator = this.GetComponent<Animator>();
+        animator = this.transform.GetChild(0).GetComponent<Animator>();
     }
 
     //Set Animation
