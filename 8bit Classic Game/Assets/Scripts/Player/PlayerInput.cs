@@ -9,15 +9,15 @@ public class PlayerInput : MonoBehaviour
     //Internal Variables
     private float raycastMargin;
     private Vector2 colliderSize;
-    private Animator animator;
+    private PlayerAnimation playerAnimation;
     private PlayerState playerState;
 
     //Start Method
     void Start()
     {
         playerState = this.GetComponent<PlayerState>();
+        playerAnimation = this.GetComponent<PlayerAnimation>();
         colliderSize = this.GetComponent<BoxCollider2D>().size;
-        animator = this.transform.GetChild(0).GetComponent<Animator>();
         raycastMargin = 0.5f;
     }
 
@@ -52,37 +52,33 @@ public class PlayerInput : MonoBehaviour
             hasMoved = true;
             movement += Vector2.up * playerState.speed * Time.deltaTime;
             dirMovement = Direction.up;
-            animator.SetInteger("Direction", 1);
-            animator.SetBool("Moving", true);
+            playerAnimation.setAnimation(true, 1);
         }
 		else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
 		{
             hasMoved = true;
             movement += Vector2.down * playerState.speed * Time.deltaTime;
             dirMovement = Direction.down;
-            animator.SetInteger("Direction", 0);
-            animator.SetBool("Moving", true);
+            playerAnimation.setAnimation(true, 0);
         }
 		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
 		{
             hasMoved = true;
             movement += Vector2.right * playerState.speed * Time.deltaTime;
             dirMovement = Direction.right;
-            animator.SetInteger("Direction", 2);
-            animator.SetBool("Moving", true);
+            playerAnimation.setAnimation(true, 2);
         }
 		else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
 		{
             hasMoved = true;
             movement += Vector2.left * playerState.speed * Time.deltaTime;
             dirMovement = Direction.left;
-            animator.SetInteger("Direction", 3);
-            animator.SetBool("Moving", true);
+            playerAnimation.setAnimation(true, 3);
         }
-        else animator.SetBool("Moving", false);
+        else playerAnimation.setAnimation(false);
 
         //Check for Collisions
-        if(hasMoved)
+        if (hasMoved)
         {
             //Get Colliders
             Collider2D[] collisions = Physics2D.OverlapBoxAll(movement, colliderSize, 0f);

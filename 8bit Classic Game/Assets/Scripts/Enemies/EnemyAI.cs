@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour 
 {
+    //Public Variables
 	public float speed = 1.5f;
 
+    //Private Variables
+    private EnemyAnimation enemyAnimation;
 	private enum Directions { up, down, left, right };
 	private Vector2 colliderSize;
-
 	private Directions aiDirection;
 	private Vector2 direction;
 	private Vector2 transformMovement;
@@ -16,13 +18,13 @@ public class EnemyAI : MonoBehaviour
 
 	void Start()
 	{
-		colliderSize = GetComponent<BoxCollider2D>().size;
-
+        enemyAnimation = this.GetComponent<EnemyAnimation>();
+        colliderSize = GetComponent<BoxCollider2D>().size;
 		listOfPossibleDirections = new List<Directions>();
 		transformMovement = transform.position;
-
-		direction = Vector2.left;
-	}
+		direction = Vector2.down;
+        enemyAnimation.setAnimation(0);
+    }
 
 	void Update()
 	{
@@ -113,19 +115,23 @@ public class EnemyAI : MonoBehaviour
 		if(tempDirection == Directions.up)
 		{
 			direction = Vector2.up;
+            enemyAnimation.setAnimation(1);
 		}
 		if(tempDirection == Directions.down)
 		{
 			direction = Vector2.down;
-		}
+            enemyAnimation.setAnimation(0);
+        }
 		if(tempDirection == Directions.left)
 		{
 			direction = Vector2.left;
-		}
+            enemyAnimation.setAnimation(3);
+        }
 		if(tempDirection == Directions.right)
 		{
 			direction = Vector2.right;
-		}
+            enemyAnimation.setAnimation(2);
+        }
 		
 		//Clear the list for next iteration
 		listOfPossibleDirections.Clear();
