@@ -6829,7 +6829,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1110621209005070, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
@@ -11359,6 +11359,7 @@ GameObject:
   - component: {fileID: 991542956}
   - component: {fileID: 991542959}
   - component: {fileID: 991542958}
+  - component: {fileID: 991542960}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -11404,6 +11405,7 @@ MonoBehaviour:
   bombController: {fileID: 0}
   enemiesController: {fileID: 0}
   timeController: {fileID: 0}
+  scoreController: {fileID: 0}
 --- !u!114 &991542958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11427,6 +11429,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 0
+--- !u!114 &991542960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991542954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ecd7c2ced6534dbcf60c0a4a7dadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score100: {fileID: 1257532606965708, guid: 9a36536315c89f5498391f11bdb5e4d7, type: 2}
 --- !u!1001 &996413675
 Prefab:
   m_ObjectHideFlags: 0
@@ -12136,7 +12150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1110621209005070, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1110621209005070, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_Name
@@ -12589,7 +12603,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1110621209005070, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}

@@ -41,6 +41,11 @@ public class SimpleBomb : Bomb
                         upBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
+                    else if(collision.CompareTag("Enemy"))
+                    {
+                        upBlocked = true;
+                        collision.GetComponent<EnemyAI>().killEnemy();
+                    }
                     else upBlocked = true;
                 }
                 else
@@ -60,6 +65,11 @@ public class SimpleBomb : Bomb
                     {
                         downBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if (collision.CompareTag("Enemy"))
+                    {
+                        upBlocked = true;
+                        collision.GetComponent<EnemyAI>().killEnemy();
                     }
                     else downBlocked = true;
                 }
@@ -81,6 +91,11 @@ public class SimpleBomb : Bomb
                         rightBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
+                    else if (collision.CompareTag("Enemy"))
+                    {
+                        upBlocked = true;
+                        collision.GetComponent<EnemyAI>().killEnemy();
+                    }
                     else rightBlocked = true;
                 }
                 else
@@ -100,6 +115,11 @@ public class SimpleBomb : Bomb
                     {
                         leftBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if (collision.CompareTag("Enemy"))
+                    {
+                        upBlocked = true;
+                        collision.GetComponent<EnemyAI>().killEnemy();
                     }
                     else leftBlocked = true;
                 }

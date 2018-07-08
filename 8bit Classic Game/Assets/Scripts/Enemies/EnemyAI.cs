@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
 	private Vector2 direction;
 	private Vector2 transformMovement;
 	private List<Directions> listOfPossibleDirections;
-    private bool active;
+    private bool alive;
     private float turningInterval;
 
     //Start Method
@@ -29,13 +29,32 @@ public class EnemyAI : MonoBehaviour
 		transformMovement = transform.position;
 		direction = Vector2.down;
         turningInterval = 0f;
+        alive = true;
     }
 
     //Update Method
     void Update()
 	{
-        if(ControllerManager.Instance.timeController.getTimeState()) Movement();
+        if(alive)
+        {
+            if (ControllerManager.Instance.timeController.getTimeState()) Movement();
+        }
+        else
+        {
+            if (enemyAnimation.getStateAnimation() >= 1f) Destroy(this.gameObject);
+        }
 	}
+
+    //Kill Enemy
+    public void killEnemy()
+    {
+        if(alive)
+        {
+            alive = false;
+            enemyAnimation.triggerKillAnimation();
+            ControllerManager.Instance.scoreController.spawnScore(this.transform.position);
+        }
+    }
 
     //On Object Destroy
     private void OnDestroy()
@@ -58,32 +77,31 @@ public class EnemyAI : MonoBehaviour
             Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
             for(int i = 0; i < collisions.Length; i++)
             {
-                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].gameObject.layer == 11 && collisions[i].gameObject != this.gameObject))
+                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].CompareTag("Enemy") && collisions[i].gameObject != this.gameObject))
                 {
                     turningInterval = 1f;
                 }
             }
         }
-		
 	}
 
 	private void CheckSurroundings()
 	{
         //Checking for collisions up
         Collider2D hit = Physics2D.OverlapBox((Vector2) transform.position + Vector2.up, colliderSize, 0f);
-		if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.up);
+		if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.up);
 
 		//Checking for collisions down
 		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.down, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.down);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.down);
 
 		//Checking for collisions left
 		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.left, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.left);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.left);
 
 		//Checking for collisions right
 		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.right, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.right);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.right);
 
 		SnapToGrid();
         if(listOfPossibleDirections.Count > 0) SortDirectionOfMovement();
@@ -107,22 +125,22 @@ public class EnemyAI : MonoBehaviour
 		if(tempDirection == Directions.up)
 		{
 			direction = Vector2.up;
-            enemyAnimation.setAnimation(1);
+            enemyAnimation.setMovementAnimation(1);
 		}
 		if(tempDirection == Directions.down)
 		{
 			direction = Vector2.down;
-            enemyAnimation.setAnimation(0);
+            enemyAnimation.setMovementAnimation(0);
         }
 		if(tempDirection == Directions.left)
 		{
 			direction = Vector2.left;
-            enemyAnimation.setAnimation(3);
+            enemyAnimation.setMovementAnimation(3);
         }
 		if(tempDirection == Directions.right)
 		{
 			direction = Vector2.right;
-            enemyAnimation.setAnimation(2);
+            enemyAnimation.setMovementAnimation(2);
         }
 		
 		//Clear the list for next iteration

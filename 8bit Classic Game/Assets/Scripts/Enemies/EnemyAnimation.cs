@@ -15,13 +15,25 @@ public class EnemyAnimation : MonoBehaviour
         spriteRenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
         animator = this.transform.GetChild(0).GetComponent<Animator>();
         flashSpriteInterval = 0f;
-        setAnimation(0);
+        setMovementAnimation(0);
     }
 
-    //Set Animation
-    public void setAnimation(int direction)
+    //Set Movement Animation
+    public void setMovementAnimation(int direction)
     {
         animator.SetInteger("Direction", direction);
+    }
+
+    //Set Kill Animation
+    public void triggerKillAnimation()
+    {
+        animator.SetTrigger("Kill");
+    }
+
+    //get State Animation
+    public float getStateAnimation()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
     //Pause Animation
