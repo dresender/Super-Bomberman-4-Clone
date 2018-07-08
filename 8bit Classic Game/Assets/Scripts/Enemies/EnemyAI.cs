@@ -58,7 +58,10 @@ public class EnemyAI : MonoBehaviour
             Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
             for(int i = 0; i < collisions.Length; i++)
             {
-                if(collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) turningInterval = 1f;
+                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].gameObject.layer == 11 && collisions[i].gameObject != this.gameObject))
+                {
+                    turningInterval = 1f;
+                }
             }
         }
 		
@@ -66,21 +69,21 @@ public class EnemyAI : MonoBehaviour
 
 	private void CheckSurroundings()
 	{
-		//Checking for collisions up
-		Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));
-		if (hit == null) listOfPossibleDirections.Add(Directions.up);
+        //Checking for collisions up
+        Collider2D hit = Physics2D.OverlapBox((Vector2) transform.position + Vector2.up, colliderSize, 0f);
+		if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.up);
 
 		//Checking for collisions down
-		hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
-		if (hit == null) listOfPossibleDirections.Add(Directions.down);
+		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.down, colliderSize, 0f);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.down);
 
 		//Checking for collisions left
-		hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
-		if (hit == null) listOfPossibleDirections.Add(Directions.left);
+		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.left, colliderSize, 0f);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.left);
 
 		//Checking for collisions right
-		hit = Physics2D.OverlapPoint(transform.position + new Vector3(1, 0, 0));
-		if (hit == null) listOfPossibleDirections.Add(Directions.right);
+		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.right, colliderSize, 0f);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.gameObject.layer != 11)) listOfPossibleDirections.Add(Directions.right);
 
 		SnapToGrid();
         if(listOfPossibleDirections.Count > 0) SortDirectionOfMovement();
@@ -98,12 +101,7 @@ public class EnemyAI : MonoBehaviour
 
 		//pick up a random item from the possible directions list
 		int rnd = Random.Range(0, listOfPossibleDirections.Count);
-
-		//Debug.Log(rnd);
-
 		Directions tempDirection = listOfPossibleDirections[rnd];
-
-		//Debug.Log(tempDirection);
 
 		//assign the vector2 direction variable according to the value
 		if(tempDirection == Directions.up)

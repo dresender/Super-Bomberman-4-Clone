@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61497199052077062}
   - component: {fileID: 114807878952763248}
   - component: {fileID: 114157449601475944}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dinosaur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4554736391719212}
   - component: {fileID: 212797099187574970}
   - component: {fileID: 95030923067543360}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1273671797
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3048ca549ec77c848b1cbbf14ecad7c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
