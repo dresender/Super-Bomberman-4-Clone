@@ -16,8 +16,7 @@ public class EnemyAI : MonoBehaviour
 	private Vector2 direction;
 	private Vector2 transformMovement;
 	private List<Directions> listOfPossibleDirections;
-    private bool alive;
-    private float turningInterval;
+    private bool active;
 
     //Start Method
 	void Start()
@@ -28,33 +27,13 @@ public class EnemyAI : MonoBehaviour
 		listOfPossibleDirections = new List<Directions>();
 		transformMovement = transform.position;
 		direction = Vector2.down;
-        turningInterval = 0f;
-        alive = true;
     }
 
     //Update Method
     void Update()
 	{
-        if(alive)
-        {
-            if (ControllerManager.Instance.timeController.getTimeState()) Movement();
-        }
-        else
-        {
-            if (enemyAnimation.getStateAnimation() >= 1f) Destroy(this.gameObject);
-        }
+        if(ControllerManager.Instance.timeController.getTimeState()) Movement();
 	}
-
-    //Kill Enemy
-    public void killEnemy()
-    {
-        if(alive)
-        {
-            alive = false;
-            enemyAnimation.triggerKillAnimation();
-            ControllerManager.Instance.scoreController.spawnScore(this.transform.position);
-        }
-    }
 
     //On Object Destroy
     private void OnDestroy()
@@ -65,46 +44,61 @@ public class EnemyAI : MonoBehaviour
     //Movement Logic
     private void Movement()
 	{
-        if(turningInterval > 0f)
-        {
-            turningInterval -= Time.deltaTime;
-            if(turningInterval <= 0f) CheckSurroundings();
-        }
-        else
-        {
-            transformMovement += direction * speed * Time.deltaTime;
-            transform.position = transformMovement;
-            Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
-            for(int i = 0; i < collisions.Length; i++)
-            {
-                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].CompareTag("Enemy") && collisions[i].gameObject != this.gameObject))
-                {
-                    turningInterval = 1f;
-                }
-            }
-        }
+		transformMovement += direction * speed * Time.deltaTime;
+		transform.position = transformMovement;
+		CheckSurroundings();
 	}
 
 	private void CheckSurroundings()
 	{
-        //Checking for collisions up
-        Collider2D hit = Physics2D.OverlapBox((Vector2) transform.position + Vector2.up, colliderSize, 0f);
-		if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.up);
+		Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
 
-		//Checking for collisions down
-		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.down, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.down);
+		if (collisions.Length > 1)
+        {
+			//Debug.Log("Collission detected!");
 
-		//Checking for collisions left
-		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.left, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.left);
+			//Checking for collisions up
+			Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));
 
-		//Checking for collisions right
-		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.right, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.right);
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.up);
+			}
 
-		SnapToGrid();
-        if(listOfPossibleDirections.Count > 0) SortDirectionOfMovement();
+			//Checking for collisions down
+			hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
+			//Debug.Log(hit);
+
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.down);
+			}
+
+			//Checking for collisions left
+			hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
+			//Debug.Log(hit);
+
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.left);
+			}
+
+			//Checking for collisions right
+			hit = Physics2D.OverlapPoint(transform.position + new Vector3(1, 0, 0));
+
+			if (hit == null)
+			{
+				listOfPossibleDirections.Add(Directions.right);
+			}
+
+			foreach (var dir in listOfPossibleDirections)
+			{
+				//Debug.Log(dir);
+			}
+
+			SnapToGrid();
+			SortDirectionOfMovement();		
+		}
 	}
 
 	private void SnapToGrid()
@@ -119,28 +113,33 @@ public class EnemyAI : MonoBehaviour
 
 		//pick up a random item from the possible directions list
 		int rnd = Random.Range(0, listOfPossibleDirections.Count);
+
+		//Debug.Log(rnd);
+
 		Directions tempDirection = listOfPossibleDirections[rnd];
+
+		//Debug.Log(tempDirection);
 
 		//assign the vector2 direction variable according to the value
 		if(tempDirection == Directions.up)
 		{
 			direction = Vector2.up;
-            enemyAnimation.setMovementAnimation(1);
+            enemyAnimation.setAnimation(1);
 		}
 		if(tempDirection == Directions.down)
 		{
 			direction = Vector2.down;
-            enemyAnimation.setMovementAnimation(0);
+            enemyAnimation.setAnimation(0);
         }
 		if(tempDirection == Directions.left)
 		{
 			direction = Vector2.left;
-            enemyAnimation.setMovementAnimation(3);
+            enemyAnimation.setAnimation(3);
         }
 		if(tempDirection == Directions.right)
 		{
 			direction = Vector2.right;
-            enemyAnimation.setMovementAnimation(2);
+            enemyAnimation.setAnimation(2);
         }
 		
 		//Clear the list for next iteration

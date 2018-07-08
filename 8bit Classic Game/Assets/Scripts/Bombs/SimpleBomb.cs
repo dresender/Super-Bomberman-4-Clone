@@ -36,17 +36,12 @@ public class SimpleBomb : Bomb
 
                 if(collision != null)
                 {
-                    if(collision.CompareTag("SoftBlock"))
+                    if(collision.CompareTag("Destroyable"))
                     {
                         upBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if(collision.CompareTag("Enemy"))
-                    {
-                        upBlocked = true;
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                    }
-                    else upBlocked = true;
+                    else if(collision.CompareTag("Indestructible")) upBlocked = true;
                 }
                 else
                 {
@@ -61,17 +56,12 @@ public class SimpleBomb : Bomb
 
                 if (collision != null)
                 {
-                    if(collision.CompareTag("SoftBlock"))
+                    if(collision.CompareTag("Destroyable"))
                     {
                         downBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("Enemy"))
-                    {
-                        upBlocked = true;
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                    }
-                    else downBlocked = true;
+                    else if(collision.CompareTag("Indestructible")) downBlocked = true;
                 }
                 else
                 {
@@ -86,17 +76,12 @@ public class SimpleBomb : Bomb
 
                 if (collision != null)
                 {
-                    if (collision.CompareTag("SoftBlock"))
+                    if (collision.CompareTag("Destroyable"))
                     {
                         rightBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("Enemy"))
-                    {
-                        upBlocked = true;
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                    }
-                    else rightBlocked = true;
+                    else if (collision.CompareTag("Indestructible")) rightBlocked = true;
                 }
                 else
                 {
@@ -111,17 +96,12 @@ public class SimpleBomb : Bomb
 
                 if (collision != null)
                 {
-                    if (collision.CompareTag("SoftBlock"))
+                    if (collision.CompareTag("Destroyable"))
                     {
                         leftBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("Enemy"))
-                    {
-                        upBlocked = true;
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                    }
-                    else leftBlocked = true;
+                    else if (collision.CompareTag("Indestructible")) leftBlocked = true;
                 }
                 else
                 {

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4719085552683910}
   - component: {fileID: 212094158798042818}
   - component: {fileID: 61033203744902366}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HardBlock
-  m_TagString: HardBlock
+  m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

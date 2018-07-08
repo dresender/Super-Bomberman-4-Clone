@@ -33,14 +33,6 @@ public class PlayerInput : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            //Check for Position
-            Collider2D[] collisions = Physics2D.OverlapBoxAll(this.transform.position, colliderSize, 0f);
-            for(int i = 0; i < collisions.Length; i++)
-            {
-                if (collisions[i].gameObject.layer == 9) return;
-            }
-
-            //Finally...
             ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
         }
     }
@@ -95,19 +87,19 @@ public class PlayerInput : MonoBehaviour
             //Will Always Collide with Itself!
             if (collisions.Length > 1)
             {
-                for (int i = 0; i < collisions.Length; i++)
+                for(int i = 0; i < collisions.Length; i++)
                 {
-                    //Ignore MapGap Layer
-                    if (collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10)
+                    //TODO: Add more logic here. Certain powerups can modify this.
+                    if (collisions[i].tag == "Destroyable" || collisions[i].tag == "Indestructible")
                     {
                         if (dirMovement == Direction.down)
                         {
-                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, 1f);
+                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - raycastMargin - 0.01f), Vector2.down, 1f);
 
                             if (hitMiddle.collider == null)
                             {
-                                RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin, transform.position.y), Vector2.down, 1f);
-                                RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin, transform.position.y), Vector2.down, 1f);
+                                RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin, transform.position.y - raycastMargin - 0.01f), Vector2.down, 1f);
+                                RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin, transform.position.y - raycastMargin - 0.01f), Vector2.down, 1f);
 
                                 if (hitRight.collider == null && hitLeft.collider != null)
                                 {
@@ -128,13 +120,13 @@ public class PlayerInput : MonoBehaviour
                             }
                         }
                         else if (dirMovement == Direction.up)
-                        {
+                        {                  
                             RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + raycastMargin + 0.01f), Vector2.up, 1f);
 
                             if (hitMiddle.collider == null)
                             {
-                                RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin, transform.position.y), Vector2.up, 1f);
-                                RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin, transform.position.y), Vector2.up, 1f);
+                                RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin, transform.position.y + raycastMargin + 0.01f), Vector2.up, 1f);
+                                RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin, transform.position.y + raycastMargin + 0.01f), Vector2.up, 1f);
 
                                 if (hitRight.collider == null && hitLeft.collider != null)
                                 {
@@ -157,12 +149,12 @@ public class PlayerInput : MonoBehaviour
                         }
                         else if (dirMovement == Direction.right)
                         {
-                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.right, 1f);
+                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin + 0.01f, transform.position.y), Vector2.right, 1f);
 
                             if (hitMiddle.collider == null)
                             {
-                                RaycastHit2D hitUp = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + raycastMargin), Vector2.right, 1f);
-                                RaycastHit2D hitDown = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - raycastMargin), Vector2.right, 1f);
+                                RaycastHit2D hitUp = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin + 0.01f, transform.position.y + raycastMargin), Vector2.right, 1f);
+                                RaycastHit2D hitDown = Physics2D.Raycast(new Vector2(transform.position.x + raycastMargin + 0.01f, transform.position.y - raycastMargin), Vector2.right, 1f);
 
                                 if (hitUp.collider == null && hitDown.collider != null)
                                 {
@@ -184,12 +176,12 @@ public class PlayerInput : MonoBehaviour
                         }
                         else if (dirMovement == Direction.left)
                         {
-                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.left, 1f);
+                            RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin - 0.01f, transform.position.y), Vector2.left, 1f);
 
                             if (hitMiddle.collider == null)
                             {
-                                RaycastHit2D hitUp = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + raycastMargin), Vector2.left, 1f);
-                                RaycastHit2D hitDown = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - raycastMargin), Vector2.left, 1f);
+                                RaycastHit2D hitUp = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin - 0.01f, transform.position.y + raycastMargin), Vector2.left, 1f);
+                                RaycastHit2D hitDown = Physics2D.Raycast(new Vector2(transform.position.x - raycastMargin - 0.01f, transform.position.y - raycastMargin), Vector2.left, 1f);
 
                                 if (hitUp.collider == null && hitDown.collider != null)
                                 {

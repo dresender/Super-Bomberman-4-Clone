@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Destroyable
   - Explosion
   - PowerUp
-  - HardBlock
-  - SoftBlock
-  - Enemy
+  - Indestructible
+  - Stairs
   layers:
   - Default
   - TransparentFX
@@ -18,9 +18,9 @@ TagManager:
   - UI
   - 
   - 
-  - Blocks
-  - MapGap
-  - Background
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -49,14 +49,14 @@ TagManager:
   - name: Background
     uniqueID: 3536890255
     locked: 0
-  - name: Explosions
-    uniqueID: 3959522865
-    locked: 0
   - name: Itens
     uniqueID: 3363403051
     locked: 0
   - name: Characters
     uniqueID: 1273671797
+    locked: 0
+  - name: Explosion
+    uniqueID: 3959522865
     locked: 0
   - name: UI
     uniqueID: 2896967367

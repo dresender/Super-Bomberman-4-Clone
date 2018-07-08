@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 61910694189928794}
   - component: {fileID: 95260141248182686}
   - component: {fileID: 114768227127027268}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SoftBlock
-  m_TagString: SoftBlock
+  m_TagString: Destroyable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114768227127027268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e126da288b68cd449a65cb87d9aeb9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerup: {fileID: 0}
 --- !u!212 &212374704159074846
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -111,7 +109,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

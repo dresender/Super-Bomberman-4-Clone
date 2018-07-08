@@ -16,10 +16,13 @@ public class Explosion : MonoBehaviour
     {
         //If Animation Ended -> Destroy Self
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) Destroy(this.gameObject);
-        else
-        {
-            Collider2D collision = Physics2D.OverlapBox(this.transform.position, new Vector2(0.75f, 0.75f), 0f);
-            if((collision != null) && (collision.CompareTag("Enemy"))) collision.GetComponent<EnemyAI>().killEnemy();
-        }
     }
+
+    //Explosion Collision
+    void OnTriggerEnter2D()
+    {
+        //TODO!
+    }
+
+    
 }
