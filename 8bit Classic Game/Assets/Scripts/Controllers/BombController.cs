@@ -18,7 +18,6 @@ public class BombController : MonoBehaviour
     {
         if(bombsPlayer1.Count < max)
         {
-            Debug.Log(position);
             position.x = Mathf.Round(position.x) - 0.5f;
             position.y = Mathf.Round(position.y) - 0.5f;
             GameObject bomb = Instantiate(bombType, position, Quaternion.identity);

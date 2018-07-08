@@ -38,14 +38,13 @@ public class PowerUp : MonoBehaviour
     //Type of PowerUp
     public PowerUpType powerUpType;
 
-    //Bomb Prefabs
-    public GameObject pierceBomb;
-
     //PickUp Method
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
+            Debug.Log("Powerup! " + powerUpType);
+            PlayerState playerState = collision.GetComponent<PlayerState>();
             switch (powerUpType)
             {
                 case PowerUpType.BlockPass:
@@ -58,7 +57,7 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.BombUp:
-                    //TODO
+                    if(playerState.maxBombs < 10) playerState.bombRadius += 1;
                     break;
                 case PowerUpType.Cake:
                     //TODO
@@ -70,13 +69,13 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.Fire:
-                    //if(collision.GetComponent<Player>().bombRadius < 10) collision.GetComponent<Player>().bombRadius += 1;
+                    if(playerState.bombRadius < 10) playerState.bombRadius += 1;
                     break;
                 case PowerUpType.FullFire:
                     //TODO
                     break;
                 case PowerUpType.Geta:
-                    //if (collision.GetComponent<Player>().speed > 1) collision.GetComponent<Player>().speed -= 1;
+                    if (playerState.speed > 1) playerState.speed -= 1;
                     break;
                 case PowerUpType.Heart:
                     //TODO
@@ -118,13 +117,13 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.SpeedUp:
-                    //if (collision.GetComponent<Player>().speed < 10) collision.GetComponent<Player>().speed += 1;
+                    if (playerState.speed < 10) playerState.speed += 1;
                     break;
                 case PowerUpType.Sushi:
                     //TODO
                     break;
                 case PowerUpType.Time:
-                    //TODO
+                    ControllerManager.Instance.timeController.pauseTime(5f);
                     break;
             }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class SoftBlock : MonoBehaviour
 {
     private Animator animator;
+    public GameObject powerup;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class SoftBlock : MonoBehaviour
     {
 		if(animator.enabled && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
+            if(powerup != null) Instantiate(powerup, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
 	}

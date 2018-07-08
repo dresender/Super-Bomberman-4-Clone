@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114807878952763248}
   - component: {fileID: 114157449601475944}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Dinosaur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

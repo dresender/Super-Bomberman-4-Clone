@@ -5,38 +5,47 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour 
 {
     //Public Variables
-	public float speed = 1.5f;
+	public float speed;
+
+    //Enum
+    private enum Directions { up, down, left, right };
 
     //Private Variables
     private EnemyAnimation enemyAnimation;
-	private enum Directions { up, down, left, right };
 	private Vector2 colliderSize;
-	private Directions aiDirection;
 	private Vector2 direction;
 	private Vector2 transformMovement;
 	private List<Directions> listOfPossibleDirections;
+    private bool active;
 
+    //Start Method
 	void Start()
 	{
+        ControllerManager.Instance.enemiesController.registerEnemy(this.gameObject);
         enemyAnimation = this.GetComponent<EnemyAnimation>();
         colliderSize = GetComponent<BoxCollider2D>().size;
 		listOfPossibleDirections = new List<Directions>();
 		transformMovement = transform.position;
 		direction = Vector2.down;
-        enemyAnimation.setAnimation(0);
     }
 
-	void Update()
+    //Update Method
+    void Update()
 	{
-		Movement();
+        if(ControllerManager.Instance.timeController.getTimeState()) Movement();
 	}
 
-	private void Movement()
+    //On Object Destroy
+    private void OnDestroy()
+    {
+        if(ControllerManager.Instance != null) ControllerManager.Instance.enemiesController.deRegisterEnemy(this.gameObject);
+    }
+
+    //Movement Logic
+    private void Movement()
 	{
 		transformMovement += direction * speed * Time.deltaTime;
 		transform.position = transformMovement;
-
-
 		CheckSurroundings();
 	}
 
@@ -46,7 +55,7 @@ public class EnemyAI : MonoBehaviour
 
 		if (collisions.Length > 1)
         {
-			Debug.Log("Collission detected!");
+			//Debug.Log("Collission detected!");
 
 			//Checking for collisions up
 			Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));

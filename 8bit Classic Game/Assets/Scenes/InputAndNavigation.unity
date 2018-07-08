@@ -3012,7 +3012,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1110621209005070, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_Name
-      value: Enemy (3)
+      value: Dinosaur
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
@@ -6538,7 +6538,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4837813908835256, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4837813908835256, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6566,7 +6566,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1110621209005070, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_Name
-      value: Enemy (1)
+      value: Dinosaur
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
@@ -8582,6 +8582,12 @@ Prefab:
       propertyPath: m_Name
       value: SoftBlock (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 114768227127027268, guid: f3ddb75e7f4729246ac9fe766013a426,
+        type: 2}
+      propertyPath: powerup
+      value: 
+      objectReference: {fileID: 1480586614929398, guid: 8150563358a958e4db009dacf248d725,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3ddb75e7f4729246ac9fe766013a426, type: 2}
   m_IsPrefabParent: 0
@@ -10570,6 +10576,12 @@ Prefab:
       propertyPath: m_Name
       value: SoftBlock (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 114768227127027268, guid: f3ddb75e7f4729246ac9fe766013a426,
+        type: 2}
+      propertyPath: powerup
+      value: 
+      objectReference: {fileID: 1050109861162234, guid: e24b67114f2ced94ba742c1a1a8469bf,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3ddb75e7f4729246ac9fe766013a426, type: 2}
   m_IsPrefabParent: 0
@@ -10894,6 +10906,8 @@ GameObject:
   - component: {fileID: 991542955}
   - component: {fileID: 991542957}
   - component: {fileID: 991542956}
+  - component: {fileID: 991542959}
+  - component: {fileID: 991542958}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -10937,6 +10951,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombController: {fileID: 0}
+  enemiesController: {fileID: 0}
+  timeController: {fileID: 0}
+--- !u!114 &991542958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991542954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a89d04bbbdeec4bbba27328f3f323e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &991542959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991542954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4439718087d0c0a4eb0d7e6c56a963fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 0
 --- !u!1001 &996413675
 Prefab:
   m_ObjectHideFlags: 0
@@ -11590,7 +11629,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4837813908835256, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4837813908835256, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12031,7 +12070,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4837813908835256, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4837813908835256, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12059,7 +12098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1110621209005070, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
       propertyPath: m_Name
-      value: Enemy (2)
+      value: Dinosaur
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f5f26b059e2e649b3cef6b182ac428, type: 2}
@@ -15916,6 +15955,12 @@ Prefab:
       propertyPath: m_Name
       value: SoftBlock (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 114768227127027268, guid: f3ddb75e7f4729246ac9fe766013a426,
+        type: 2}
+      propertyPath: powerup
+      value: 
+      objectReference: {fileID: 1669757743405692, guid: 182d837d17357a048be5e5e02de15a2e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3ddb75e7f4729246ac9fe766013a426, type: 2}
   m_IsPrefabParent: 0
@@ -20974,13 +21019,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1497432732}
+  - component: {fileID: 1861039967}
   - component: {fileID: 1861039963}
   - component: {fileID: 1861039966}
   - component: {fileID: 1861039964}
   - component: {fileID: 1861039965}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21049,6 +21095,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90618563208a85548b08b1c56037d6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1861039967
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1861039962}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1864850148
 GameObject:
   m_ObjectHideFlags: 0
@@ -23223,6 +23289,12 @@ Prefab:
       propertyPath: m_Name
       value: SoftBlock (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 114768227127027268, guid: f3ddb75e7f4729246ac9fe766013a426,
+        type: 2}
+      propertyPath: powerup
+      value: 
+      objectReference: {fileID: 1050109861162234, guid: 15d49047ca87ce14b9e12f7e3f83e31d,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3ddb75e7f4729246ac9fe766013a426, type: 2}
   m_IsPrefabParent: 0

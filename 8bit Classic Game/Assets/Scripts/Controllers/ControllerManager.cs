@@ -6,6 +6,8 @@ public class ControllerManager : MonoBehaviour
 {
     //References
     public BombController bombController;
+    public EnemiesController enemiesController;
+    public TimeController timeController;
 
     //Singleton Instance Variable
     private static ControllerManager instance;
@@ -41,5 +43,7 @@ public class ControllerManager : MonoBehaviour
     private void Start()
     {
         bombController = this.GetComponent<BombController>();
+        enemiesController = this.GetComponent<EnemiesController>();
+        timeController = this.GetComponent<TimeController>();
     }
 }
