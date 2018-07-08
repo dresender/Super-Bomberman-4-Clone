@@ -123,7 +123,7 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.Time:
-                    ControllerManager.Instance.timeController.pauseTime(5f);
+                    ControllerManager.Instance.timeController.pauseTime(18f);
                     break;
             }
 

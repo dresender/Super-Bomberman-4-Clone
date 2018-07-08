@@ -36,12 +36,12 @@ public class SimpleBomb : Bomb
 
                 if(collision != null)
                 {
-                    if(collision.CompareTag("Destroyable"))
+                    if(collision.CompareTag("SoftBlock"))
                     {
                         upBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if(collision.CompareTag("Indestructible")) upBlocked = true;
+                    else upBlocked = true;
                 }
                 else
                 {
@@ -56,12 +56,12 @@ public class SimpleBomb : Bomb
 
                 if (collision != null)
                 {
-                    if(collision.CompareTag("Destroyable"))
+                    if(collision.CompareTag("SoftBlock"))
                     {
                         downBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if(collision.CompareTag("Indestructible")) downBlocked = true;
+                    else downBlocked = true;
                 }
                 else
                 {
@@ -76,12 +76,12 @@ public class SimpleBomb : Bomb
 
                 if (collision != null)
                 {
-                    if (collision.CompareTag("Destroyable"))
+                    if (collision.CompareTag("SoftBlock"))
                     {
                         rightBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("Indestructible")) rightBlocked = true;
+                    else rightBlocked = true;
                 }
                 else
                 {
@@ -96,12 +96,12 @@ public class SimpleBomb : Bomb
 
                 if (collision != null)
                 {
-                    if (collision.CompareTag("Destroyable"))
+                    if (collision.CompareTag("SoftBlock"))
                     {
                         leftBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("Indestructible")) leftBlocked = true;
+                    else leftBlocked = true;
                 }
                 else
                 {

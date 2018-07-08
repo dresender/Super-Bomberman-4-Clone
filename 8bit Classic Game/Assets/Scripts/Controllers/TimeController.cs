@@ -43,13 +43,21 @@ public class TimeController : MonoBehaviour
 		if(!timeRunning)
         {
             durationPausedTime -= Time.deltaTime;
-            if (durationPausedTime <= 0)
+            if (durationPausedTime <= 0.5f)
             {
-                timeRunning = true;
                 List<GameObject> enemies = ControllerManager.Instance.enemiesController.getEnemies();
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    enemies[i].GetComponent<EnemyAnimation>().resumeAnimation();
+                    enemies[i].GetComponent<EnemyAnimation>().flashSprite();
+                }
+
+                if (durationPausedTime <= 0)
+                {
+                    timeRunning = true;
+                    for (int i = 0; i < enemies.Count; i++)
+                    {
+                        enemies[i].GetComponent<EnemyAnimation>().resumeAnimation();
+                    }
                 }
             }
         }

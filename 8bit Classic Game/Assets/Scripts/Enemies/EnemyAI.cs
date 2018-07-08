@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
 	private Vector2 transformMovement;
 	private List<Directions> listOfPossibleDirections;
     private bool active;
+    private float turningInterval;
 
     //Start Method
 	void Start()
@@ -27,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 		listOfPossibleDirections = new List<Directions>();
 		transformMovement = transform.position;
 		direction = Vector2.down;
+        turningInterval = 0f;
     }
 
     //Update Method
@@ -44,61 +46,44 @@ public class EnemyAI : MonoBehaviour
     //Movement Logic
     private void Movement()
 	{
-		transformMovement += direction * speed * Time.deltaTime;
-		transform.position = transformMovement;
-		CheckSurroundings();
+        if(turningInterval > 0f)
+        {
+            turningInterval -= Time.deltaTime;
+            if(turningInterval <= 0f) CheckSurroundings();
+        }
+        else
+        {
+            transformMovement += direction * speed * Time.deltaTime;
+            transform.position = transformMovement;
+            Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
+            for(int i = 0; i < collisions.Length; i++)
+            {
+                if(collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) turningInterval = 1f;
+            }
+        }
+		
 	}
 
 	private void CheckSurroundings()
 	{
-		Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
+		//Checking for collisions up
+		Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));
+		if (hit == null) listOfPossibleDirections.Add(Directions.up);
 
-		if (collisions.Length > 1)
-        {
-			//Debug.Log("Collission detected!");
+		//Checking for collisions down
+		hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
+		if (hit == null) listOfPossibleDirections.Add(Directions.down);
 
-			//Checking for collisions up
-			Collider2D hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, 1, 0));
+		//Checking for collisions left
+		hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
+		if (hit == null) listOfPossibleDirections.Add(Directions.left);
 
-			if (hit == null)
-			{
-				listOfPossibleDirections.Add(Directions.up);
-			}
+		//Checking for collisions right
+		hit = Physics2D.OverlapPoint(transform.position + new Vector3(1, 0, 0));
+		if (hit == null) listOfPossibleDirections.Add(Directions.right);
 
-			//Checking for collisions down
-			hit = Physics2D.OverlapPoint(transform.position + new Vector3(0, -1, 0));
-			//Debug.Log(hit);
-
-			if (hit == null)
-			{
-				listOfPossibleDirections.Add(Directions.down);
-			}
-
-			//Checking for collisions left
-			hit = Physics2D.OverlapPoint(transform.position + new Vector3(-1, 0, 0));
-			//Debug.Log(hit);
-
-			if (hit == null)
-			{
-				listOfPossibleDirections.Add(Directions.left);
-			}
-
-			//Checking for collisions right
-			hit = Physics2D.OverlapPoint(transform.position + new Vector3(1, 0, 0));
-
-			if (hit == null)
-			{
-				listOfPossibleDirections.Add(Directions.right);
-			}
-
-			foreach (var dir in listOfPossibleDirections)
-			{
-				//Debug.Log(dir);
-			}
-
-			SnapToGrid();
-			SortDirectionOfMovement();		
-		}
+		SnapToGrid();
+        if(listOfPossibleDirections.Count > 0) SortDirectionOfMovement();
 	}
 
 	private void SnapToGrid()
