@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum SelectorPosition { up, middle, down };
 
@@ -10,41 +11,65 @@ public class MainMenuSelectionTool : MonoBehaviour
 
     Vector2 newPosition;
     float newPositionY;
+    float newPositionX;
     SelectorPosition handPointer;
 
     void Start ()
     {
+        //Setting up initial pointer SelectorPosition
         handPointer = SelectorPosition.up;
+
+        //Setting up initial pointer position
+        newPositionY = 67f;
+        newPositionX = 62f;
 	}
 	
 	void Update ()
     {
-        newPosition = transform.position;
+        if (Input.GetKeyDown(KeyCode.Z) && handPointer == SelectorPosition.up)
+        {
+            SceneManager.LoadScene("World One");
+        }
 
 		if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             if (handPointer == SelectorPosition.up)
             {
                 handPointer = SelectorPosition.middle;
-                newPositionY = 69f;
+                newPositionY = 52f;
             }
             else if (handPointer == SelectorPosition.middle)
             {
                 handPointer = SelectorPosition.down;
-                newPositionY = 52f;
+                newPositionY = 35f;
             }
             else
             {
                 handPointer = SelectorPosition.up;
-                newPositionY = 35f;
+                newPositionY = 67f;
             }
         }
-        else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
- 
+            if (handPointer == SelectorPosition.up)
+            {
+                handPointer = SelectorPosition.down;
+                newPositionY = 35f;
+            }
+            else if (handPointer == SelectorPosition.middle)
+            {
+                handPointer = SelectorPosition.up;
+                newPositionY = 67f;
+            }
+            else
+            {
+                handPointer = SelectorPosition.middle;
+                newPositionY = 52f;
+            }
         }
 
         newPosition.y = newPositionY;
+        newPosition.x = newPositionX;
         transform.position = newPosition;
 	}
 }
