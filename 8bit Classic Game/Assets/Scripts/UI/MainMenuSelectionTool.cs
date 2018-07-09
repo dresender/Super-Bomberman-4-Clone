@@ -20,8 +20,8 @@ public class MainMenuSelectionTool : MonoBehaviour
         handPointer = SelectorPosition.up;
 
         //Setting up initial pointer position
-        newPositionY = 67f;
-        newPositionX = 62f;
+        newPositionY = -2.75f;
+        newPositionX = -4.25f;
 	}
 	
 	void Update ()
@@ -36,17 +36,17 @@ public class MainMenuSelectionTool : MonoBehaviour
             if (handPointer == SelectorPosition.up)
             {
                 handPointer = SelectorPosition.middle;
-                newPositionY = 52f;
+                newPositionY = -3.75f;
             }
             else if (handPointer == SelectorPosition.middle)
             {
                 handPointer = SelectorPosition.down;
-                newPositionY = 35f;
+                newPositionY = -4.75f;
             }
             else
             {
                 handPointer = SelectorPosition.up;
-                newPositionY = 67f;
+                newPositionY = -2.75f;
             }
         }
         else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
@@ -54,17 +54,17 @@ public class MainMenuSelectionTool : MonoBehaviour
             if (handPointer == SelectorPosition.up)
             {
                 handPointer = SelectorPosition.down;
-                newPositionY = 35f;
+                newPositionY = -4.75f;
             }
             else if (handPointer == SelectorPosition.middle)
             {
                 handPointer = SelectorPosition.up;
-                newPositionY = 67f;
+                newPositionY = -2.75f;
             }
             else
             {
                 handPointer = SelectorPosition.middle;
-                newPositionY = 52f;
+                newPositionY = -3.75f;
             }
         }
 
