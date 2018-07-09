@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
+    //References
+    public SpriteRenderer number_minutes;
+    public SpriteRenderer number_seconds_decimal;
+    public SpriteRenderer number_seconds_unit;
+    public Sprite[] numbers;
+
     //Public Variables
     public int maxTime;
 
     //Private Variables
-    private int currentTime;
     private bool timeRunning;
+    private float currentTime;
     private float durationPausedTime;
 
 	// Use this for initialization
@@ -23,6 +29,14 @@ public class TimeController : MonoBehaviour
     public bool getTimeState()
     {
         return timeRunning;
+    }
+
+    //Adjust Time in UI
+    private void setTimeUI()
+    {
+        number_minutes.sprite = numbers[(int)currentTime / 60];
+        number_seconds_decimal.sprite = numbers[((int)currentTime % 60) / 10];
+        number_seconds_unit.sprite = numbers[(int)currentTime % 10];
     }
 
     //Pause Time
@@ -40,7 +54,7 @@ public class TimeController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(!timeRunning)
+        if (!timeRunning)
         {
             durationPausedTime -= Time.deltaTime;
             if (durationPausedTime <= 0.5f)
@@ -61,5 +75,11 @@ public class TimeController : MonoBehaviour
                 }
             }
         }
-	}
+        else
+        {
+            currentTime -= Time.deltaTime;
+            setTimeUI();
+            if (currentTime <= 0) PlayerState.Instance.killPlayer();
+        }
+    }
 }

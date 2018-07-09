@@ -14,7 +14,6 @@ public class EnemyAI : MonoBehaviour
     private EnemyAnimation enemyAnimation;
 	private Vector2 colliderSize;
 	private Vector2 direction;
-	private Vector2 transformMovement;
 	private List<Directions> listOfPossibleDirections;
     private bool alive;
     private float turningInterval;
@@ -24,9 +23,8 @@ public class EnemyAI : MonoBehaviour
 	{
         ControllerManager.Instance.enemiesController.registerEnemy(this.gameObject);
         enemyAnimation = this.GetComponent<EnemyAnimation>();
-        colliderSize = GetComponent<BoxCollider2D>().size;
+        colliderSize = new Vector2(0.9f, 0.9f);
 		listOfPossibleDirections = new List<Directions>();
-		transformMovement = transform.position;
 		direction = Vector2.down;
         turningInterval = 0f;
         alive = true;
@@ -72,9 +70,8 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            transformMovement += direction * speed * Time.deltaTime;
-            transform.position = transformMovement;
-            Collider2D[] collisions = Physics2D.OverlapBoxAll(transformMovement, colliderSize, 0f);
+            this.transform.position = (Vector2) this.transform.position + direction * speed * Time.deltaTime;
+            Collider2D[] collisions = Physics2D.OverlapBoxAll(this.transform.position, colliderSize, 0f);
             for(int i = 0; i < collisions.Length; i++)
             {
                 if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].CompareTag("Enemy") && collisions[i].gameObject != this.gameObject))
@@ -85,33 +82,51 @@ public class EnemyAI : MonoBehaviour
         }
 	}
 
+    //Check Surroundings of Collision
 	private void CheckSurroundings()
 	{
+        //Snap to Grid before checking collisions
+        SnapToGrid();
+
         //Checking for collisions up
         Collider2D hit = Physics2D.OverlapBox((Vector2) transform.position + Vector2.up, colliderSize, 0f);
-		if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.up);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && !hit.CompareTag("Enemy")))
+        {
+            listOfPossibleDirections.Add(Directions.up);
+        }
 
 		//Checking for collisions down
 		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.down, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.down);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && !hit.CompareTag("Enemy")))
+        {
+            listOfPossibleDirections.Add(Directions.down);
+        }
 
 		//Checking for collisions left
 		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.left, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.left);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && !hit.CompareTag("Enemy")))
+        {
+            listOfPossibleDirections.Add(Directions.left);
+        }
 
 		//Checking for collisions right
 		hit = Physics2D.OverlapBox((Vector2)transform.position + Vector2.right, colliderSize, 0f);
-        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && hit.CompareTag("Enemy"))) listOfPossibleDirections.Add(Directions.right);
+        if ((hit == null) || (hit.gameObject.layer != 8 && hit.gameObject.layer != 10 && !hit.CompareTag("Enemy")))
+        {
+            listOfPossibleDirections.Add(Directions.right);
+        }
 
-		SnapToGrid();
-        if(listOfPossibleDirections.Count > 0) SortDirectionOfMovement();
+        //Finally...
+        if (listOfPossibleDirections.Count > 0) SortDirectionOfMovement();
 	}
 
+    //Snap to Grid Center
 	private void SnapToGrid()
 	{
-		transformMovement = new Vector2 (Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
+        this.transform.position = new Vector2 (Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
 	}
 
+    //Set Final Movement Direction Randomly
 	private void SortDirectionOfMovement()
 	{
 		//Decide which of the empty tiles is going to be
