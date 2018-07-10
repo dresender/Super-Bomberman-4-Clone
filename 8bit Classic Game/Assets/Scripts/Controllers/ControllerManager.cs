@@ -9,6 +9,7 @@ public class ControllerManager : MonoBehaviour
     public EnemiesController enemiesController;
     public TimeController timeController;
     public ScoreController scoreController;
+    public SceneController sceneController;
 
     //Singleton Instance Variable
     private static ControllerManager instance;
@@ -47,5 +48,6 @@ public class ControllerManager : MonoBehaviour
         enemiesController = this.GetComponent<EnemiesController>();
         timeController = this.GetComponent<TimeController>();
         scoreController = this.GetComponent<ScoreController>();
+        sceneController = this.GetComponent<SceneController>();
     }
 }

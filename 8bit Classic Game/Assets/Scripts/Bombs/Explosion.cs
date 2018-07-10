@@ -19,7 +19,11 @@ public class Explosion : MonoBehaviour
         else
         {
             Collider2D collision = Physics2D.OverlapBox(this.transform.position, new Vector2(0.75f, 0.75f), 0f);
-            if((collision != null) && (collision.CompareTag("Enemy"))) collision.GetComponent<EnemyAI>().killEnemy();
+            if (collision != null)
+            {
+               if(collision.CompareTag("Enemy")) collision.GetComponent<EnemyAI>().killEnemy();
+               else if(collision.CompareTag("Player")) collision.GetComponent<PlayerState>().killPlayer();
+            }
         }
     }
 }

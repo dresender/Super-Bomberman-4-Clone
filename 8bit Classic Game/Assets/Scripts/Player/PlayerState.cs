@@ -9,6 +9,18 @@ public class PlayerState : MonoBehaviour
     public int maxBombs;
     public int bombRadius;
     public GameObject bombType;
+    private bool alive;
+
+    //References
+    private PlayerAnimation playerAnimation;
+    private PlayerInput playerInput;
+
+    private void Start()
+    {
+        alive = true;
+        playerAnimation = this.GetComponent<PlayerAnimation>();
+        playerInput = this.GetComponent<PlayerInput>();
+    }
 
     //Singleton Instance Variable
     private static PlayerState instance;
@@ -43,7 +55,25 @@ public class PlayerState : MonoBehaviour
     //Player Death Method
     public void killPlayer()
     {
-        //TODO
-        Debug.Log("Player Killed!");
+        if(alive)
+        {
+            alive = false;
+            playerAnimation.setDeathAnimation();
+            playerInput.enabled = false;
+            LivesController.Instance.lives -= 1;
+        }
+    }
+
+    //Update Method
+    private void Update()
+    {
+        if(!alive)
+        {
+            if (playerAnimation.getStateAnimation() >= 1f)
+            {
+                ControllerManager.Instance.sceneController.reloadScene();
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
