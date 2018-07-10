@@ -11674,10 +11674,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 991542954}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 489d559e341e2f94d92b847d587818b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   flash: {fileID: 1867615185}
+=======
+  m_Script: {fileID: 11500000, guid: 0dd6f2f16e89b0a4b89d08d2608de22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 08c3e4f139a7b1a6dc4b2b0916669a797ce6d517
 --- !u!1 &992614773
 GameObject:
   m_ObjectHideFlags: 0
@@ -12947,6 +12953,7 @@ GameObject:
   - component: {fileID: 1070574488}
   - component: {fileID: 1070574490}
   - component: {fileID: 1070574489}
+  - component: {fileID: 1070574491}
   m_Layer: 0
   m_Name: PlayerAnimation
   m_TagString: Untagged
@@ -13017,7 +13024,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1273671797
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 318
   m_Sprite: {fileID: 21300024, guid: 80ddddcd38bac9d429a24a56e0dc2689, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13028,6 +13035,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1070574491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1070574487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed21276364eaea4c825327c122602fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1079045391
 Prefab:
   m_ObjectHideFlags: 0
