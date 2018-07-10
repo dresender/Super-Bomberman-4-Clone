@@ -60,30 +60,30 @@ public class PlayerInput : MonoBehaviour
             hasMoved = true;
             movement += Vector2.up * playerState.speed * Time.deltaTime;
             dirMovement = Direction.up;
-            playerAnimation.setAnimation(true, 1);
+            playerAnimation.setMovementAnimation(true, 1);
         }
 		else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
 		{
             hasMoved = true;
             movement += Vector2.down * playerState.speed * Time.deltaTime;
             dirMovement = Direction.down;
-            playerAnimation.setAnimation(true, 0);
+            playerAnimation.setMovementAnimation(true, 0);
         }
 		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
 		{
             hasMoved = true;
             movement += Vector2.right * playerState.speed * Time.deltaTime;
             dirMovement = Direction.right;
-            playerAnimation.setAnimation(true, 2);
+            playerAnimation.setMovementAnimation(true, 2);
         }
 		else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
 		{
             hasMoved = true;
             movement += Vector2.left * playerState.speed * Time.deltaTime;
             dirMovement = Direction.left;
-            playerAnimation.setAnimation(true, 3);
+            playerAnimation.setMovementAnimation(true, 3);
         }
-        else playerAnimation.setAnimation(false);
+        else playerAnimation.setMovementAnimation(false);
 
         //Check for Collisions
         if (hasMoved)

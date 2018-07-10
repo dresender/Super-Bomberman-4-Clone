@@ -46,6 +46,12 @@ public class SimpleBomb : Bomb
                         upBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
                     }
+                    else if (collision.CompareTag("Player"))
+                    {
+                        collision.GetComponent<PlayerState>().killPlayer();
+                        if (i == radius) Instantiate(upEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(upArmExplosion, desiredPosition, Quaternion.identity);
+                    }
                     else upBlocked = true;
                 }
                 else
@@ -68,8 +74,14 @@ public class SimpleBomb : Bomb
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
-                        upBlocked = true;
+                        downBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
+                    }
+                    else if (collision.CompareTag("Player"))
+                    {
+                        collision.GetComponent<PlayerState>().killPlayer();
+                        if (i == radius) Instantiate(downEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(downArmExplosion, desiredPosition, Quaternion.identity);
                     }
                     else downBlocked = true;
                 }
@@ -93,8 +105,14 @@ public class SimpleBomb : Bomb
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
-                        upBlocked = true;
+                        rightBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
+                    }
+                    else if (collision.CompareTag("Player"))
+                    {
+                        collision.GetComponent<PlayerState>().killPlayer();
+                        if (i == radius) Instantiate(rightEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(rightArmExplosion, desiredPosition, Quaternion.identity);
                     }
                     else rightBlocked = true;
                 }
@@ -118,8 +136,14 @@ public class SimpleBomb : Bomb
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
-                        upBlocked = true;
+                        leftBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
+                    }
+                    else if (collision.CompareTag("Player"))
+                    {
+                        collision.GetComponent<PlayerState>().killPlayer();
+                        if (i == radius) Instantiate(leftEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(leftArmExplosion, desiredPosition, Quaternion.identity);
                     }
                     else leftBlocked = true;
                 }
