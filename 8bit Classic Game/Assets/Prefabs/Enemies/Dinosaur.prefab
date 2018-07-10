@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4554736391719212}
   - component: {fileID: 212797099187574970}
   - component: {fileID: 95030923067543360}
+  - component: {fileID: 114124020146811698}
   m_Layer: 0
   m_Name: EnemyAnimation
   m_TagString: Untagged
@@ -115,7 +116,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114124020146811698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405579280579648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed21276364eaea4c825327c122602fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114157449601475944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,7 +163,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
