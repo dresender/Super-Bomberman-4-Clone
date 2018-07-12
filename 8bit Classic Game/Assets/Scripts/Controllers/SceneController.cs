@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    //Variables
     public SpriteRenderer flash;
+
     private string sceneToLoad;
+    private LivesController LivesControllerScript;
+
+    public void Awake()
+    {
+        LivesControllerScript = GameObject.Find("LivesController").GetComponent<LivesController>();
+    }
 
     //Reload Scene
     public void reloadScene()
@@ -24,6 +30,11 @@ public class SceneController : MonoBehaviour
     //Update
     private void Update()
     {
+        if (LivesControllerScript.lives <= 0)
+        {
+            loadGameOverScene();
+        }
+
         if(sceneToLoad != null)
         {
             if(flash.color.a >= 1f) SceneManager.LoadScene(sceneToLoad);

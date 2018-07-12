@@ -35,6 +35,7 @@ public class PlayerInput : MonoBehaviour
         {
             //Check for Position
             Collider2D[] collisions = Physics2D.OverlapBoxAll(this.transform.position, colliderSize, 0f);
+
             for(int i = 0; i < collisions.Length; i++)
             {
                 if (collisions[i].gameObject.layer == 9) return;
