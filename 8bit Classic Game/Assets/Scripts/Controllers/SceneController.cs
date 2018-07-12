@@ -18,7 +18,7 @@ public class SceneController : MonoBehaviour
     //Load Game Over Scene
     public void loadGameOverScene()
     {
-        //TODO
+        sceneToLoad = "Game Over";
     }
 
     //Update

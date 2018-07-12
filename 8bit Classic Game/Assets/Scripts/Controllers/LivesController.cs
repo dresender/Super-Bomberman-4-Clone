@@ -9,6 +9,7 @@ public class LivesController : MonoBehaviour
 
     //Singleton Instance Variable
     private static LivesController instance;
+
     public static LivesController Instance
     {
         get
