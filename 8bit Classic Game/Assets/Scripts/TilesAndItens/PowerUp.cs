@@ -35,13 +35,40 @@ public enum PowerUpType
 [RequireComponent(typeof(BoxCollider2D))]
 public class PowerUp : MonoBehaviour
 {
+    //Variables
+    private Animator animator;
+    private bool active;
+
     //Type of PowerUp
     public PowerUpType powerUpType;
+
+    //Start Method
+    private void Start()
+    {
+        active = true;
+        animator = this.GetComponent<Animator>();
+    }
+
+    //Update Method
+    private void Update()
+    {
+        if(!active)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Destroy") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) Destroy(this.gameObject);
+        }
+    }
+
+    //Destroy Method
+    public void destroyPowerup()
+    {
+        active = false;
+        animator.SetTrigger("Destroy");
+    }
 
     //PickUp Method
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && active)
         {
             Debug.Log("Powerup! " + powerUpType);
             PlayerState playerState = collision.GetComponent<PlayerState>();

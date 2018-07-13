@@ -41,6 +41,11 @@ public class SimpleBomb : Bomb
                         upBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
+                    else if (collision.CompareTag("PowerUp"))
+                    {
+                        upBlocked = true;
+                        collision.GetComponent<PowerUp>().destroyPowerup();
+                    }
                     else if(collision.CompareTag("Enemy"))
                     {
                         collision.GetComponent<EnemyAI>().killEnemy();
@@ -72,6 +77,11 @@ public class SimpleBomb : Bomb
                     {
                         downBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if (collision.CompareTag("PowerUp"))
+                    {
+                        downBlocked = true;
+                        collision.GetComponent<PowerUp>().destroyPowerup();
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
@@ -105,6 +115,11 @@ public class SimpleBomb : Bomb
                         rightBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
                     }
+                    else if (collision.CompareTag("PowerUp"))
+                    {
+                        rightBlocked = true;
+                        collision.GetComponent<PowerUp>().destroyPowerup();
+                    }
                     else if (collision.CompareTag("Enemy"))
                     {
                         collision.GetComponent<EnemyAI>().killEnemy();
@@ -136,6 +151,11 @@ public class SimpleBomb : Bomb
                     {
                         leftBlocked = true;
                         collision.GetComponent<Animator>().enabled = true;
+                    }
+                    else if (collision.CompareTag("PowerUp"))
+                    {
+                        leftBlocked = true;
+                        collision.GetComponent<PowerUp>().destroyPowerup();
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
