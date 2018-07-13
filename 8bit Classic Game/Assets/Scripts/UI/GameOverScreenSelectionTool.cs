@@ -26,6 +26,7 @@ public class GameOverScreenSelectionTool : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
+            LivesController.lives = 3;
             if (handPointer == SelectorPosition.up)
             {
                 SceneManager.LoadScene("World One");

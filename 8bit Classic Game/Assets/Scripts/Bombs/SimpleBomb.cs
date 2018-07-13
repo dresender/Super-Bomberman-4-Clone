@@ -43,8 +43,9 @@ public class SimpleBomb : Bomb
                     }
                     else if(collision.CompareTag("Enemy"))
                     {
-                        upBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
+                        if (i == radius) Instantiate(upEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(upArmExplosion, desiredPosition, Quaternion.identity);
                     }
                     else if (collision.CompareTag("Player"))
                     {
@@ -74,8 +75,9 @@ public class SimpleBomb : Bomb
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
-                        downBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
+                        if (i == radius) Instantiate(downEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(downArmExplosion, desiredPosition, Quaternion.identity);
                     }
                     else if (collision.CompareTag("Player"))
                     {
@@ -105,8 +107,9 @@ public class SimpleBomb : Bomb
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
-                        rightBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
+                        if (i == radius) Instantiate(rightEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(rightArmExplosion, desiredPosition, Quaternion.identity);
                     }
                     else if (collision.CompareTag("Player"))
                     {
@@ -136,8 +139,9 @@ public class SimpleBomb : Bomb
                     }
                     else if (collision.CompareTag("Enemy"))
                     {
-                        leftBlocked = true;
                         collision.GetComponent<EnemyAI>().killEnemy();
+                        if (i == radius) Instantiate(leftEndExplosion, desiredPosition, Quaternion.identity);
+                        else Instantiate(leftArmExplosion, desiredPosition, Quaternion.identity);
                     }
                     else if (collision.CompareTag("Player"))
                     {
