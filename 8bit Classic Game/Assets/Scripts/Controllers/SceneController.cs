@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    //Variables
     public SpriteRenderer flash;
+    public GameObject portal;
     private string sceneToLoad;
 
     //Reload Scene
@@ -18,6 +20,12 @@ public class SceneController : MonoBehaviour
     public void loadGameOverScene()
     {
         sceneToLoad = "Game Over";
+    }
+
+    //Load Main Meny
+    public void loadMainMenuScene()
+    {
+        sceneToLoad = "Main Menu";
     }
 
     //Update

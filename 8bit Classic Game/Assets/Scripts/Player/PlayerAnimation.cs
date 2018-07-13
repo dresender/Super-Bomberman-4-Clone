@@ -41,4 +41,20 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetTrigger("Kill");
     }
+
+    //Set Victory Animation
+    public void setVictoryAnimation()
+    {
+        animator.SetTrigger("Victory");
+    }
+
+    //get State Animation
+    public bool isEndOfTeleportAnimation()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Teleport"))
+        {
+            return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+        }
+        else return false;
+    }
 }

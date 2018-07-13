@@ -10,6 +10,7 @@ public class PlayerState : MonoBehaviour
     public int bombRadius;
     public GameObject bombType;
     private bool alive;
+    private bool victory;
 
     //References
     private PlayerAnimation playerAnimation;
@@ -17,6 +18,7 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
+        victory = false;
         alive = true;
         playerAnimation = this.GetComponent<PlayerAnimation>();
         playerInput = this.GetComponent<PlayerInput>();
@@ -64,6 +66,17 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    //Victory
+    public void setVictory()
+    {
+        if(!victory)
+        {
+            victory = true;
+            playerInput.enabled = false;
+            playerAnimation.setVictoryAnimation();
+        }
+    }
+
     //Update Method
     private void Update()
     {
@@ -72,6 +85,14 @@ public class PlayerState : MonoBehaviour
             if (playerAnimation.isEndOfDeathAnimation())
             {
                 ControllerManager.Instance.sceneController.reloadScene();
+                Destroy(this.gameObject);
+            }
+        }
+        else if(victory)
+        {
+            if(playerAnimation.isEndOfTeleportAnimation())
+            {
+                ControllerManager.Instance.sceneController.loadMainMenuScene();
                 Destroy(this.gameObject);
             }
         }

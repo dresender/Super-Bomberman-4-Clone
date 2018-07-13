@@ -107,7 +107,7 @@ public class PlayerInput : MonoBehaviour
                         if (lastBombLayed != collisions[i].gameObject) canMove = false;
                         else
                         {
-                            if(insideBomb) remainInsideBomb = true;
+                            if (insideBomb) remainInsideBomb = true;
                             else canMove = false;
                         }
                     }
@@ -224,7 +224,10 @@ public class PlayerInput : MonoBehaviour
                         }
                         else canMove = false;
                     }
-                    else if (collisions[i].CompareTag("Enemy")) playerState.killPlayer();
+                    else if (collisions[i].CompareTag("Enemy"))
+                    {
+                        if(collisions[i].GetComponent<EnemyAI>().isAlive()) playerState.killPlayer();
+                    }
                 }
             }
 

@@ -23,6 +23,7 @@ public class EnemiesController : MonoBehaviour
     public void deRegisterEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
+        if (enemies.Count == 0) ControllerManager.Instance.sceneController.portal.SetActive(true);
     }
 
     //Get List of Enemies

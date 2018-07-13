@@ -43,6 +43,12 @@ public class EnemyAI : MonoBehaviour
         }
 	}
 
+    //Check if Alive
+    public bool isAlive()
+    {
+        return alive;
+    }
+
     //Kill Enemy
     public void killEnemy()
     {
