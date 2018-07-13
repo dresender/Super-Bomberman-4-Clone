@@ -12,13 +12,12 @@ public class PlayerInput : MonoBehaviour
     private PlayerAnimation playerAnimation;
     private PlayerState playerState;
     private GameObject lastBombLayed;
-    private Direction bombMovementDirection;
+    private bool insideBomb;
 
     //Start Method
     void Start()
     {
         lastBombLayed = null;
-        bombMovementDirection = Direction.none;
         playerState = this.GetComponent<PlayerState>();
         playerAnimation = this.GetComponent<PlayerAnimation>();
         colliderSize = this.GetComponent<BoxCollider2D>().size;
@@ -47,17 +46,17 @@ public class PlayerInput : MonoBehaviour
 
             //Finally...
             lastBombLayed = ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
-            bombMovementDirection = Direction.none;
+            if (lastBombLayed != null) insideBomb = true;
         }
     }
 
     //Movement Algorithm
 	private void movePlayer()
 	{
+        //Initialize Temporary Variables
         Direction dirMovement = Direction.none;
-
-        //Initialize Movement Vector
         Vector2 movement = transform.position;
+        bool remainInsideBomb = false;
 
         //Preview Movement
         bool hasMoved = false;
@@ -105,9 +104,11 @@ public class PlayerInput : MonoBehaviour
                 {
                     if (collisions[i].gameObject.layer == 11)
                     {
-                        if(lastBombLayed == collisions[i].gameObject)
+                        if (lastBombLayed != collisions[i].gameObject) canMove = false;
+                        else
                         {
-                            if (bombMovementDirection != Direction.none && bombMovementDirection != dirMovement) canMove = false;
+                            if(insideBomb) remainInsideBomb = true;
+                            else canMove = false;
                         }
                     }
                     else if (collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10)
@@ -227,12 +228,11 @@ public class PlayerInput : MonoBehaviour
                 }
             }
 
+            //Set Bomb Walkability
+            if (!remainInsideBomb) insideBomb = false;
+
             //Move Player!
-            if(canMove)
-            {
-                if (bombMovementDirection == Direction.none) bombMovementDirection = dirMovement;
-                transform.position = movement;
-            } 
+            if (canMove) transform.position = movement;
         }
 	}
 }
