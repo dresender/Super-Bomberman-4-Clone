@@ -74,10 +74,11 @@ public class EnemyAI : MonoBehaviour
             Collider2D[] collisions = Physics2D.OverlapBoxAll(this.transform.position, colliderSize, 0f);
             for(int i = 0; i < collisions.Length; i++)
             {
-                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].CompareTag("Enemy") && collisions[i].gameObject != this.gameObject))
+                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].gameObject.layer == 11) || (collisions[i].CompareTag("Enemy") && collisions[i].gameObject != this.gameObject))
                 {
                     turningInterval = 1f;
                 }
+                else if (collisions[i].CompareTag("Player")) collisions[i].GetComponent<PlayerState>().killPlayer();
             }
         }
 	}

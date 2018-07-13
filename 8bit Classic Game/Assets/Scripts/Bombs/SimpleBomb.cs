@@ -31,7 +31,7 @@ public class SimpleBomb : Bomb
         {
             if(!upBlocked)
             {
-                Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y + i + 0.5f, this.transform.position.z);
+                Vector3 desiredPosition = this.transform.position + (Vector3.up * i);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if(collision != null)
@@ -63,7 +63,7 @@ public class SimpleBomb : Bomb
             }
             if (!downBlocked)
             {
-                Vector3 desiredPosition = new Vector3(this.transform.position.x + 0.5f, this.transform.position.y - i + 0.5f, this.transform.position.z);
+                Vector3 desiredPosition = this.transform.position + (Vector3.down * i);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if (collision != null)
@@ -95,7 +95,7 @@ public class SimpleBomb : Bomb
             }
             if (!rightBlocked)
             {
-                Vector3 desiredPosition = new Vector3(this.transform.position.x + i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
+                Vector3 desiredPosition = this.transform.position + (Vector3.right * i);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if (collision != null)
@@ -127,7 +127,7 @@ public class SimpleBomb : Bomb
             }
             if (!leftBlocked)
             {
-                Vector3 desiredPosition = new Vector3(this.transform.position.x - i + 0.5f, this.transform.position.y + 0.5f, this.transform.position.z);
+                Vector3 desiredPosition = this.transform.position + (Vector3.left * i);
                 Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
 
                 if (collision != null)

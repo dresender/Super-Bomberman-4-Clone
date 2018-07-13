@@ -11,10 +11,14 @@ public class PlayerInput : MonoBehaviour
     private Vector2 colliderSize;
     private PlayerAnimation playerAnimation;
     private PlayerState playerState;
+    private GameObject lastBombLayed;
+    private Direction bombMovementDirection;
 
     //Start Method
     void Start()
     {
+        lastBombLayed = null;
+        bombMovementDirection = Direction.none;
         playerState = this.GetComponent<PlayerState>();
         playerAnimation = this.GetComponent<PlayerAnimation>();
         colliderSize = this.GetComponent<BoxCollider2D>().size;
@@ -31,7 +35,7 @@ public class PlayerInput : MonoBehaviour
     //Lay Bombs Algorithm
     private void layBombs()
     {
-        if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
         {
             //Check for Position
             Collider2D[] collisions = Physics2D.OverlapBoxAll(this.transform.position, colliderSize, 0f);
@@ -42,7 +46,8 @@ public class PlayerInput : MonoBehaviour
             }
 
             //Finally...
-            ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
+            lastBombLayed = ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
+            bombMovementDirection = Direction.none;
         }
     }
 
@@ -98,8 +103,14 @@ public class PlayerInput : MonoBehaviour
             {
                 for (int i = 0; i < collisions.Length; i++)
                 {
-                    //Ignore MapGap Layer
-                    if (collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10)
+                    if (collisions[i].gameObject.layer == 11)
+                    {
+                        if(lastBombLayed == collisions[i].gameObject)
+                        {
+                            if (bombMovementDirection != Direction.none && bombMovementDirection != dirMovement) canMove = false;
+                        }
+                    }
+                    else if (collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10)
                     {
                         if (dirMovement == Direction.down)
                         {
@@ -212,12 +223,16 @@ public class PlayerInput : MonoBehaviour
                         }
                         else canMove = false;
                     }
+                    else if (collisions[i].CompareTag("Enemy")) playerState.killPlayer();
                 }
             }
 
             //Move Player!
-            if(canMove) 
+            if(canMove)
+            {
+                if (bombMovementDirection == Direction.none) bombMovementDirection = dirMovement;
                 transform.position = movement;
+            } 
         }
 	}
 }

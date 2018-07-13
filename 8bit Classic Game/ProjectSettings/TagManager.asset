@@ -9,6 +9,7 @@ TagManager:
   - HardBlock
   - SoftBlock
   - Enemy
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Blocks
   - MapGap
   - Background
-  - 
+  - Bombs
   - 
   - 
   - 

@@ -27,9 +27,13 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     //get State Animation
-    public float getStateAnimation()
+    public bool isEndOfDeathAnimation()
     {
-        return animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Death"))
+        {
+            return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+        }
+        else return false;
     }
 
     //Set Death Animation

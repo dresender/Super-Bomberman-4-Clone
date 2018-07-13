@@ -69,7 +69,7 @@ public class PlayerState : MonoBehaviour
     {
         if(!alive)
         {
-            if (playerAnimation.getStateAnimation() >= 1f)
+            if (playerAnimation.isEndOfDeathAnimation())
             {
                 ControllerManager.Instance.sceneController.reloadScene();
                 Destroy(this.gameObject);
