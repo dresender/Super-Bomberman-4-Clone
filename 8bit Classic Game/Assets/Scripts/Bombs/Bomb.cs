@@ -8,6 +8,7 @@ public abstract class Bomb : MonoBehaviour
     //Generic Bomb Variables
     protected Animator animator;
     protected int radius = 1;
+    protected bool exploded;
 
     //Explosions Prefabs
     public GameObject centerExplosion;

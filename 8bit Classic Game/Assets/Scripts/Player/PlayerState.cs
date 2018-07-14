@@ -81,17 +81,22 @@ public class PlayerState : MonoBehaviour
             playerAnimation.mount();
             collider.enabled = false;
             playerInput.enabled = false;
+            bombType = ControllerManager.Instance.bombController.pierceBomb;
         }
     }
 
     //Dismount
     public void dismount()
     {
-        riding = false;
-        jumping = true;
-        playerAnimation.dismount();
-        collider.enabled = false;
-        playerInput.enabled = false;
+        if(!jumping)
+        {
+            riding = false;
+            jumping = true;
+            playerAnimation.dismount();
+            collider.enabled = false;
+            playerInput.enabled = false;
+            bombType = ControllerManager.Instance.bombController.simpleBomb;
+        }
     }
 
     //Player Death Method

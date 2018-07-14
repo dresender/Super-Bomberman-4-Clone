@@ -56,6 +56,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043ecd7c2ced6534dbcf60c0a4a7dadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number_100: {fileID: 0}
+  number_1000: {fileID: 0}
+  numbers:
+  - {fileID: 21300000, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300002, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300004, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300006, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300008, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300010, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300012, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300014, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300016, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
+  - {fileID: 21300018, guid: 63afa90b035a0484ba0a9dd8f7583d53, type: 3}
   score100: {fileID: 1257532606965708, guid: 9a36536315c89f5498391f11bdb5e4d7, type: 2}
 --- !u!114 &114220541139516372
 MonoBehaviour:
@@ -95,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecac4a44a4deeb4ba9dcd9b168aa462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simpleBomb: {fileID: 1802581432028406, guid: 6ee5d0262ce77924fbd048ca1d9eeb1e, type: 2}
+  pierceBomb: {fileID: 1802581432028406, guid: 610ef8f9e628f9b4a90e94d3541248e4, type: 2}
 --- !u!114 &114597381444366694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,3 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flash: {fileID: 0}
+  portal: {fileID: 0}
