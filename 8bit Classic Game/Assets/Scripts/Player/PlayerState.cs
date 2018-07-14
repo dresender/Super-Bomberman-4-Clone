@@ -13,6 +13,8 @@ public class PlayerState : MonoBehaviour
     //Control Variables
     private bool alive;
     private bool victory;
+    private bool invulnerable;
+    private float invulnerableTime;
 
     //Riding Variables
     private bool riding;
@@ -102,18 +104,23 @@ public class PlayerState : MonoBehaviour
     //Player Death Method
     public void killPlayer()
     {
-        if (alive)
+        if(!invulnerable)
         {
-            if (riding)
+            if (alive)
             {
-                dismount();
-            }
-            else
-            {
-                alive = false;
-                playerAnimation.setDeathAnimation();
-                playerInput.enabled = false;
-                LivesController.lives -= 1;
+                if (riding)
+                {
+                    invulnerable = true;
+                    invulnerableTime = 3.1f;
+                    dismount();
+                }
+                else
+                {
+                    alive = false;
+                    playerAnimation.setDeathAnimation();
+                    playerInput.enabled = false;
+                    LivesController.lives -= 1;
+                }
             }
         }
     }
@@ -140,7 +147,8 @@ public class PlayerState : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        else if(victory)
+
+        if(victory)
         {
             if(playerAnimation.isEndOfTeleportAnimation())
             {
@@ -148,7 +156,8 @@ public class PlayerState : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        else if(jumping)
+
+        if(jumping)
         {
             if (playerAnimation.isEndOfJumpingAnimation())
             {
@@ -157,6 +166,13 @@ public class PlayerState : MonoBehaviour
                 collider.enabled = true;
                 playerInput.enabled = true;
             }
+        }
+
+        if(invulnerable)
+        {
+            invulnerableTime -= Time.deltaTime;
+            playerAnimation.flashSprite();
+            if (invulnerableTime <= 0f) invulnerable = false;
         }
     }
 }

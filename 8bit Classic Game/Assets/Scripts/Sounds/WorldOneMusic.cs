@@ -16,8 +16,8 @@ public class WorldOneMusic : MonoBehaviour
         PlayWorldOneThemeSong();
 	}
 	
-	void PlayWorldOneThemeSong ()
+	void PlayWorldOneThemeSong()
     {
-        aManager.Play("World One");
+        //aManager.Play("World One");
 	}
 }

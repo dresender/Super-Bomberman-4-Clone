@@ -5,19 +5,23 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     //Variables
+    private SpriteRenderer bombermanSpriteRenderer;
     private Animator bombermanAnimator;
     private Animator mountAnimator;
     private MountLayerController mountLayerController;
     private GameObject mountObject;
+    private float flashSpriteInterval;
 
     // Use this for initialization
     void Start ()
     {
         bombermanAnimator = this.transform.GetChild(0).GetComponent<Animator>();
+        bombermanSpriteRenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
         mountAnimator = this.transform.GetChild(1).GetComponent<Animator>();
         mountLayerController = this.transform.GetChild(1).GetComponent<MountLayerController>();
         mountObject = this.transform.GetChild(1).gameObject;
         mountObject.SetActive(false);
+        flashSpriteInterval = 0f;
     }
 
     //Set Movement Animation
@@ -82,8 +86,8 @@ public class PlayerAnimation : MonoBehaviour
     public void dismount()
     {
         bombermanAnimator.SetBool("Riding", false);
-        bombermanAnimator.SetTrigger("JumpOff");
         bombermanAnimator.ResetTrigger("EndJump");
+        bombermanAnimator.SetTrigger("JumpOff");
         mountAnimator.SetTrigger("Kill");
     }
 
@@ -91,9 +95,21 @@ public class PlayerAnimation : MonoBehaviour
     public void mount()
     {
         mountObject.SetActive(true);
+        bombermanAnimator.ResetTrigger("EndJump");
         bombermanAnimator.SetTrigger("JumpOn");
         bombermanAnimator.SetBool("Riding", true);
         mountAnimator.SetInteger("Direction", bombermanAnimator.GetInteger("Direction"));
+    }
+
+    //Flash Sprite
+    public void flashSprite()
+    {
+        if (flashSpriteInterval <= 0f)
+        {
+            bombermanSpriteRenderer.enabled = !bombermanSpriteRenderer.enabled;
+            flashSpriteInterval = 0.1f;
+        }
+        else flashSpriteInterval -= Time.deltaTime;
     }
 
     //Set Victory Animation
