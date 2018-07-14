@@ -12,10 +12,14 @@ public class PlayerAnimation : MonoBehaviour
     private MountLayerController mountLayerController;
     private GameObject mountObject;
     private float flashSpriteInterval;
+    private AudioManager aManager;
 
     // Use this for initialization
     void Start ()
     {
+        //Cacheing the Audio Manager in the local variable
+        aManager = FindObjectOfType<AudioManager>();
+
         bombermanAnimator = this.transform.GetChild(0).GetComponent<Animator>();
         bombermanSpriteRenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
         mountAnimator = this.transform.GetChild(1).GetComponent<Animator>();
@@ -87,6 +91,7 @@ public class PlayerAnimation : MonoBehaviour
     //Dismount
     public void dismount()
     {
+        aManager.Play("Dismount");
         bombermanAnimator.SetBool("Riding", false);
         bombermanAnimator.ResetTrigger("EndJump");
         bombermanAnimator.SetTrigger("JumpOff");
@@ -96,6 +101,7 @@ public class PlayerAnimation : MonoBehaviour
     //Mount
     public void mount()
     {
+        aManager.Play("Mount");
         mountObject.SetActive(true);
         bombermanAnimator.ResetTrigger("EndJump");
         bombermanAnimator.SetTrigger("JumpOn");

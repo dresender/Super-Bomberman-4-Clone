@@ -13,12 +13,14 @@ public class PlayerInput : MonoBehaviour
     private PlayerState playerState;
     private GameObject lastBombLayed;
     private bool insideBomb;
-    private LinkedList<Vector2> lastPositions;
-    public int delayExtraEggMovement;
+    private AudioManager aManager;
 
     //Start Method
     void Start()
     {
+        //Cacheing the Audio Manager in the local variable
+        aManager = FindObjectOfType<AudioManager>();
+
         lastBombLayed = null;
         playerState = this.GetComponent<PlayerState>();
         playerAnimation = this.GetComponent<PlayerAnimation>();
@@ -259,13 +261,18 @@ public class PlayerInput : MonoBehaviour
             {
                 if(ControllerManager.Instance.extraEggsController.extraEggsCount() > 0)
                 {
-                    Vector2 desiredPosition = savePosition(movement);
                     if (lastPositions.Count == delayExtraEggMovement)
+                    Vector2 desiredPosition = savePosition(movement);
                     {
                         ControllerManager.Instance.extraEggsController.moveEggs(desiredPosition);
                     } 
                 }
                 
+            if (!aManager.IsPlaying("Walk"))
+            {
+                aManager.Play("Walk");
+            }
+
                 //Finally...
                 transform.position = movement;
             }

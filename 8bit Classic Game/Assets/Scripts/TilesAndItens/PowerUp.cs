@@ -39,6 +39,7 @@ public class PowerUp : MonoBehaviour
     //Variables
     private Animator animator;
     private bool active;
+    private AudioManager aManager;
 
     //Type of PowerUp
     public PowerUpType powerUpType;
@@ -46,6 +47,9 @@ public class PowerUp : MonoBehaviour
     //Start Method
     private void Start()
     {
+        //Cacheing the Audio Manager in the local variable
+        aManager = FindObjectOfType<AudioManager>();
+
         active = true;
         animator = this.GetComponent<Animator>();
     }
@@ -174,6 +178,8 @@ public class PowerUp : MonoBehaviour
                     }
                     break;
             }
+
+            aManager.Play("Pick Up");
 
             //Self-Destruct
             Destroy(this.gameObject);

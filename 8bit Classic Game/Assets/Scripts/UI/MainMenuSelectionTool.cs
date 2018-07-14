@@ -11,11 +11,12 @@ public class MainMenuSelectionTool : MonoBehaviour
     private float newPositionY;
     private float newPositionX;
     private SelectorPosition handPointer;
-    private PlayMusics pMusics;
+    private AudioManager aManager;
 
     void Start ()
     {
-        pMusics = FindObjectOfType<PlayMusics>();
+        //Cacheing the Audio Manager in the local variable
+        aManager = FindObjectOfType<AudioManager>();
 
         //Setting up initial pointer SelectorPosition
         handPointer = SelectorPosition.up;
@@ -29,10 +30,7 @@ public class MainMenuSelectionTool : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && handPointer == SelectorPosition.up)
         {
-            pMusics.StopPlayingCurrentMusic();
-            pMusics.loadedScene = "World One";
-            pMusics.ChangeMusicAccordingToActiveScene();
-
+            aManager.Play("Selection");
             SceneManager.LoadScene("World One");
         }
 

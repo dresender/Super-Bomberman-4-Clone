@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PierceBomb : Bomb
-{
+{ 
+    private AudioManager aManager;
+  
     // Use this for initialization
     void Start()
     {
+        //Cacheing the Audio Manager in the local variable
+        aManager = FindObjectOfType<AudioManager>();
+
         exploded = false;
         animator = GetComponent<Animator>();
     }
@@ -19,6 +24,9 @@ public class PierceBomb : Bomb
         if (!exploded)
         {
             exploded = true;
+
+            //Play Explosion sound
+            aManager.Play("Explosion");
 
             //Explosion Center
             GetComponent<SpriteRenderer>().sprite = null;
