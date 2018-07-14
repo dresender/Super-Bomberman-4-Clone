@@ -62,8 +62,11 @@ public class PowerUp : MonoBehaviour
     //Destroy Method
     public void destroyPowerup()
     {
-        active = false;
-        animator.SetTrigger("Destroy");
+        if(active)
+        {
+            active = false;
+            animator.SetTrigger("Destroy");
+        }
     }
 
     //PickUp Method

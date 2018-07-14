@@ -125,7 +125,7 @@ public class PlayerState : MonoBehaviour
         {
             victory = true;
             playerInput.enabled = false;
-            playerAnimation.setVictoryAnimation();
+            playerAnimation.setVictoryAnimation(riding);
         }
     }
 

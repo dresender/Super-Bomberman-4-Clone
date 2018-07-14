@@ -83,6 +83,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         bombermanAnimator.SetBool("Riding", false);
         bombermanAnimator.SetTrigger("JumpOff");
+        bombermanAnimator.ResetTrigger("EndJump");
         mountAnimator.SetTrigger("Kill");
     }
 
@@ -96,7 +97,7 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     //Set Victory Animation
-    public void setVictoryAnimation(bool riding = false)
+    public void setVictoryAnimation(bool riding)
     {
         bombermanAnimator.SetTrigger("Victory");
         if(riding) mountAnimator.SetTrigger("Victory");
