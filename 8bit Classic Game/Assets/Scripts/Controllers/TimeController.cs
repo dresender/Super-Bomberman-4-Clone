@@ -79,7 +79,7 @@ public class TimeController : MonoBehaviour
         {
             currentTime -= Time.deltaTime;
             setTimeUI();
-            if (currentTime <= 0) PlayerState.Instance.killPlayer();
+            if (PlayerState.Instance != null && currentTime <= 0) PlayerState.Instance.killPlayer();
         }
     }
 }

@@ -32,35 +32,32 @@ public class SimpleBomb : Bomb
             if(!upBlocked)
             {
                 Vector3 desiredPosition = this.transform.position + (Vector3.up * i);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
+                Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
 
-                if(collision != null)
+                for(int j = 0; j < collision.Length; j++)
                 {
-                    if(collision.CompareTag("SoftBlock"))
+                    if (collision[j].CompareTag("SoftBlock"))
                     {
                         upBlocked = true;
-                        collision.GetComponent<Animator>().enabled = true;
+                        collision[j].GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("PowerUp"))
+                    else if (collision[j].CompareTag("PowerUp"))
                     {
                         upBlocked = true;
-                        collision.GetComponent<PowerUp>().destroyPowerup();
+                        collision[j].GetComponent<PowerUp>().destroyPowerup();
                     }
-                    else if(collision.CompareTag("Enemy"))
+                    else if (collision[j].CompareTag("Enemy"))
                     {
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                        if (i == radius) Instantiate(upEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(upArmExplosion, desiredPosition, Quaternion.identity);
+                        collision[j].GetComponent<EnemyAI>().killEnemy();
                     }
-                    else if (collision.CompareTag("Player"))
+                    else if (collision[j].CompareTag("Player"))
                     {
-                        collision.GetComponent<PlayerState>().killPlayer();
-                        if (i == radius) Instantiate(upEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(upArmExplosion, desiredPosition, Quaternion.identity);
+                        collision[j].GetComponent<PlayerState>().killPlayer();
                     }
                     else upBlocked = true;
                 }
-                else
+                
+                if(!upBlocked)
                 {
                     if (i == radius) Instantiate(upEndExplosion, desiredPosition, Quaternion.identity);
                     else Instantiate(upArmExplosion, desiredPosition, Quaternion.identity);
@@ -69,35 +66,32 @@ public class SimpleBomb : Bomb
             if (!downBlocked)
             {
                 Vector3 desiredPosition = this.transform.position + (Vector3.down * i);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
+                Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
 
-                if (collision != null)
+                for (int j = 0; j < collision.Length; j++)
                 {
-                    if(collision.CompareTag("SoftBlock"))
+                    if (collision[j].CompareTag("SoftBlock"))
                     {
                         downBlocked = true;
-                        collision.GetComponent<Animator>().enabled = true;
+                        collision[j].GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("PowerUp"))
+                    else if (collision[j].CompareTag("PowerUp"))
                     {
                         downBlocked = true;
-                        collision.GetComponent<PowerUp>().destroyPowerup();
+                        collision[j].GetComponent<PowerUp>().destroyPowerup();
                     }
-                    else if (collision.CompareTag("Enemy"))
+                    else if (collision[j].CompareTag("Enemy"))
                     {
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                        if (i == radius) Instantiate(downEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(downArmExplosion, desiredPosition, Quaternion.identity);
+                        collision[j].GetComponent<EnemyAI>().killEnemy();
                     }
-                    else if (collision.CompareTag("Player"))
+                    else if (collision[j].CompareTag("Player"))
                     {
-                        collision.GetComponent<PlayerState>().killPlayer();
-                        if (i == radius) Instantiate(downEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(downArmExplosion, desiredPosition, Quaternion.identity);
+                        collision[j].GetComponent<PlayerState>().killPlayer();
                     }
                     else downBlocked = true;
                 }
-                else
+
+                if (!downBlocked)
                 {
                     if (i == radius) Instantiate(downEndExplosion, desiredPosition, Quaternion.identity);
                     else Instantiate(downArmExplosion, desiredPosition, Quaternion.identity);
@@ -106,35 +100,32 @@ public class SimpleBomb : Bomb
             if (!rightBlocked)
             {
                 Vector3 desiredPosition = this.transform.position + (Vector3.right * i);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
+                Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
 
-                if (collision != null)
+                for (int j = 0; j < collision.Length; j++)
                 {
-                    if (collision.CompareTag("SoftBlock"))
+                    if (collision[j].CompareTag("SoftBlock"))
                     {
                         rightBlocked = true;
-                        collision.GetComponent<Animator>().enabled = true;
+                        collision[j].GetComponent<Animator>().enabled = true;
                     }
-                    else if (collision.CompareTag("PowerUp"))
+                    else if (collision[j].CompareTag("PowerUp"))
                     {
                         rightBlocked = true;
-                        collision.GetComponent<PowerUp>().destroyPowerup();
+                        collision[j].GetComponent<PowerUp>().destroyPowerup();
                     }
-                    else if (collision.CompareTag("Enemy"))
+                    else if (collision[j].CompareTag("Enemy"))
                     {
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                        if (i == radius) Instantiate(rightEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(rightArmExplosion, desiredPosition, Quaternion.identity);
+                        collision[j].GetComponent<EnemyAI>().killEnemy();
                     }
-                    else if (collision.CompareTag("Player"))
+                    else if (collision[j].CompareTag("Player"))
                     {
-                        collision.GetComponent<PlayerState>().killPlayer();
-                        if (i == radius) Instantiate(rightEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(rightArmExplosion, desiredPosition, Quaternion.identity);
+                        collision[j].GetComponent<PlayerState>().killPlayer();
                     }
                     else rightBlocked = true;
                 }
-                else
+
+                if (!rightBlocked)
                 {
                     if (i == radius) Instantiate(rightEndExplosion, desiredPosition, Quaternion.identity);
                     else Instantiate(rightArmExplosion, desiredPosition, Quaternion.identity);
@@ -143,35 +134,35 @@ public class SimpleBomb : Bomb
             if (!leftBlocked)
             {
                 Vector3 desiredPosition = this.transform.position + (Vector3.left * i);
-                Collider2D collision = Physics2D.OverlapBox(desiredPosition, collisionVector, 0f);
+                Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
 
-                if (collision != null)
+                for (int j = 0; j < collision.Length; j++)
                 {
-                    if (collision.CompareTag("SoftBlock"))
+                    if (collision != null)
                     {
-                        leftBlocked = true;
-                        collision.GetComponent<Animator>().enabled = true;
+                        if (collision[j].CompareTag("SoftBlock"))
+                        {
+                            leftBlocked = true;
+                            collision[j].GetComponent<Animator>().enabled = true;
+                        }
+                        else if (collision[j].CompareTag("PowerUp"))
+                        {
+                            leftBlocked = true;
+                            collision[j].GetComponent<PowerUp>().destroyPowerup();
+                        }
+                        else if (collision[j].CompareTag("Enemy"))
+                        {
+                            collision[j].GetComponent<EnemyAI>().killEnemy();
+                        }
+                        else if (collision[j].CompareTag("Player"))
+                        {
+                            collision[j].GetComponent<PlayerState>().killPlayer();
+                        }
+                        else leftBlocked = true;
                     }
-                    else if (collision.CompareTag("PowerUp"))
-                    {
-                        leftBlocked = true;
-                        collision.GetComponent<PowerUp>().destroyPowerup();
-                    }
-                    else if (collision.CompareTag("Enemy"))
-                    {
-                        collision.GetComponent<EnemyAI>().killEnemy();
-                        if (i == radius) Instantiate(leftEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(leftArmExplosion, desiredPosition, Quaternion.identity);
-                    }
-                    else if (collision.CompareTag("Player"))
-                    {
-                        collision.GetComponent<PlayerState>().killPlayer();
-                        if (i == radius) Instantiate(leftEndExplosion, desiredPosition, Quaternion.identity);
-                        else Instantiate(leftArmExplosion, desiredPosition, Quaternion.identity);
-                    }
-                    else leftBlocked = true;
                 }
-                else
+
+                if (!leftBlocked)
                 {
                     if (i == radius) Instantiate(leftEndExplosion, desiredPosition, Quaternion.identity);
                     else Instantiate(leftArmExplosion, desiredPosition, Quaternion.identity);
