@@ -75,7 +75,7 @@ public class PlayerState : MonoBehaviour
     //Mount
     public void mount(Vector2 jumpTarget)
     {
-        if(!riding)
+        if (!riding)
         {
             this.transform.position = jumpTarget;
             riding = true;
@@ -92,6 +92,8 @@ public class PlayerState : MonoBehaviour
     {
         if(!jumping)
         {
+            invulnerable = true;
+            invulnerableTime = 1f;
             riding = false;
             jumping = true;
             playerAnimation.dismount();
@@ -110,8 +112,6 @@ public class PlayerState : MonoBehaviour
             {
                 if (riding)
                 {
-                    invulnerable = true;
-                    invulnerableTime = 3.1f;
                     dismount();
                 }
                 else
@@ -161,17 +161,19 @@ public class PlayerState : MonoBehaviour
         {
             if (playerAnimation.isEndOfJumpingAnimation())
             {
-                if (!riding) playerAnimation.disableMount();
+                if (!riding)
+                {
+                    playerAnimation.disableMount();
+                }
                 jumping = false;
                 collider.enabled = true;
                 playerInput.enabled = true;
             }
         }
-
-        if(invulnerable)
+        else if(invulnerable)
         {
             invulnerableTime -= Time.deltaTime;
-            playerAnimation.flashSprite();
+            playerAnimation.flashSprite(riding);
             if (invulnerableTime <= 0f) invulnerable = false;
         }
     }

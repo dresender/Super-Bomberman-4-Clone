@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     //Variables
     private SpriteRenderer bombermanSpriteRenderer;
+    private SpriteRenderer mountSpriteRenderer;
     private Animator bombermanAnimator;
     private Animator mountAnimator;
     private MountLayerController mountLayerController;
@@ -18,6 +19,7 @@ public class PlayerAnimation : MonoBehaviour
         bombermanAnimator = this.transform.GetChild(0).GetComponent<Animator>();
         bombermanSpriteRenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
         mountAnimator = this.transform.GetChild(1).GetComponent<Animator>();
+        mountSpriteRenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
         mountLayerController = this.transform.GetChild(1).GetComponent<MountLayerController>();
         mountObject = this.transform.GetChild(1).gameObject;
         mountObject.SetActive(false);
@@ -102,11 +104,12 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     //Flash Sprite
-    public void flashSprite()
+    public void flashSprite(bool riding)
     {
         if (flashSpriteInterval <= 0f)
         {
             bombermanSpriteRenderer.enabled = !bombermanSpriteRenderer.enabled;
+            if (riding) mountSpriteRenderer.enabled = !mountSpriteRenderer.enabled;
             flashSpriteInterval = 0.1f;
         }
         else flashSpriteInterval -= Time.deltaTime;

@@ -3616,16 +3616,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
+    - target: {fileID: 114890763172791172, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: flash
+      propertyPath: player
       value: 
-      objectReference: {fileID: 1867615185}
-    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
+      objectReference: {fileID: 1705475046}
+    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: portal
+      propertyPath: number_100
       value: 
-      objectReference: {fileID: 1411012290}
+      objectReference: {fileID: 659283829}
+    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
+        type: 2}
+      propertyPath: number_1000
+      value: 
+      objectReference: {fileID: 804017067}
     - target: {fileID: 114597381444366694, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
       propertyPath: number_minutes
@@ -3641,35 +3646,19 @@ Prefab:
       propertyPath: number_seconds_unit
       value: 
       objectReference: {fileID: 746799111}
-    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
+    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: number_100
+      propertyPath: flash
       value: 
-      objectReference: {fileID: 659283829}
-    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
+      objectReference: {fileID: 1867615185}
+    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: number_1000
+      propertyPath: portal
       value: 
-      objectReference: {fileID: 804017067}
+      objectReference: {fileID: 1411012290}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e00158a73999cab47b133064d8edb5c5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &293977695 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1840822164448478, guid: e00158a73999cab47b133064d8edb5c5,
-    type: 2}
-  m_PrefabInternal: {fileID: 293977694}
---- !u!114 &293977696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 293977695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e078b112ddf52141a98e5cd9acf5663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &300985745
 GameObject:
   m_ObjectHideFlags: 0
@@ -13128,6 +13117,16 @@ Prefab:
       propertyPath: maxBombs
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114210911400413650, guid: 3b0f66a6a6d704249ac3e005d3e91a0b,
+        type: 2}
+      propertyPath: delayExtraEggs
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210911400413650, guid: 3b0f66a6a6d704249ac3e005d3e91a0b,
+        type: 2}
+      propertyPath: delayExtraEggMovement
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b0f66a6a6d704249ac3e005d3e91a0b, type: 2}
   m_IsPrefabParent: 0
@@ -21181,6 +21180,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4226392446914630, guid: b1a3f7b7f20c0a341a54b694d5b3c9a2,
     type: 2}
   m_PrefabInternal: {fileID: 2069411003}
+--- !u!1 &1705475046 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1403356609209336, guid: 3b0f66a6a6d704249ac3e005d3e91a0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1077359015}
 --- !u!4 &1715128728 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4226392446914630, guid: b1a3f7b7f20c0a341a54b694d5b3c9a2,

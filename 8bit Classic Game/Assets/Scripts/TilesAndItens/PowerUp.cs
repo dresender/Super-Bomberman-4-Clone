@@ -157,9 +157,22 @@ public class PowerUp : MonoBehaviour
                     ControllerManager.Instance.timeController.pauseTime(18f);
                     break;
                 case PowerUpType.Egg:
-                    playerState.mount(new Vector2(this.transform.position.x, this.transform.position.y - 0.25f));
-                    destroyPowerup();
-                    return;
+                    if(playerState.isRiding())
+                    {
+                        if (ControllerManager.Instance.extraEggsController.extraEggsCount() < 2)
+                        {
+                            ControllerManager.Instance.extraEggsController.createExtraEgg(this.transform.position);
+                            //And Self Destruct At End of Switch
+                        }
+                        else return;
+                    }
+                    else
+                    {
+                        playerState.mount(new Vector2(this.transform.position.x, this.transform.position.y - 0.25f));
+                        destroyPowerup();
+                        return;
+                    }
+                    break;
             }
 
             //Self-Destruct

@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 61935865655597002}
   - component: {fileID: 212243904859578664}
   - component: {fileID: 95767725450808772}
-  - component: {fileID: 114825372130128848}
+  - component: {fileID: 114677076542547234}
+  - component: {fileID: 114368626667797068}
   m_Layer: 0
-  m_Name: Egg
+  m_Name: ExtraEgg
   m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +60,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.8125}
+    oldSize: {x: 1, y: 1.5625}
     newSize: {x: 1, y: 1.8125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -77,7 +78,7 @@ Animator:
   m_GameObject: {fileID: 1109409956596352}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 530bf0ae6619b454680751296cb89ede, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3a60733d80001934892a2095c4c2289c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -86,7 +87,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114825372130128848
+--- !u!114 &114368626667797068
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -94,10 +95,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1109409956596352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce0e8672329c3c3448bb772750135df0, type: 3}
+  m_Script: {fileID: 11500000, guid: f75053b1ba607424ab2e73c83fe438b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 26
+--- !u!114 &114677076542547234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109409956596352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3daed69a3c27b1b4e9e130562c1064cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212243904859578664
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -130,10 +141,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -931564245
-  m_SortingLayer: 3
+  m_SortingLayerID: 1273671797
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300024, guid: 3048ca549ec77c848b1cbbf14ecad7c6, type: 3}
+  m_Sprite: {fileID: 21300096, guid: 3048ca549ec77c848b1cbbf14ecad7c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

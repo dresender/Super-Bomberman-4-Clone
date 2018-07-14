@@ -13,6 +13,8 @@ public class PlayerInput : MonoBehaviour
     private PlayerState playerState;
     private GameObject lastBombLayed;
     private bool insideBomb;
+    private LinkedList<Vector2> lastPositions;
+    public int delayExtraEggMovement;
 
     //Start Method
     void Start()
@@ -22,6 +24,7 @@ public class PlayerInput : MonoBehaviour
         playerAnimation = this.GetComponent<PlayerAnimation>();
         collider = this.GetComponent<BoxCollider2D>();
         raycastMargin = 0.5f;
+        lastPositions = new LinkedList<Vector2>();
     }
 
     //Update Method
@@ -30,6 +33,24 @@ public class PlayerInput : MonoBehaviour
         layBombs();
 		movePlayer();
 	}
+
+    //Save Position
+    private Vector2 savePosition(Vector2 position)
+    {
+        if(lastPositions.Count == 0)
+        {
+            lastPositions.AddFirst(position);
+            return position;
+        }
+        else if (lastPositions.Last.Value != position)
+        {
+            Vector2 result = lastPositions.First.Value;
+            if(lastPositions.Count == delayExtraEggMovement) lastPositions.RemoveFirst();
+            lastPositions.AddLast(position);
+            return result;
+        }
+        else return lastPositions.First.Value;
+    }
 
     //Lay Bombs Algorithm
     private void layBombs()
@@ -234,7 +255,20 @@ public class PlayerInput : MonoBehaviour
             if (!remainInsideBomb) insideBomb = false;
 
             //Move Player!
-            if (canMove) transform.position = movement;
+            if (canMove)
+            {
+                if(ControllerManager.Instance.extraEggsController.extraEggsCount() > 0)
+                {
+                    Vector2 desiredPosition = savePosition(movement);
+                    if (lastPositions.Count == delayExtraEggMovement)
+                    {
+                        ControllerManager.Instance.extraEggsController.moveEggs(desiredPosition);
+                    } 
+                }
+                
+                //Finally...
+                transform.position = movement;
+            }
         }
 	}
 }
