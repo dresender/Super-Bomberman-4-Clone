@@ -29,6 +29,7 @@ public class SceneController : MonoBehaviour
     public void reloadScene()
     {
         sceneToLoad = "World One";
+        pMusics.StopPlayingCurrentMusic();
         pMusics.loadedScene = "World One";
         pMusics.ChangeMusicAccordingToActiveScene();
     }
@@ -37,6 +38,7 @@ public class SceneController : MonoBehaviour
     public void loadGameOverScene()
     {
         sceneToLoad = "Game Over";
+        pMusics.StopPlayingCurrentMusic();
         pMusics.loadedScene = "Game Over";
         pMusics.ChangeMusicAccordingToActiveScene();
     }
@@ -45,6 +47,7 @@ public class SceneController : MonoBehaviour
     public void loadMainMenuScene()
     {
         sceneToLoad = "Main Menu";
+        pMusics.StopPlayingCurrentMusic();
         pMusics.loadedScene = "Main Menu";
         pMusics.ChangeMusicAccordingToActiveScene();
     }
