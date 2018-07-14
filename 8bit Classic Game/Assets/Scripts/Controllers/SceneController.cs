@@ -14,6 +14,12 @@ public class SceneController : MonoBehaviour
 
     private PlayMusics pMusics;
 
+    //Start Method
+    private void Start()
+    {
+        sceneToLoad = null;
+    }
+
     void Awake()
     {
         pMusics = FindObjectOfType<PlayMusics>();

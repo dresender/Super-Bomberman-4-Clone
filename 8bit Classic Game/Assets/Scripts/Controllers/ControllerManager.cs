@@ -5,10 +5,15 @@ using UnityEngine;
 public class ControllerManager : MonoBehaviour
 {
     //References
+    [HideInInspector]
     public BombController bombController;
+    [HideInInspector]
     public EnemiesController enemiesController;
+    [HideInInspector]
     public TimeController timeController;
+    [HideInInspector]
     public ScoreController scoreController;
+    [HideInInspector]
     public SceneController sceneController;
 
     //Singleton Instance Variable
