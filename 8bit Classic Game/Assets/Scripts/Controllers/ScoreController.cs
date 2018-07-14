@@ -7,6 +7,9 @@ public class ScoreController : MonoBehaviour
 {
     //Control Variables
     public static int score;
+    public SpriteRenderer number_100;
+    public SpriteRenderer number_1000;
+    public Sprite[] numbers;
 
     //References
     public GameObject score100;
@@ -20,6 +23,9 @@ public class ScoreController : MonoBehaviour
     public void spawnScore(Vector2 position)
     {
         Instantiate(score100, position, Quaternion.identity);
-        score += 100;        
+        score += 100;
+
+        number_100.sprite = numbers[score / 100];
+        number_1000.sprite = numbers[(score % 100)];
     }
 }
