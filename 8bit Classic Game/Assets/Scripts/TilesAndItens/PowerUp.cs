@@ -29,7 +29,8 @@ public enum PowerUpType
     Skull,
     SpeedUp,
     Sushi,
-    Time
+    Time,
+    Egg
 };
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -151,6 +152,9 @@ public class PowerUp : MonoBehaviour
                     break;
                 case PowerUpType.Time:
                     ControllerManager.Instance.timeController.pauseTime(18f);
+                    break;
+                case PowerUpType.Egg:
+                    //TODO
                     break;
             }
 
