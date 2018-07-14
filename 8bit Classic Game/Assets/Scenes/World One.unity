@@ -728,8 +728,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Walk
     clip: {fileID: 8300000, guid: 76b7c212a82cd59428d677d23241c26f, type: 3}
-    volume: 0.5
-    pitch: 1
+    volume: 0.3
+    pitch: 0.55
     loop: 0
     source: {fileID: 0}
   - name: Dismount

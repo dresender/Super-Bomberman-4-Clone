@@ -13,10 +13,14 @@ public class PlayerInput : MonoBehaviour
     private PlayerState playerState;
     private GameObject lastBombLayed;
     private bool insideBomb;
+    private AudioManager aManager;
 
     //Start Method
     void Start()
     {
+        //Cacheing the Audio Manager in the local variable
+        aManager = FindObjectOfType<AudioManager>();
+
         lastBombLayed = null;
         playerState = this.GetComponent<PlayerState>();
         playerAnimation = this.GetComponent<PlayerAnimation>();
@@ -235,6 +239,11 @@ public class PlayerInput : MonoBehaviour
 
             //Move Player!
             if (canMove) transform.position = movement;
+
+            if (!aManager.IsPlaying("Walk"))
+            {
+                aManager.Play("Walk");
+            }
         }
 	}
 }
