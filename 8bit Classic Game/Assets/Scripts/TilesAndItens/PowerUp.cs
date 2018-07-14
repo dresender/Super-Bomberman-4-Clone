@@ -85,7 +85,7 @@ public class PowerUp : MonoBehaviour
                     //TODO
                     break;
                 case PowerUpType.BombUp:
-                    if(playerState.maxBombs < 10) playerState.bombRadius += 1;
+                    if(playerState.maxBombs < 10) playerState.maxBombs += 1;
                     break;
                 case PowerUpType.Cake:
                     //TODO

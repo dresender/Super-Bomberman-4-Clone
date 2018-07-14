@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator bombermanAnimator;
     private Animator mountAnimator;
     private MountLayerController mountLayerController;
+    private GameObject mountObject;
 
     // Use this for initialization
     void Start ()
@@ -15,7 +16,8 @@ public class PlayerAnimation : MonoBehaviour
         bombermanAnimator = this.transform.GetChild(0).GetComponent<Animator>();
         mountAnimator = this.transform.GetChild(1).GetComponent<Animator>();
         mountLayerController = this.transform.GetChild(1).GetComponent<MountLayerController>();
-        this.transform.GetChild(1).gameObject.SetActive(false);
+        mountObject = this.transform.GetChild(1).gameObject;
+        mountObject.SetActive(false);
     }
 
     //Set Movement Animation
@@ -64,6 +66,12 @@ public class PlayerAnimation : MonoBehaviour
         else return false;
     }
 
+    //Disable Mount
+    public void disableMount()
+    {
+        mountObject.SetActive(false);
+    }
+
     //Set Death Animation
     public void setDeathAnimation()
     {
@@ -74,15 +82,15 @@ public class PlayerAnimation : MonoBehaviour
     public void dismount()
     {
         bombermanAnimator.SetBool("Riding", false);
-        bombermanAnimator.SetTrigger("Jump");
+        bombermanAnimator.SetTrigger("JumpOff");
         mountAnimator.SetTrigger("Kill");
     }
 
     //Mount
     public void mount()
     {
-        this.transform.GetChild(1).gameObject.SetActive(true);
-        bombermanAnimator.SetTrigger("Jump");
+        mountObject.SetActive(true);
+        bombermanAnimator.SetTrigger("JumpOn");
         bombermanAnimator.SetBool("Riding", true);
         mountAnimator.SetInteger("Direction", bombermanAnimator.GetInteger("Direction"));
     }
