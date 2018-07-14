@@ -21,8 +21,12 @@ public class PlayMusics: MonoBehaviour
 
     public void ChangeMusicAccordingToActiveScene()
     {
-        StopPlayingCurrentMusic();
         PlaySceneMusic();
+    }
+
+    public void StopPlayingCurrentMusic()
+    {
+        aManager.StopPlaying(loadedScene);
     }
 
     private void PlaySceneMusic()
@@ -54,10 +58,5 @@ public class PlayMusics: MonoBehaviour
     void PlayGameOverThemeSong()
     {
         aManager.Play("Game Over");
-    }
-
-    void StopPlayingCurrentMusic()
-    {
-        aManager.StopPlaying(loadedScene);
     }
 }

@@ -6,16 +6,17 @@ using UnityEngine.SceneManagement;
 public enum SelectorPosition { up, middle, down };
 
 public class MainMenuSelectionTool : MonoBehaviour
-{
-    //35, 52, 69 (17 positions)
-
-    Vector2 newPosition;
-    float newPositionY;
-    float newPositionX;
-    SelectorPosition handPointer;
+{    
+    private Vector2 newPosition;
+    private float newPositionY;
+    private float newPositionX;
+    private SelectorPosition handPointer;
+    private PlayMusics pMusics;
 
     void Start ()
     {
+        pMusics = FindObjectOfType<PlayMusics>();
+
         //Setting up initial pointer SelectorPosition
         handPointer = SelectorPosition.up;
 
@@ -28,6 +29,10 @@ public class MainMenuSelectionTool : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && handPointer == SelectorPosition.up)
         {
+            pMusics.StopPlayingCurrentMusic();
+            pMusics.loadedScene = "World One";
+            pMusics.ChangeMusicAccordingToActiveScene();
+
             SceneManager.LoadScene("World One");
         }
 
