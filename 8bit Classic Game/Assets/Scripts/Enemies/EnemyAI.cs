@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
     //Public Variables
 	public float speed;
+    public GameObject egg;
 
     //Enum
     private enum Directions { up, down, left, right };
@@ -57,6 +58,7 @@ public class EnemyAI : MonoBehaviour
             alive = false;
             enemyAnimation.triggerKillAnimation();
             ControllerManager.Instance.scoreController.spawnScore(this.transform.position);
+            Instantiate(egg, new Vector2(Mathf.Round(this.transform.position.x), Mathf.Round(this.transform.position.y) + 0.25f), Quaternion.identity);
         }
     }
 

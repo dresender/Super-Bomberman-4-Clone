@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  egg: {fileID: 1109409956596352, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
 --- !u!212 &212797099187574970
 SpriteRenderer:
   m_ObjectHideFlags: 1
