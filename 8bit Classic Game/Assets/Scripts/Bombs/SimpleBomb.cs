@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class SimpleBomb : Bomb
 {
+    private AudioManager aManager;
+
     // Use this for initialization
     void Start()
     {
+        //Cacheing the Audio Manager in the local variable
+        aManager = FindObjectOfType<AudioManager>();
+
         animator = GetComponent<Animator>();
         exploded = false;
     }
@@ -19,6 +24,9 @@ public class SimpleBomb : Bomb
         if (!exploded)
         {
             exploded = true;
+
+            //Play Explosion Sound
+            aManager.Play("Explosion");
 
             //Explosion Center
             GetComponent<SpriteRenderer>().sprite = null;

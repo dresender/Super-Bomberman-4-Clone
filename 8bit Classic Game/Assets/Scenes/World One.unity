@@ -720,6 +720,36 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: bd0d61301238234438060bfbd379a54d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Walk
+    clip: {fileID: 8300000, guid: 76b7c212a82cd59428d677d23241c26f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dismount
+    clip: {fileID: 8300000, guid: 1908568dd7cae8f4597d4e9ee028f849, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mount
+    clip: {fileID: 8300000, guid: 75abb10f71d4c4242a094c14f372aad6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pick Up
+    clip: {fileID: 8300000, guid: f42193dd38455c044a13caff426b65f6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &32226081
 Transform:
   m_ObjectHideFlags: 0
