@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-    //Public Variables
+    //Public Balancing Variables
     public float speed;
     public int maxBombs;
     public int bombRadius;
     public GameObject bombType;
+
+    //Control Variables
     private bool alive;
     private bool victory;
+
+    //Riding Variables
+    private bool riding;
+    private bool jumping;
+    private BoxCollider2D collider;
 
     //References
     private PlayerAnimation playerAnimation;
@@ -18,10 +25,13 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
+        jumping = false;
+        riding = false;
         victory = false;
         alive = true;
         playerAnimation = this.GetComponent<PlayerAnimation>();
         playerInput = this.GetComponent<PlayerInput>();
+        collider = this.GetComponent<BoxCollider2D>();
     }
 
     //Singleton Instance Variable
@@ -52,6 +62,32 @@ public class PlayerState : MonoBehaviour
     public void OnDestroy()
     {
         instance = null;
+    }
+
+    //Check if Riding
+    public bool isRiding()
+    {
+        return riding;
+    }
+
+    //Mount
+    public void mount(Vector2 jumpTarget)
+    {
+        if(!riding)
+        {
+            this.transform.position = jumpTarget;
+            riding = true;
+            jumping = true;
+            playerAnimation.mount();
+            collider.enabled = false;
+            playerInput.enabled = false;
+        }
+    }
+
+    //Dismount
+    public void dismount()
+    {
+        //TODO
     }
 
     //Player Death Method
@@ -94,6 +130,15 @@ public class PlayerState : MonoBehaviour
             {
                 ControllerManager.Instance.sceneController.loadMainMenuScene();
                 Destroy(this.gameObject);
+            }
+        }
+        else if(jumping)
+        {
+            if (playerAnimation.isEndOfJumpingAnimation())
+            {
+                jumping = false;
+                collider.enabled = true;
+                playerInput.enabled = true;
             }
         }
     }

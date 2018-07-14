@@ -154,8 +154,9 @@ public class PowerUp : MonoBehaviour
                     ControllerManager.Instance.timeController.pauseTime(18f);
                     break;
                 case PowerUpType.Egg:
-                    //TODO
-                    break;
+                    playerState.mount(new Vector2(this.transform.position.x, this.transform.position.y - 0.25f));
+                    destroyPowerup();
+                    return;
             }
 
             //Self-Destruct

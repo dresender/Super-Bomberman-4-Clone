@@ -65,30 +65,30 @@ public class PlayerInput : MonoBehaviour
             hasMoved = true;
             movement += Vector2.up * playerState.speed * Time.deltaTime;
             dirMovement = Direction.up;
-            playerAnimation.setMovementAnimation(true, 1);
+            playerAnimation.setMovementAnimation(true, 1, playerState.isRiding());
         }
 		else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
 		{
             hasMoved = true;
             movement += Vector2.down * playerState.speed * Time.deltaTime;
             dirMovement = Direction.down;
-            playerAnimation.setMovementAnimation(true, 0);
+            playerAnimation.setMovementAnimation(true, 0, playerState.isRiding());
         }
 		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
 		{
             hasMoved = true;
             movement += Vector2.right * playerState.speed * Time.deltaTime;
             dirMovement = Direction.right;
-            playerAnimation.setMovementAnimation(true, 2);
+            playerAnimation.setMovementAnimation(true, 2, playerState.isRiding());
         }
 		else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
 		{
             hasMoved = true;
             movement += Vector2.left * playerState.speed * Time.deltaTime;
             dirMovement = Direction.left;
-            playerAnimation.setMovementAnimation(true, 3);
+            playerAnimation.setMovementAnimation(true, 3, playerState.isRiding());
         }
-        else playerAnimation.setMovementAnimation(false);
+        else playerAnimation.setMovementAnimation(false, playerState.isRiding());
 
         //Check for Collisions
         if (hasMoved)

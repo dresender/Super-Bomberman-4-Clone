@@ -5,33 +5,61 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     //Variables
-    private Animator animator;
+    private Animator bombermanAnimator;
+    private Animator mountAnimator;
+    private MountLayerController mountLayerController;
 
     // Use this for initialization
     void Start ()
     {
-        animator = this.transform.GetChild(0).GetComponent<Animator>();
+        bombermanAnimator = this.transform.GetChild(0).GetComponent<Animator>();
+        mountAnimator = this.transform.GetChild(1).GetComponent<Animator>();
+        mountLayerController = this.transform.GetChild(1).GetComponent<MountLayerController>();
+        this.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     //Set Movement Animation
-    public void setMovementAnimation(bool moving, int direction)
+    public void setMovementAnimation(bool moving, int direction, bool riding)
     {
-        animator.SetInteger("Direction", direction);
-        animator.SetBool("Moving", moving);
+        bombermanAnimator.SetInteger("Direction", direction);
+        bombermanAnimator.SetBool("Moving", moving);
+        if (riding)
+        {
+            mountAnimator.SetInteger("Direction", direction);
+            if (direction == 0) mountLayerController.setDownMovement(true);
+            else mountLayerController.setDownMovement(false);
+        }
+        if (riding) mountAnimator.SetBool("Moving", moving);
     }
 
     //Set Movement Animation
-    public void setMovementAnimation(bool moving)
+    public void setMovementAnimation(bool moving, bool riding)
     {
-        animator.SetBool("Moving", moving);
+        bombermanAnimator.SetBool("Moving", moving);
+        if (riding) mountAnimator.SetBool("Moving", moving);
     }
 
     //get State Animation
     public bool isEndOfDeathAnimation()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Death"))
+        if (bombermanAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Death"))
         {
-            return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+            return bombermanAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+        }
+        else return false;
+    }
+
+    //get State Animation
+    public bool isEndOfJumpingAnimation()
+    {
+        if (bombermanAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Jumping"))
+        {
+            if (bombermanAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                bombermanAnimator.SetTrigger("EndJump");
+                return true;
+            }
+            else return false;
         }
         else return false;
     }
@@ -39,21 +67,39 @@ public class PlayerAnimation : MonoBehaviour
     //Set Death Animation
     public void setDeathAnimation()
     {
-        animator.SetTrigger("Kill");
+        bombermanAnimator.SetTrigger("Kill");
+    }
+
+    //Dismount
+    public void dismount()
+    {
+        bombermanAnimator.SetBool("Riding", false);
+        bombermanAnimator.SetTrigger("Jump");
+        mountAnimator.SetTrigger("Kill");
+    }
+
+    //Mount
+    public void mount()
+    {
+        this.transform.GetChild(1).gameObject.SetActive(true);
+        bombermanAnimator.SetTrigger("Jump");
+        bombermanAnimator.SetBool("Riding", true);
+        mountAnimator.SetInteger("Direction", bombermanAnimator.GetInteger("Direction"));
     }
 
     //Set Victory Animation
-    public void setVictoryAnimation()
+    public void setVictoryAnimation(bool riding = false)
     {
-        animator.SetTrigger("Victory");
+        bombermanAnimator.SetTrigger("Victory");
+        if(riding) mountAnimator.SetTrigger("Victory");
     }
 
     //get State Animation
     public bool isEndOfTeleportAnimation()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Teleport"))
+        if (bombermanAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Teleport"))
         {
-            return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+            return bombermanAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
         }
         else return false;
     }
