@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
+    //Types of Bombs
+    public GameObject simpleBomb;
+    public GameObject pierceBomb;
+
     //Variables
     private LinkedList<GameObject> bombsPlayer1;
 

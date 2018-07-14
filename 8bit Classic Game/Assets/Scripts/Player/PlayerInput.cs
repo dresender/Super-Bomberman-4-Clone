@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
 {
     //Internal Variables
     private float raycastMargin;
-    private Vector2 colliderSize;
+    private BoxCollider2D collider;
     private PlayerAnimation playerAnimation;
     private PlayerState playerState;
     private GameObject lastBombLayed;
@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
         lastBombLayed = null;
         playerState = this.GetComponent<PlayerState>();
         playerAnimation = this.GetComponent<PlayerAnimation>();
-        colliderSize = this.GetComponent<BoxCollider2D>().size;
+        collider = this.GetComponent<BoxCollider2D>();
         raycastMargin = 0.5f;
     }
 
@@ -37,16 +37,15 @@ public class PlayerInput : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
         {
             //Check for Position
-            Collider2D[] collisions = Physics2D.OverlapBoxAll(this.transform.position, colliderSize, 0f);
-
-            for(int i = 0; i < collisions.Length; i++)
-            {
-                if (collisions[i].gameObject.layer == 9) return;
-            }
+            Collider2D[] collisions = new Collider2D[2];
+            int hits = collider.GetContacts(collisions);
 
             //Finally...
-            lastBombLayed = ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
-            if (lastBombLayed != null) insideBomb = true;
+            if(hits == 0)
+            {
+                lastBombLayed = ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
+                if (lastBombLayed != null) insideBomb = true;
+            }
         }
     }
 
@@ -94,7 +93,7 @@ public class PlayerInput : MonoBehaviour
         if (hasMoved)
         {
             //Get Colliders
-            Collider2D[] collisions = Physics2D.OverlapBoxAll(movement, colliderSize, 0f);
+            Collider2D[] collisions = Physics2D.OverlapBoxAll(movement, collider.size, 0f);
             bool canMove = true;
 
             //Will Always Collide with Itself!

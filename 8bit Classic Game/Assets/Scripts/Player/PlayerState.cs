@@ -81,24 +81,40 @@ public class PlayerState : MonoBehaviour
             playerAnimation.mount();
             collider.enabled = false;
             playerInput.enabled = false;
+            bombType = ControllerManager.Instance.bombController.pierceBomb;
         }
     }
 
     //Dismount
     public void dismount()
     {
-        //TODO
+        if(!jumping)
+        {
+            riding = false;
+            jumping = true;
+            playerAnimation.dismount();
+            collider.enabled = false;
+            playerInput.enabled = false;
+            bombType = ControllerManager.Instance.bombController.simpleBomb;
+        }
     }
 
     //Player Death Method
     public void killPlayer()
     {
-        if(alive)
+        if (alive)
         {
-            alive = false;
-            playerAnimation.setDeathAnimation();
-            playerInput.enabled = false;
-            LivesController.lives -= 1;
+            if (riding)
+            {
+                dismount();
+            }
+            else
+            {
+                alive = false;
+                playerAnimation.setDeathAnimation();
+                playerInput.enabled = false;
+                LivesController.lives -= 1;
+            }
         }
     }
 
@@ -136,6 +152,7 @@ public class PlayerState : MonoBehaviour
         {
             if (playerAnimation.isEndOfJumpingAnimation())
             {
+                if (!riding) playerAnimation.disableMount();
                 jumping = false;
                 collider.enabled = true;
                 playerInput.enabled = true;
