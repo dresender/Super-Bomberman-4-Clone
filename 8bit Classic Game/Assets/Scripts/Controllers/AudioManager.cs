@@ -59,6 +59,13 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Stop();
     }  
+
+    public bool finishedPlaying(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s.source.time >= s.clip.length) return true;
+        else return false;
+    }
     
     public bool IsPlaying(string name)
     {

@@ -5,10 +5,12 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     //References
+    private AudioManager aManager;
     public SpriteRenderer number_minutes;
     public SpriteRenderer number_seconds_decimal;
     public SpriteRenderer number_seconds_unit;
     public Sprite[] numbers;
+    public bool starting;
 
     //Public Variables
     public int maxTime;
@@ -21,7 +23,9 @@ public class TimeController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        timeRunning = true;
+        aManager = FindObjectOfType<AudioManager>();
+        starting = true;
+        timeRunning = false;
         currentTime = maxTime;
     }
 	
@@ -54,7 +58,22 @@ public class TimeController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (!timeRunning)
+        if (starting)
+        {
+            if(!aManager.IsPlaying("Level Start"))
+            {
+                if (aManager.finishedPlaying("Level Start"))
+                {
+                    starting = false;
+                    ControllerManager.Instance.gamePauseController.enabled = true;
+                    ControllerManager.Instance.gamePauseController.pauseOrUnpauseGame();
+                    aManager.Play("Theme Music");
+                    timeRunning = true;
+                }
+                else aManager.Play("Level Start");
+            }
+        }
+        else if (!timeRunning)
         {
             durationPausedTime -= Time.deltaTime;
             if (durationPausedTime <= 0.5f)

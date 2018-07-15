@@ -17,6 +17,8 @@ public class ControllerManager : MonoBehaviour
     public SceneController sceneController;
     [HideInInspector]
     public ExtraEggsController extraEggsController;
+    [HideInInspector]
+    public GamePause gamePauseController;
 
     //Singleton Instance Variable
     private static ControllerManager instance;
@@ -57,5 +59,6 @@ public class ControllerManager : MonoBehaviour
         scoreController = this.GetComponent<ScoreController>();
         sceneController = this.GetComponent<SceneController>();
         extraEggsController = this.GetComponent<ExtraEggsController>();
+        gamePauseController = this.GetComponent<GamePause>();
     }
 }

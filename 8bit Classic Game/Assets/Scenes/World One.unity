@@ -720,7 +720,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 32226078}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cb6f55cc8137e446a13ec00526e1f89, type: 3}
   m_Name: 
@@ -770,6 +770,24 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Pick Up
     clip: {fileID: 8300000, guid: f42193dd38455c044a13caff426b65f6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level Clear
+    clip: {fileID: 8300000, guid: 060337b5a61964d40b3afb15d91f2a68, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level Start
+    clip: {fileID: 8300000, guid: fb34a7764dd95e44493915e8934f53a7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Time Up
+    clip: {fileID: 8300000, guid: 8a5e90d51b7096040a1a2827672ca466, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -3861,7 +3879,8 @@ Prefab:
       propertyPath: delayExtraEggMovement
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114805738180461310, guid: e00158a73999cab47b133064d8edb5c5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e00158a73999cab47b133064d8edb5c5, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &300985745
@@ -13523,6 +13542,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1802581432028406, guid: 6ee5d0262ce77924fbd048ca1d9eeb1e,
         type: 2}
+    - target: {fileID: 114210911400413650, guid: 3b0f66a6a6d704249ac3e005d3e91a0b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b0f66a6a6d704249ac3e005d3e91a0b, type: 2}
   m_IsPrefabParent: 0
@@ -15342,6 +15366,23 @@ Transform:
   m_Father: {fileID: 655154943}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1236994250 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1840822164448478, guid: e00158a73999cab47b133064d8edb5c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 293977694}
+--- !u!114 &1236994260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236994250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd6f2f16e89b0a4b89d08d2608de22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1705475046}
 --- !u!1 &1241261491
 GameObject:
   m_ObjectHideFlags: 0
