@@ -3855,6 +3855,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1705475046}
+    - target: {fileID: 114597381444366694, guid: e00158a73999cab47b133064d8edb5c5,
+        type: 2}
+      propertyPath: maxTime
+      value: 179
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e00158a73999cab47b133064d8edb5c5, type: 2}
   m_IsPrefabParent: 0

@@ -25,6 +25,7 @@ public class PlayerState : MonoBehaviour
     //References
     private PlayerAnimation playerAnimation;
     private PlayerInput playerInput;
+    private AudioManager aManager;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class PlayerState : MonoBehaviour
         playerAnimation = this.GetComponent<PlayerAnimation>();
         playerInput = this.GetComponent<PlayerInput>();
         collider = this.GetComponent<BoxCollider2D>();
+        aManager = FindObjectOfType<AudioManager>();
     }
 
     //Singleton Instance Variable
@@ -144,6 +146,8 @@ public class PlayerState : MonoBehaviour
     {
         if(!victory)
         {
+            aManager.StopPlaying("Theme Music");
+            aManager.Play("Level Clear");
             victory = true;
             playerInput.enabled = false;
             playerAnimation.setVictoryAnimation(riding);
