@@ -18,10 +18,12 @@ public class EnemyAI : MonoBehaviour
 	private List<Directions> listOfPossibleDirections;
     private bool alive;
     private float turningInterval;
+    private bool collidedWithEnemy;
 
     //Start Method
 	void Start()
 	{
+        collidedWithEnemy = false;
         ControllerManager.Instance.enemiesController.registerEnemy(this.gameObject);
         enemyAnimation = this.GetComponent<EnemyAnimation>();
         colliderSize = new Vector2(0.9f, 0.9f);
@@ -78,16 +80,26 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            this.transform.position = (Vector2) this.transform.position + direction * speed * Time.deltaTime;
-            Collider2D[] collisions = Physics2D.OverlapBoxAll(this.transform.position, colliderSize, 0f);
+            bool canMove = true;
+            Vector2 desiredPosition = (Vector2) this.transform.position + direction * speed * Time.deltaTime;
+            Collider2D[] collisions = Physics2D.OverlapBoxAll(desiredPosition, colliderSize, 0f);
             for(int i = 0; i < collisions.Length; i++)
             {
-                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].gameObject.layer == 11) || (collisions[i].CompareTag("Enemy") && collisions[i].gameObject != this.gameObject))
+                if ((collisions[i].gameObject.layer == 8 || collisions[i].gameObject.layer == 10) || (collisions[i].gameObject.layer == 11))
                 {
+                    canMove = false;
                     turningInterval = 1f;
+                }
+                else if((collisions[i].CompareTag("Enemy") && collisions[i].gameObject != this.gameObject))
+                {
+                    canMove = false;
+                    turningInterval = 1f;
+                    collidedWithEnemy = true;
                 }
                 else if (collisions[i].CompareTag("Player")) collisions[i].GetComponent<PlayerState>().killPlayer();
             }
+
+            if (canMove) this.transform.position = desiredPosition;
         }
 	}
 
@@ -95,7 +107,8 @@ public class EnemyAI : MonoBehaviour
 	private void CheckSurroundings()
 	{
         //Snap to Grid before checking collisions
-        SnapToGrid();
+        if(!collidedWithEnemy) SnapToGrid();
+        collidedWithEnemy = false;
 
         //Checking for collisions up
         Collider2D hit = Physics2D.OverlapBox((Vector2) transform.position + Vector2.up, colliderSize, 0f);
