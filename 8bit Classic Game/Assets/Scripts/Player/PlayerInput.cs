@@ -13,6 +13,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerState playerState;
     private GameObject lastBombLayed;
     private bool insideBomb;
+    private LinkedList<Vector2> lastPositions;
     private AudioManager aManager;
 
     //Start Method
@@ -47,7 +48,7 @@ public class PlayerInput : MonoBehaviour
         else if (lastPositions.Last.Value != position)
         {
             Vector2 result = lastPositions.First.Value;
-            if(lastPositions.Count == delayExtraEggMovement) lastPositions.RemoveFirst();
+            if(lastPositions.Count == ControllerManager.Instance.extraEggsController.delayExtraEggMovement) lastPositions.RemoveFirst();
             lastPositions.AddLast(position);
             return result;
         }
@@ -62,9 +63,15 @@ public class PlayerInput : MonoBehaviour
             //Check for Position
             Collider2D[] collisions = new Collider2D[2];
             int hits = collider.GetContacts(collisions);
+            bool canLayBomb = true;
+
+            for(int i = 0; i < hits; i++)
+            {
+                if (!collisions[i].CompareTag("ExtraEgg")) canLayBomb = false;
+            }
 
             //Finally...
-            if(hits == 0)
+            if (canLayBomb)
             {
                 lastBombLayed = ControllerManager.Instance.bombController.placeBomb(playerState.maxBombs, playerState.bombRadius, playerState.bombType, this.transform.position);
                 if (lastBombLayed != null) insideBomb = true;
@@ -259,19 +266,20 @@ public class PlayerInput : MonoBehaviour
             //Move Player!
             if (canMove)
             {
-                if(ControllerManager.Instance.extraEggsController.extraEggsCount() > 0)
+                if (ControllerManager.Instance.extraEggsController.extraEggsCount() > 0)
                 {
-                    if (lastPositions.Count == delayExtraEggMovement)
                     Vector2 desiredPosition = savePosition(movement);
+                    if (lastPositions.Count == ControllerManager.Instance.extraEggsController.delayExtraEggMovement)
                     {
                         ControllerManager.Instance.extraEggsController.moveEggs(desiredPosition);
-                    } 
+                    }
                 }
-                
-            if (!aManager.IsPlaying("Walk"))
-            {
-                aManager.Play("Walk");
-            }
+                else lastPositions.Clear();
+
+                if (!aManager.IsPlaying("Walk"))
+                {
+                    aManager.Play("Walk");
+                }
 
                 //Finally...
                 transform.position = movement;

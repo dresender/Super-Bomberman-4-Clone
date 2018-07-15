@@ -6,6 +6,7 @@ public class ExtraEggsController : MonoBehaviour
 {
     //Variables
     private LinkedList<GameObject> extraEggsList;
+    public int delayExtraEggMovement;
 
     //References
     public GameObject extraEggGameObject;
@@ -20,6 +21,12 @@ public class ExtraEggsController : MonoBehaviour
     public int extraEggsCount()
     {
         return extraEggsList.Count;
+    }
+
+    //Get Next Egg
+    public GameObject getNextEgg()
+    {
+        return extraEggsList.First.Value;
     }
 
     //Move Eggs

@@ -22,7 +22,10 @@ public class ExtraEggLayerController : MonoBehaviour
 
 	void LateUpdate ()
     {
-        if(!downMovement) sprtRenderer.sortingOrder = bombermanSpriteRenderer.sortingOrder - 1;
-        else sprtRenderer.sortingOrder = bombermanSpriteRenderer.sortingOrder + 1;
+        if(sprtRenderer != null && bombermanSpriteRenderer != null)
+        {
+            if (!downMovement) sprtRenderer.sortingOrder = bombermanSpriteRenderer.sortingOrder - 1;
+            else sprtRenderer.sortingOrder = bombermanSpriteRenderer.sortingOrder + 1;
+        }
     }
 }

@@ -20,6 +20,7 @@ public class PlayerState : MonoBehaviour
     private bool riding;
     private bool jumping;
     private BoxCollider2D collider;
+    private ExtraEgg extraEgg;
 
     //References
     private PlayerAnimation playerAnimation;
@@ -27,6 +28,7 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
+        extraEgg = null;
         jumping = false;
         riding = false;
         victory = false;
@@ -96,10 +98,16 @@ public class PlayerState : MonoBehaviour
             invulnerableTime = 1f;
             riding = false;
             jumping = true;
-            playerAnimation.dismount();
             collider.enabled = false;
             playerInput.enabled = false;
             bombType = ControllerManager.Instance.bombController.simpleBomb;
+            if(ControllerManager.Instance.extraEggsController.extraEggsCount() > 0)
+            {
+                extraEgg = ControllerManager.Instance.extraEggsController.getNextEgg().GetComponent<ExtraEgg>();
+                extraEgg.expendEgg(this.transform.position);
+                bombType = ControllerManager.Instance.bombController.pierceBomb;
+            }
+            playerAnimation.dismount(extraEgg);
         }
     }
 
@@ -159,12 +167,24 @@ public class PlayerState : MonoBehaviour
 
         if(jumping)
         {
+            playerAnimation.isEndOfDestroyAnimation();
             if (playerAnimation.isEndOfJumpingAnimation())
             {
                 if (!riding)
                 {
-                    playerAnimation.disableMount();
+                    if (extraEgg != null)
+                    {
+                        extraEgg.destroyEgg(true);
+                        playerAnimation.expendEgg();
+                        riding = true;
+                        extraEgg = null;
+                    }
+                    else
+                    {
+                        playerAnimation.disableMount();
+                    }
                 }
+
                 jumping = false;
                 collider.enabled = true;
                 playerInput.enabled = true;
@@ -174,7 +194,11 @@ public class PlayerState : MonoBehaviour
         {
             invulnerableTime -= Time.deltaTime;
             playerAnimation.flashSprite(riding);
-            if (invulnerableTime <= 0f) invulnerable = false;
+            if (invulnerableTime <= 0f)
+            {
+                playerAnimation.flashSpriteTerminal(riding);
+                invulnerable = false;
+            }
         }
     }
 }

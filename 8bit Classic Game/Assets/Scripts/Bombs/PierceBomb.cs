@@ -52,6 +52,7 @@ public class PierceBomb : Bomb
                 {
                     Vector3 desiredPosition = this.transform.position + (Vector3.up * i);
                     Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
+                    EnemyAI enemyToKill = null;
 
                     for (int j = 0; j < collision.Length; j++)
                     {
@@ -65,9 +66,13 @@ public class PierceBomb : Bomb
                             skipUp = true;
                             collision[j].GetComponent<PowerUp>().destroyPowerup();
                         }
+                        else if (collision[j].CompareTag("ExtraEgg"))
+                        {
+                            collision[j].GetComponent<ExtraEgg>().destroyEgg();
+                        }
                         else if (collision[j].CompareTag("Enemy"))
                         {
-                            collision[j].GetComponent<EnemyAI>().killEnemy();
+                            enemyToKill = collision[j].GetComponent<EnemyAI>();
                         }
                         else if (collision[j].CompareTag("Player"))
                         {
@@ -83,6 +88,7 @@ public class PierceBomb : Bomb
 
                     if (!upBlocked && !skipUp)
                     {
+                        if(enemyToKill != null) enemyToKill.killEnemy();
                         if (i == radius) Instantiate(upEndExplosion, desiredPosition, Quaternion.identity);
                         else Instantiate(upArmExplosion, desiredPosition, Quaternion.identity);
                     }
@@ -93,6 +99,7 @@ public class PierceBomb : Bomb
                 {
                     Vector3 desiredPosition = this.transform.position + (Vector3.down * i);
                     Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
+                    EnemyAI enemyToKill = null;
 
                     for (int j = 0; j < collision.Length; j++)
                     {
@@ -106,9 +113,13 @@ public class PierceBomb : Bomb
                             skipDown = true;
                             collision[j].GetComponent<PowerUp>().destroyPowerup();
                         }
+                        else if (collision[j].CompareTag("ExtraEgg"))
+                        {
+                            collision[j].GetComponent<ExtraEgg>().destroyEgg();
+                        }
                         else if (collision[j].CompareTag("Enemy"))
                         {
-                            collision[j].GetComponent<EnemyAI>().killEnemy();
+                            enemyToKill = collision[j].GetComponent<EnemyAI>();
                         }
                         else if (collision[j].CompareTag("Player"))
                         {
@@ -124,6 +135,7 @@ public class PierceBomb : Bomb
 
                     if (!downBlocked && !skipDown)
                     {
+                        if (enemyToKill != null) enemyToKill.killEnemy();
                         if (i == radius) Instantiate(downEndExplosion, desiredPosition, Quaternion.identity);
                         else Instantiate(downArmExplosion, desiredPosition, Quaternion.identity);
                     }
@@ -134,6 +146,7 @@ public class PierceBomb : Bomb
                 {
                     Vector3 desiredPosition = this.transform.position + (Vector3.right * i);
                     Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
+                    EnemyAI enemyToKill = null;
 
                     for (int j = 0; j < collision.Length; j++)
                     {
@@ -147,9 +160,13 @@ public class PierceBomb : Bomb
                             skipRight = true;
                             collision[j].GetComponent<PowerUp>().destroyPowerup();
                         }
+                        else if (collision[j].CompareTag("ExtraEgg"))
+                        {
+                            collision[j].GetComponent<ExtraEgg>().destroyEgg();
+                        }
                         else if (collision[j].CompareTag("Enemy"))
                         {
-                            collision[j].GetComponent<EnemyAI>().killEnemy();
+                            enemyToKill = collision[j].GetComponent<EnemyAI>();
                         }
                         else if (collision[j].CompareTag("Player"))
                         {
@@ -165,6 +182,7 @@ public class PierceBomb : Bomb
 
                     if (!rightBlocked && !skipRight)
                     {
+                        if (enemyToKill != null) enemyToKill.killEnemy();
                         if (i == radius) Instantiate(rightEndExplosion, desiredPosition, Quaternion.identity);
                         else Instantiate(rightArmExplosion, desiredPosition, Quaternion.identity);
                     }
@@ -175,6 +193,7 @@ public class PierceBomb : Bomb
                 {
                     Vector3 desiredPosition = this.transform.position + (Vector3.left * i);
                     Collider2D[] collision = Physics2D.OverlapBoxAll(desiredPosition, collisionVector, 0f);
+                    EnemyAI enemyToKill = null;
 
                     for (int j = 0; j < collision.Length; j++)
                     {
@@ -190,9 +209,13 @@ public class PierceBomb : Bomb
                                 skipLeft = true;
                                 collision[j].GetComponent<PowerUp>().destroyPowerup();
                             }
+                            else if (collision[j].CompareTag("ExtraEgg"))
+                            {
+                                collision[j].GetComponent<ExtraEgg>().destroyEgg();
+                            }
                             else if (collision[j].CompareTag("Enemy"))
                             {
-                                collision[j].GetComponent<EnemyAI>().killEnemy();
+                                enemyToKill = collision[j].GetComponent<EnemyAI>();
                             }
                             else if (collision[j].CompareTag("Player"))
                             {
@@ -209,6 +232,7 @@ public class PierceBomb : Bomb
 
                     if (!leftBlocked && !skipLeft)
                     {
+                        if (enemyToKill != null) enemyToKill.killEnemy();
                         if (i == radius) Instantiate(leftEndExplosion, desiredPosition, Quaternion.identity);
                         else Instantiate(leftArmExplosion, desiredPosition, Quaternion.identity);
                     }

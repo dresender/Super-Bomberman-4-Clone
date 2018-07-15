@@ -82,6 +82,14 @@ public class PlayerAnimation : MonoBehaviour
         mountObject.SetActive(false);
     }
 
+    //Expend Egg
+    public void expendEgg()
+    {
+        mountObject.SetActive(true);
+        mountAnimator.enabled = false;
+        mountAnimator.enabled = true;
+    }
+
     //Set Death Animation
     public void setDeathAnimation()
     {
@@ -89,10 +97,10 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     //Dismount
-    public void dismount()
+    public void dismount(bool extraEgg)
     {
         aManager.Play("Dismount");
-        bombermanAnimator.SetBool("Riding", false);
+        if(!extraEgg) bombermanAnimator.SetBool("Riding", false);
         bombermanAnimator.ResetTrigger("EndJump");
         bombermanAnimator.SetTrigger("JumpOff");
         mountAnimator.SetTrigger("Kill");
@@ -121,6 +129,13 @@ public class PlayerAnimation : MonoBehaviour
         else flashSpriteInterval -= Time.deltaTime;
     }
 
+    //Secure Flash Bugs
+    public void flashSpriteTerminal(bool riding)
+    {
+        bombermanSpriteRenderer.enabled = true;
+        if (riding) mountSpriteRenderer.enabled = true;
+    }
+
     //Set Victory Animation
     public void setVictoryAnimation(bool riding)
     {
@@ -134,6 +149,21 @@ public class PlayerAnimation : MonoBehaviour
         if (bombermanAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Teleport"))
         {
             return bombermanAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+        }
+        else return false;
+    }
+
+    //get State Animation
+    public bool isEndOfDestroyAnimation()
+    {
+        if (mountAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Destroy"))
+        {
+            if (mountAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                mountObject.SetActive(false);
+                return true;
+            }
+            else return false;
         }
         else return false;
     }
