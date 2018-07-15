@@ -10,7 +10,7 @@ public class TimeController : MonoBehaviour
     public SpriteRenderer number_seconds_decimal;
     public SpriteRenderer number_seconds_unit;
     public Sprite[] numbers;
-    public bool starting;
+    private bool starting;
 
     //Public Variables
     public int maxTime;
@@ -38,9 +38,12 @@ public class TimeController : MonoBehaviour
     //Adjust Time in UI
     private void setTimeUI()
     {
-        number_minutes.sprite = numbers[(int)currentTime / 60];
-        number_seconds_decimal.sprite = numbers[((int)currentTime % 60) / 10];
-        number_seconds_unit.sprite = numbers[(int)currentTime % 10];
+        if(currentTime >= 0)
+        {
+            number_minutes.sprite = numbers[(int)currentTime / 60];
+            number_seconds_decimal.sprite = numbers[((int)currentTime % 60) / 10];
+            number_seconds_unit.sprite = numbers[(int)currentTime % 10];
+        }
     }
 
     //Pause Time
@@ -98,7 +101,23 @@ public class TimeController : MonoBehaviour
         {
             currentTime -= Time.deltaTime;
             setTimeUI();
-            if (PlayerState.Instance != null && currentTime <= 0) PlayerState.Instance.killPlayer();
+            if (PlayerState.Instance != null && currentTime <= 0)
+            {
+                if(aManager.IsPlaying("Theme Music")) aManager.StopPlaying("Theme Music");
+                if(!aManager.IsPlaying("Time Up"))
+                {
+                    if(aManager.finishedPlaying("Time Up"))
+                    {
+                        ControllerManager.Instance.sceneController.reloadScene();
+                        this.enabled = false;
+                    }
+                    else
+                    {
+                        aManager.Play("Time Up");
+                        PlayerState.Instance.timeUp();
+                    }
+                }
+            }
         }
     }
 }

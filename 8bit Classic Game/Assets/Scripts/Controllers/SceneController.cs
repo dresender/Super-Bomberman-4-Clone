@@ -21,6 +21,7 @@ public class SceneController : MonoBehaviour
     //Reload Scene
     public void reloadScene()
     {
+        LivesData.lives -= 1;
         sceneToLoad = "World One";
     }
 

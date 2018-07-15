@@ -50,6 +50,12 @@ public class PlayerAnimation : MonoBehaviour
         bombermanAnimator.SetTrigger("Dance");
     }
 
+    //Set TimeUP Animation
+    public void setTimeUpAnimation()
+    {
+        bombermanAnimator.SetTrigger("TimeUp");
+    }
+
     //Set Movement Animation
     public void setMovementAnimation(bool moving, bool riding)
     {

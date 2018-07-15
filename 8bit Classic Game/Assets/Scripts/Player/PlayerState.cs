@@ -127,10 +127,16 @@ public class PlayerState : MonoBehaviour
                     alive = false;
                     playerAnimation.setDeathAnimation();
                     playerInput.enabled = false;
-                    LivesData.lives -= 1;
                 }
             }
         }
+    }
+
+    //Time's Up!
+    public void timeUp()
+    {
+        playerInput.enabled = false;
+        playerAnimation.setTimeUpAnimation();
     }
 
     //Victory
