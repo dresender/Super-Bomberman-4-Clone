@@ -16,13 +16,13 @@ public class PlayerInput : MonoBehaviour
     private LinkedList<Vector2> lastPositions;
     private AudioManager aManager;
     private float timeWithoutMoving;
-
+    
     //Start Method
     void Start()
     {
         //Cacheing the Audio Manager in the local variable
         aManager = FindObjectOfType<AudioManager>();
-
+        
         lastBombLayed = null;
         playerState = this.GetComponent<PlayerState>();
         playerAnimation = this.GetComponent<PlayerAnimation>();

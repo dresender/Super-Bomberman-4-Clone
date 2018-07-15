@@ -126,6 +126,8 @@ public class PlayerState : MonoBehaviour
                 }
                 else
                 {
+                    aManager.StopPlaying("Theme Music");
+                    aManager.Play("Death");
                     alive = false;
                     playerAnimation.setDeathAnimation();
                     playerInput.enabled = false;
@@ -157,7 +159,7 @@ public class PlayerState : MonoBehaviour
     //Update Method
     private void Update()
     {
-        if(!alive)
+        if (!alive)
         {
             if (playerAnimation.isEndOfDeathAnimation())
             {
