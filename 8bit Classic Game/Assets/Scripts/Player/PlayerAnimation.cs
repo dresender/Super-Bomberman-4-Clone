@@ -100,6 +100,7 @@ public class PlayerAnimation : MonoBehaviour
         mountObject.SetActive(true);
         mountAnimator.enabled = false;
         mountAnimator.enabled = true;
+        mountAnimator.SetInteger("Direction", bombermanAnimator.GetInteger("Direction"));
     }
 
     //Set Death Animation
