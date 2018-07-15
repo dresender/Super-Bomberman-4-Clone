@@ -581,8 +581,9 @@ GameObject:
   - component: {fileID: 31024041}
   - component: {fileID: 31024042}
   - component: {fileID: 31024043}
+  - component: {fileID: 31024044}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -673,6 +674,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
+--- !u!114 &31024044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 31024040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b140f00368ff134788c0b799213a73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile2: {fileID: 1614924345}
+  tile3: {fileID: 968196173}
+  tile1normal: {fileID: 21300348, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile1withPlayer: {fileID: 21300356, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile2normal: {fileID: 21300352, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile2withPlayer: {fileID: 21300360, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile3normal: {fileID: 21300332, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile3withPlayer: {fileID: 21300340, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
 --- !u!1 &32226078
 GameObject:
   m_ObjectHideFlags: 0
@@ -5209,48 +5229,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1001 &429879440
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 6.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &432003681
 GameObject:
   m_ObjectHideFlags: 0
@@ -7272,8 +7250,9 @@ GameObject:
   - component: {fileID: 570078723}
   - component: {fileID: 570078724}
   - component: {fileID: 570078725}
+  - component: {fileID: 570078726}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7364,6 +7343,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
+--- !u!114 &570078726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 570078722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b140f00368ff134788c0b799213a73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile2: {fileID: 793897543}
+  tile3: {fileID: 789322366}
+  tile1normal: {fileID: 21300346, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile1withPlayer: {fileID: 21300326, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile2normal: {fileID: 21300350, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile2withPlayer: {fileID: 21300328, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile3normal: {fileID: 21300330, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile3withPlayer: {fileID: 21300310, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
 --- !u!4 &578249695
 Transform:
   m_ObjectHideFlags: 0
@@ -7498,52 +7496,6 @@ MonoBehaviour:
   heart2: {fileID: 21300002, guid: 2652288151471534eac0179246a9a47c, type: 3}
   heart1: {fileID: 21300004, guid: 2652288151471534eac0179246a9a47c, type: 3}
   heart0: {fileID: 21300006, guid: 2652288151471534eac0179246a9a47c, type: 3}
---- !u!1001 &582634656
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 7.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519966186016300, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109409956596352, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-      propertyPath: m_Name
-      value: Egg (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7eee84b8f326a71479ce97c261b289e0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &595352045
 GameObject:
   m_ObjectHideFlags: 0
@@ -9808,7 +9760,7 @@ GameObject:
   - component: {fileID: 774851655}
   - component: {fileID: 774851656}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9962,7 +9914,7 @@ GameObject:
   - component: {fileID: 789322367}
   - component: {fileID: 789322368}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10039,7 +9991,7 @@ GameObject:
   - component: {fileID: 793897544}
   - component: {fileID: 793897545}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11870,7 +11822,7 @@ GameObject:
   - component: {fileID: 968196174}
   - component: {fileID: 968196175}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20463,7 +20415,7 @@ GameObject:
   - component: {fileID: 1614924346}
   - component: {fileID: 1614924347}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23228,8 +23180,9 @@ GameObject:
   - component: {fileID: 1873244585}
   - component: {fileID: 1873244586}
   - component: {fileID: 1873244587}
+  - component: {fileID: 1873244588}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23320,6 +23273,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
+--- !u!114 &1873244588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873244584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b140f00368ff134788c0b799213a73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile2: {fileID: 1969461652}
+  tile3: {fileID: 774851654}
+  tile1normal: {fileID: 21300346, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile1withPlayer: {fileID: 21300326, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile2normal: {fileID: 21300350, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile2withPlayer: {fileID: 21300328, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile3normal: {fileID: 21300330, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
+  tile3withPlayer: {fileID: 21300310, guid: 55812fd4434bb144fb65fba5592a1ce6, type: 3}
 --- !u!1001 &1876858687
 Prefab:
   m_ObjectHideFlags: 0
@@ -24741,7 +24713,7 @@ GameObject:
   - component: {fileID: 1969461653}
   - component: {fileID: 1969461654}
   m_Layer: 9
-  m_Name: BrdigeTile
+  m_Name: BrdigeTile4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
