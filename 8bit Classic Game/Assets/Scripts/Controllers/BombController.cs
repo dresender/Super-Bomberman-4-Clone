@@ -7,6 +7,7 @@ public class BombController : MonoBehaviour
     //Types of Bombs
     public GameObject simpleBomb;
     public GameObject pierceBomb;
+    private AudioManager aManager;
 
     //Variables
     private LinkedList<GameObject> bombsPlayer1;
@@ -14,6 +15,7 @@ public class BombController : MonoBehaviour
     //Start Method
     private void Start()
     {
+        aManager = FindObjectOfType<AudioManager>();
         bombsPlayer1 = new LinkedList<GameObject>();
     }
 
@@ -22,6 +24,7 @@ public class BombController : MonoBehaviour
     {
         if (bombsPlayer1.Count < max)
         {
+            aManager.Play("Set Bomb");
             position.x = Mathf.Round(position.x);
             position.y = Mathf.Round(position.y);
             GameObject bomb = Instantiate(bombType, position, Quaternion.identity);

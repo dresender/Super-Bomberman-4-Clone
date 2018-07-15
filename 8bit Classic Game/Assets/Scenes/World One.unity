@@ -733,7 +733,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Explosion
     clip: {fileID: 8300000, guid: bd0d61301238234438060bfbd379a54d, type: 3}
-    volume: 0.5
+    volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -775,6 +775,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Time Up
     clip: {fileID: 8300000, guid: 8a5e90d51b7096040a1a2827672ca466, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Set Bomb
+    clip: {fileID: 8300000, guid: bd05e43451248094caec752fa1393c1f, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
