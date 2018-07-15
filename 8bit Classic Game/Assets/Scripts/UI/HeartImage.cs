@@ -13,7 +13,7 @@ public class HeartImage : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        int lives = LivesController.lives;
+        int lives = LivesData.lives;
         if (lives == 3) this.GetComponent<SpriteRenderer>().sprite = heart3;
         else if (lives == 2) this.GetComponent<SpriteRenderer>().sprite = heart2;
         else if (lives == 1) this.GetComponent<SpriteRenderer>().sprite = heart1;

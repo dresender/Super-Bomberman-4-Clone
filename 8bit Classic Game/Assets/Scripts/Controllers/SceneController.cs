@@ -39,7 +39,7 @@ public class SceneController : MonoBehaviour
     //Update
     private void Update()
     {
-        if (LivesController.lives <= 0)
+        if (LivesData.lives <= 0)
         {
             loadGameOverScene();
         }

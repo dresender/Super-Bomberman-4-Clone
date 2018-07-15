@@ -127,7 +127,7 @@ public class PlayerState : MonoBehaviour
                     alive = false;
                     playerAnimation.setDeathAnimation();
                     playerInput.enabled = false;
-                    LivesController.lives -= 1;
+                    LivesData.lives -= 1;
                 }
             }
         }

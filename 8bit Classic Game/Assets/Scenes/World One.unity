@@ -706,7 +706,6 @@ GameObject:
   m_Component:
   - component: {fileID: 32226081}
   - component: {fileID: 32226080}
-  - component: {fileID: 32226079}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -714,18 +713,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &32226079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32226078}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb6f55cc8137e446a13ec00526e1f89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadedScene: 
 --- !u!114 &32226080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3828,21 +3815,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114890763172791172, guid: e00158a73999cab47b133064d8edb5c5,
+    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: player
+      propertyPath: flash
       value: 
-      objectReference: {fileID: 1705475046}
-    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
+      objectReference: {fileID: 1867615185}
+    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: number_100
+      propertyPath: portal
       value: 
-      objectReference: {fileID: 659283829}
-    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
-        type: 2}
-      propertyPath: number_1000
-      value: 
-      objectReference: {fileID: 804017067}
+      objectReference: {fileID: 1411012290}
     - target: {fileID: 114597381444366694, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
       propertyPath: number_minutes
@@ -3858,29 +3840,22 @@ Prefab:
       propertyPath: number_seconds_unit
       value: 
       objectReference: {fileID: 746799111}
-    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
+    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: flash
+      propertyPath: number_100
       value: 
-      objectReference: {fileID: 1867615185}
-    - target: {fileID: 114768600500366740, guid: e00158a73999cab47b133064d8edb5c5,
+      objectReference: {fileID: 659283829}
+    - target: {fileID: 114096915416332260, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: portal
+      propertyPath: number_1000
       value: 
-      objectReference: {fileID: 1411012290}
-    - target: {fileID: 114890763172791172, guid: e00158a73999cab47b133064d8edb5c5,
+      objectReference: {fileID: 804017067}
+    - target: {fileID: 114122750884888480, guid: e00158a73999cab47b133064d8edb5c5,
         type: 2}
-      propertyPath: extraEggGameObject
+      propertyPath: player
       value: 
-      objectReference: {fileID: 1109409956596352, guid: b01ba498e74d89742bfc251feeb70188,
-        type: 2}
-    - target: {fileID: 114890763172791172, guid: e00158a73999cab47b133064d8edb5c5,
-        type: 2}
-      propertyPath: delayExtraEggMovement
-      value: 20
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114805738180461310, guid: e00158a73999cab47b133064d8edb5c5, type: 2}
+      objectReference: {fileID: 1705475046}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e00158a73999cab47b133064d8edb5c5, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &300985745
@@ -15366,23 +15341,6 @@ Transform:
   m_Father: {fileID: 655154943}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1236994250 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1840822164448478, guid: e00158a73999cab47b133064d8edb5c5,
-    type: 2}
-  m_PrefabInternal: {fileID: 293977694}
---- !u!114 &1236994260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1236994250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd6f2f16e89b0a4b89d08d2608de22f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1705475046}
 --- !u!1 &1241261491
 GameObject:
   m_ObjectHideFlags: 0

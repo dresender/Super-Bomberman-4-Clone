@@ -26,8 +26,8 @@ public class GameOverScreenSelectionTool : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
-            LivesController.lives = 3;
-            ScoreController.score = 0;
+            LivesData.lives = 3;
+            ScoreData.score = 0;
 
             if (handPointer == SelectorPosition.up)
             {
