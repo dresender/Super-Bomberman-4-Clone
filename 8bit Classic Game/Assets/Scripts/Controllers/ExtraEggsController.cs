@@ -29,6 +29,15 @@ public class ExtraEggsController : MonoBehaviour
         return extraEggsList.First.Value;
     }
 
+    //Stop Eggs
+    public void stopEggs()
+    {
+        foreach (GameObject obj in extraEggsList)
+        {
+            obj.GetComponent<ExtraEgg>().stopEgg();
+        }
+    }
+
     //Move Eggs
     public void moveEggs(Vector2 position)
     {

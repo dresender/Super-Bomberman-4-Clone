@@ -259,7 +259,7 @@ public class PlayerInput : MonoBehaviour
                     }
                     else if (collisions[i].CompareTag("Enemy"))
                     {
-                        if(collisions[i].GetComponent<EnemyAI>().isAlive()) playerState.killPlayer();
+                        if (collisions[i].GetComponent<EnemyAI>().isAlive()) playerState.killPlayer();
                     }
                 }
             }
@@ -288,6 +288,8 @@ public class PlayerInput : MonoBehaviour
                 //Finally...
                 transform.position = movement;
             }
+            else ControllerManager.Instance.extraEggsController.stopEggs();
         }
-	}
+        else ControllerManager.Instance.extraEggsController.stopEggs();
+    }
 }

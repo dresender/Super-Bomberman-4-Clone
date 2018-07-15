@@ -50,9 +50,32 @@ public class ExtraEgg : MonoBehaviour
         }
     }
 
+    //Stop Egg
+    public void stopEgg()
+    {
+        animator.SetBool("Moving", false);
+    }
+
+    //Update Animator
+    private void updateAnimator(Vector2 desiredPosition)
+    {
+        animator.SetBool("Moving", true);
+        if(this.transform.position.y != desiredPosition.y)
+        {
+            if (this.transform.position.y > desiredPosition.y) animator.SetInteger("Direction", 0);
+            else animator.SetInteger("Direction", 1);
+        }
+        else if(this.transform.position.x != desiredPosition.x)
+        {
+            if (this.transform.position.x > desiredPosition.x) animator.SetInteger("Direction", 3);
+            else animator.SetInteger("Direction", 2);
+        }
+    }
+
     //Movement Logic
     public Vector2 move(Vector2 desiredPosition)
     {
+        updateAnimator(desiredPosition);
         Vector2 result = savePosition(this.transform.position);
         this.transform.position = desiredPosition;
         return result;
@@ -78,7 +101,9 @@ public class ExtraEgg : MonoBehaviour
 
         if(expended)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, target, 3f * Time.deltaTime);
+            Vector2 targetPosition = Vector2.MoveTowards(this.transform.position, target, 3f * Time.deltaTime);
+            updateAnimator(targetPosition);
+            this.transform.position = targetPosition;
         }
     }
 }
