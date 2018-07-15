@@ -27,5 +27,8 @@ public class ScoreController : MonoBehaviour
 
         number_100.sprite = numbers[score / 100];
         number_1000.sprite = numbers[(score % 100)];
+
+        if (score >= 1000) number_1000.enabled = true;
+        else number_1000.enabled = false;
     }
 }
