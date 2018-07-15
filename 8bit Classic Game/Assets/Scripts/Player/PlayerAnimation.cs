@@ -44,6 +44,12 @@ public class PlayerAnimation : MonoBehaviour
         if (riding) mountAnimator.SetBool("Moving", moving);
     }
 
+    //Set Dance Animation
+    public void setDanceAnimation()
+    {
+        bombermanAnimator.SetTrigger("Dance");
+    }
+
     //Set Movement Animation
     public void setMovementAnimation(bool moving, bool riding)
     {

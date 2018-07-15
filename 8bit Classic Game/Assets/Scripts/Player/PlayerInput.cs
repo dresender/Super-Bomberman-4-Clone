@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     private bool insideBomb;
     private LinkedList<Vector2> lastPositions;
     private AudioManager aManager;
+    private float timeWithoutMoving;
 
     //Start Method
     void Start()
@@ -33,9 +34,11 @@ public class PlayerInput : MonoBehaviour
     //Update Method
 	void Update () 
 	{
+        timeWithoutMoving += Time.deltaTime;
         layBombs();
 		movePlayer();
-	}
+        if (timeWithoutMoving >= 5f) playerAnimation.setDanceAnimation();
+    }
 
     //Save Position
     private Vector2 savePosition(Vector2 position)
@@ -123,6 +126,7 @@ public class PlayerInput : MonoBehaviour
         if (hasMoved)
         {
             //Get Colliders
+            timeWithoutMoving = 0f;
             Collider2D[] collisions = Physics2D.OverlapBoxAll(movement, collider.size, 0f);
             bool canMove = true;
 

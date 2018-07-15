@@ -60,6 +60,9 @@ TagManager:
   - name: Characters
     uniqueID: 1273671797
     locked: 0
+  - name: Background_Forelayer
+    uniqueID: 3832233181
+    locked: 0
   - name: UI
     uniqueID: 2896967367
     locked: 0
