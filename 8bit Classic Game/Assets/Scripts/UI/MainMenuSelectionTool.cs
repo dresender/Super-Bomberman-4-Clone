@@ -23,7 +23,7 @@ public class MainMenuSelectionTool : MonoBehaviour
 
         //Setting up initial pointer position
         newPositionY = -2.75f;
-        newPositionX = -4.25f;
+        newPositionX = -4.6f;
 	}
 	
 	void Update ()

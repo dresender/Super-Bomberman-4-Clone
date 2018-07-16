@@ -19,7 +19,7 @@ public class GameOverScreenSelectionTool : MonoBehaviour
 
         //Setting up initial pointer position
         newPositionY = 2.5f;
-        newPositionX = -3.9f;
+        newPositionX = -3.6f;
 	}
 	
 	void Update ()
